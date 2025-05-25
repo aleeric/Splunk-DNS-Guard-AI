@@ -12,16 +12,6 @@ A comprehensive DNS anomaly detection system using Splunk and machine learning t
   <a href="#"><img src="https://img.shields.io/badge/Python-3.6%2B-blue.svg" alt="Python 3.6+"/></a>
 </p>
 
-## 📋 Table of Contents
-- [Overview](#overview)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-    - [Python Requirements](#-python-requirements)
-    - [Splunk Requirements](#-splunk-requirements)
-    - [Recommended Additions](#-recommended-additions)
-  - [Installation Steps](#installation-steps)
-  - [Synthetic Data Details](#synthetic-data-details)
-
 ## Overview
 
 DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies that could indicate malicious activity such as command and control (C2) communication, data exfiltration, or reconnaissance. The system uses Splunk's powerful search capabilities combined with machine learning techniques to identify patterns that deviate from normal DNS behavior.
@@ -156,6 +146,6 @@ DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies t
 
 ### Synthetic Data Details
 
-For testing and demonstration purposes, the application includes a custom Python script that generates synthetic DNS data specifically for the app’s proof of concept. The generated events adhere to the Common Information Model (CIM), particularly the Network Resolution data model, ensuring compatibility with Splunk’s detection and enrichment features. The synthetic dataset simulates a wide range of DNS anomalies
+For testing and demonstration purposes, the application includes a custom Python script that generates synthetic DNS data specifically for the app’s proof of concept. The generated events adhere to the Common Information Model (CIM), particularly the Network Resolution data model, ensuring compatibility with Splunk’s detection and enrichment features. The synthetic dataset simulates a wide range of DNS anomalies and represents a realistic stream of network activity within an enterprise environment. It includes both benign and malicious DNS behavior to mirror real-world scenarios, making it ideal for evaluating the app’s detection capabilities. These events cover various anomaly types such as beaconing, C2 tunneling, excessive query lengths, rare DNS record types (e.g., ANY, HINFO, AXFR), and domain shadowing—allowing for thorough testing of detection logic under controlled yet representative conditions.
 
 > ⚠️ **REMINDER**: This synthetic data is for testing purposes only and should never be used in a production environment.
