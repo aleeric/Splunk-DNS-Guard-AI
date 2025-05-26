@@ -6,56 +6,7 @@
 {
 	"title": "Setup",
 	"description": "",
-	"inputs": {
-		"input_fpTlec8i": {
-			"options": {
-				"defaultValue": "0,",
-				"token": "time_beaconing_model_training"
-			},
-			"title": "",
-			"type": "input.timerange"
-		},
-		"input_k2qjyFGg": {
-			"options": {
-				"defaultValue": "0,",
-				"token": "token_NNlaS2Yn"
-			},
-			"title": "",
-			"type": "input.timerange"
-		},
-		"input_ovQaELCL": {
-			"options": {
-				"defaultValue": "0,",
-				"token": "token_iGSP1raS"
-			},
-			"title": "",
-			"type": "input.timerange"
-		},
-		"input_gN0ZPedw": {
-			"options": {
-				"defaultValue": "0,",
-				"token": "token_CGWFwM8u"
-			},
-			"title": "",
-			"type": "input.timerange"
-		},
-		"input_ALwRG8E2": {
-			"options": {
-				"defaultValue": "0,",
-				"token": "token_QHMEuS7G"
-			},
-			"title": "",
-			"type": "input.timerange"
-		},
-		"input_1R5DyTWD": {
-			"options": {
-				"defaultValue": "0,",
-				"token": "token_fYdmyPNy"
-			},
-			"title": "",
-			"type": "input.timerange"
-		}
-	},
+	"inputs": {},
 	"defaults": {
 		"dataSources": {
 			"ds.search": {
@@ -1479,10 +1430,10 @@
 		"ds_2YOW63hy": {
 			"type": "ds.search",
 			"options": {
-				"query": "| `dns_data` | `extract_sub_domain` | streamstats current=f last(_time) as last_time by src, domain | eval gap = last_time - _time | fit DensityFunction gap by \"src,domain\" dist=norm threshold=0.01 into dns_beacon_gap_model\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Model Trained\"]\n",
+				"query": "| `dns_data` | `extract_sub_domain` | streamstats current=f last(_time) as last_time by src, domain | eval gap = last_time - _time | fit DensityFunction gap by \"src,domain\" dist=norm threshold=0.01 into dns_beacon_gap_model | search src = \"dummy_search\" | append [| summary dns_beacon_gap_model | search std < 60 NOT std=1e-06] | eval last_update = now(), anomalous_type = \"Beaconing\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Model Trained\"]\n",
 				"queryParameters": {
-					"earliest": "$time_beaconing_model_training.earliest$",
-					"latest": "$time_beaconing_model_training.latest$"
+					"earliest": "0",
+					"latest": ""
 				}
 			},
 			"name": "setup_mltk_configuration_setup_beaconing_detection_model"
@@ -1547,8 +1498,8 @@
 			"options": {
 				"query": "| `dns_data` | `extract_sub_domain` | streamstats current=f last(_time) as last_time by src, domain | eval gap = last_time - _time | fit DensityFunction gap by \"src,domain\" dist=norm threshold=0.01 into dns_beacon_gap_model\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Model Trained\"]\n",
 				"queryParameters": {
-					"earliest": "$time_beaconing_model_training.earliest$",
-					"latest": "$time_beaconing_model_training.latest$"
+					"earliest": "0",
+					"latest": ""
 				}
 			},
 			"name": "setup_mltk_configuration_setup_beaconing_detection_model copy 6"
@@ -1556,10 +1507,10 @@
 		"ds_vJXg1jfX_ds_2YOW63hy": {
 			"type": "ds.search",
 			"options": {
-				"query": "| `dns_data` | `extract_sub_domain` | streamstats current=f last(_time) as last_time by src, domain | eval gap = last_time - _time | fit DensityFunction gap by \"src,domain\" dist=norm threshold=0.01 into dns_beacon_gap_model\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Model Trained\"]\n",
+				"query": "| `dns_data` | fields _time, src, query | `extract_sub_domain` | bin _time span=1m | stats count by _time src domain | anomalydetection \"src\" \"domain\" \"count\" action=annotate | eval isOutlier = if(probable_cause != \"\", \"1\", \"0\") | where isOutlier=1 | eval last_update = now(), anomalous_type = \"C2 Tunneling\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
 				"queryParameters": {
-					"earliest": "$time_beaconing_model_training.earliest$",
-					"latest": "$time_beaconing_model_training.latest$"
+					"earliest": "0",
+					"latest": ""
 				}
 			},
 			"name": "setup_mltk_configuration_setup_beaconing_detection_model copy 7"
@@ -1569,8 +1520,8 @@
 			"options": {
 				"query": "| `dns_data` | `extract_sub_domain` | streamstats current=f last(_time) as last_time by src, domain | eval gap = last_time - _time | fit DensityFunction gap by \"src,domain\" dist=norm threshold=0.01 into dns_beacon_gap_model\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Model Trained\"]\n",
 				"queryParameters": {
-					"earliest": "$time_beaconing_model_training.earliest$",
-					"latest": "$time_beaconing_model_training.latest$"
+					"earliest": "0",
+					"latest": ""
 				}
 			},
 			"name": "setup_mltk_configuration_setup_beaconing_detection_model copy 8"
@@ -1578,10 +1529,10 @@
 		"ds_0d278tIx_ds_wahErERv_ds_2YOW63hy": {
 			"type": "ds.search",
 			"options": {
-				"query": "| `dns_data` | `extract_sub_domain` | streamstats current=f last(_time) as last_time by src, domain | eval gap = last_time - _time | fit DensityFunction gap by \"src,domain\" dist=norm threshold=0.01 into dns_beacon_gap_model\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Model Trained\"]\n",
+				"query": "| `dns_data` | eval query_length = len(query) | where isnotnull(query_length) AND query_length > 0 | fields _time src query query_length | anomalydetection \"query_length\" \"query\" action=annotate | eval isOutlier = if(probable_cause != \"\", \"1\", \"0\") | where isOutlier=1 | `extract_sub_domain` | eval last_update = now(), anomalous_type = \"Query Length\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
 				"queryParameters": {
-					"earliest": "$time_beaconing_model_training.earliest$",
-					"latest": "$time_beaconing_model_training.latest$"
+					"earliest": "0",
+					"latest": ""
 				}
 			},
 			"name": "setup_mltk_configuration_setup_beaconing_detection_model copy 9"
@@ -1589,10 +1540,10 @@
 		"ds_Ehp5TvbG_ds_vJXg1jfX_ds_2YOW63hy": {
 			"type": "ds.search",
 			"options": {
-				"query": "| `dns_data` | `extract_sub_domain` | streamstats current=f last(_time) as last_time by src, domain | eval gap = last_time - _time | fit DensityFunction gap by \"src,domain\" dist=norm threshold=0.01 into dns_beacon_gap_model\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Model Trained\"]\n",
+				"query": "| `dns_data` | `extract_sub_domain` | where isnotnull(domain) AND subdomain!=\"\" AND isnotnull(subdomain) | stats dc(subdomain) as unique_subdomain by src domain | anomalydetection \"src\" \"unique_subdomain\" action=annotate | eval isOutlier = if(probable_cause != \"\", \"1\", \"0\") | where isOutlier=1 | eval last_update = now(), anomalous_type = \"Domain Shadowing\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
 				"queryParameters": {
-					"earliest": "$time_beaconing_model_training.earliest$",
-					"latest": "$time_beaconing_model_training.latest$"
+					"earliest": "0",
+					"latest": ""
 				}
 			},
 			"name": "setup_mltk_configuration_setup_beaconing_detection_model copy 10"
@@ -2065,8 +2016,8 @@
 						"item": "viz_mEfaUWMK",
 						"type": "block",
 						"position": {
-							"x": 40,
-							"y": 880,
+							"x": 440,
+							"y": 650,
 							"w": 240,
 							"h": 100
 						}
@@ -2077,7 +2028,7 @@
 							"x": 190,
 							"y": 220,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2087,7 +2038,7 @@
 							"x": 180,
 							"y": 210,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2195,8 +2146,8 @@
 						"item": "viz_7wswIm29",
 						"type": "block",
 						"position": {
-							"x": 260,
-							"y": 870,
+							"x": 660,
+							"y": 640,
 							"w": 370,
 							"h": 150
 						}
@@ -2205,8 +2156,8 @@
 						"item": "viz_jEBLChAd",
 						"type": "block",
 						"position": {
-							"x": 50,
-							"y": 890,
+							"x": 450,
+							"y": 660,
 							"w": 240,
 							"h": 80
 						}
@@ -2215,8 +2166,8 @@
 						"item": "viz_vR2Wzl5d",
 						"type": "block",
 						"position": {
-							"x": 570,
-							"y": 810,
+							"x": 960,
+							"y": 50,
 							"w": 300,
 							"h": 40
 						}
@@ -2225,8 +2176,8 @@
 						"item": "viz_0Gx4tAQ8",
 						"type": "block",
 						"position": {
-							"x": 630,
-							"y": 817,
+							"x": 1020,
+							"y": 57,
 							"w": 190,
 							"h": 30
 						}
@@ -2236,9 +2187,9 @@
 						"type": "block",
 						"position": {
 							"x": 0,
-							"y": -500,
+							"y": 0,
 							"w": 1430,
-							"h": 580
+							"h": 1000
 						}
 					},
 					{
@@ -2246,27 +2197,17 @@
 						"type": "block",
 						"position": {
 							"x": 190,
-							"y": 320,
+							"y": 260,
 							"w": 320,
-							"h": 140
-						}
-					},
-					{
-						"item": "input_fpTlec8i",
-						"type": "input",
-						"position": {
-							"x": 270,
-							"y": 250,
-							"w": 170,
-							"h": 66
+							"h": 110
 						}
 					},
 					{
 						"item": "viz_H4xMqFDj",
 						"type": "block",
 						"position": {
-							"x": 570,
-							"y": 810,
+							"x": 960,
+							"y": 50,
 							"w": 300,
 							"h": 40
 						}
@@ -2297,7 +2238,7 @@
 							"x": 560,
 							"y": 220,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2307,7 +2248,7 @@
 							"x": 550,
 							"y": 210,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2326,19 +2267,9 @@
 						"type": "block",
 						"position": {
 							"x": 560,
-							"y": 320,
+							"y": 260,
 							"w": 320,
-							"h": 140
-						}
-					},
-					{
-						"item": "input_k2qjyFGg",
-						"type": "input",
-						"position": {
-							"x": 640,
-							"y": 250,
-							"w": 170,
-							"h": 66
+							"h": 110
 						}
 					},
 					{
@@ -2367,7 +2298,7 @@
 							"x": 930,
 							"y": 220,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2377,7 +2308,7 @@
 							"x": 920,
 							"y": 210,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2396,19 +2327,9 @@
 						"type": "block",
 						"position": {
 							"x": 930,
-							"y": 320,
-							"w": 320,
-							"h": 140
-						}
-					},
-					{
-						"item": "input_ovQaELCL",
-						"type": "input",
-						"position": {
-							"x": 1010,
 							"y": 250,
-							"w": 170,
-							"h": 66
+							"w": 320,
+							"h": 120
 						}
 					},
 					{
@@ -2425,7 +2346,7 @@
 						"item": "viz_HNdsHpwK",
 						"position": {
 							"x": 180,
-							"y": 490,
+							"y": 410,
 							"w": 340,
 							"h": 80
 						},
@@ -2435,9 +2356,9 @@
 						"item": "viz_LDf7YldM",
 						"position": {
 							"x": 190,
-							"y": 530,
+							"y": 450,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2445,9 +2366,9 @@
 						"item": "viz_NJrl2r8C",
 						"position": {
 							"x": 180,
-							"y": 520,
+							"y": 440,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2455,7 +2376,7 @@
 						"item": "viz_Nh5uRAU6",
 						"position": {
 							"x": 250,
-							"y": 530,
+							"y": 450,
 							"w": 220,
 							"h": 40
 						},
@@ -2466,26 +2387,16 @@
 						"type": "block",
 						"position": {
 							"x": 190,
-							"y": 630,
+							"y": 490,
 							"w": 320,
-							"h": 140
-						}
-					},
-					{
-						"item": "input_gN0ZPedw",
-						"type": "input",
-						"position": {
-							"x": 270,
-							"y": 560,
-							"w": 170,
-							"h": 66
+							"h": 110
 						}
 					},
 					{
 						"item": "viz_6XBVTRxf",
 						"position": {
 							"x": 260,
-							"y": 490,
+							"y": 410,
 							"w": 180,
 							"h": 40
 						},
@@ -2495,8 +2406,8 @@
 						"item": "viz_Y0VfD1Dg",
 						"position": {
 							"x": 550,
-							"y": 490,
-							"w": 350,
+							"y": 410,
+							"w": 340,
 							"h": 80
 						},
 						"type": "block"
@@ -2505,9 +2416,9 @@
 						"item": "viz_dt6Of0W4",
 						"position": {
 							"x": 560,
-							"y": 530,
+							"y": 450,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2515,9 +2426,9 @@
 						"item": "viz_tbHafLkW",
 						"position": {
 							"x": 550,
-							"y": 520,
+							"y": 440,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2525,7 +2436,7 @@
 						"item": "viz_lMWOKOKZ",
 						"position": {
 							"x": 610,
-							"y": 530,
+							"y": 450,
 							"w": 250,
 							"h": 40
 						},
@@ -2536,26 +2447,16 @@
 						"type": "block",
 						"position": {
 							"x": 560,
-							"y": 630,
+							"y": 490,
 							"w": 320,
-							"h": 140
-						}
-					},
-					{
-						"item": "input_ALwRG8E2",
-						"type": "input",
-						"position": {
-							"x": 640,
-							"y": 560,
-							"w": 170,
-							"h": 66
+							"h": 110
 						}
 					},
 					{
 						"item": "viz_jo2anPAh",
 						"position": {
 							"x": 590,
-							"y": 490,
+							"y": 410,
 							"w": 290,
 							"h": 40
 						},
@@ -2565,7 +2466,7 @@
 						"item": "viz_FqMjGeMm",
 						"position": {
 							"x": 920,
-							"y": 490,
+							"y": 410,
 							"w": 340,
 							"h": 80
 						},
@@ -2575,9 +2476,9 @@
 						"item": "viz_oPO8Idno",
 						"position": {
 							"x": 930,
-							"y": 530,
+							"y": 450,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2585,9 +2486,9 @@
 						"item": "viz_Nw4dn9vG",
 						"position": {
 							"x": 920,
-							"y": 520,
+							"y": 440,
 							"w": 340,
-							"h": 250
+							"h": 170
 						},
 						"type": "block"
 					},
@@ -2595,7 +2496,7 @@
 						"item": "viz_92Qkoc7l",
 						"position": {
 							"x": 1000,
-							"y": 530,
+							"y": 450,
 							"w": 190,
 							"h": 40
 						},
@@ -2606,26 +2507,16 @@
 						"type": "block",
 						"position": {
 							"x": 930,
-							"y": 630,
+							"y": 490,
 							"w": 320,
-							"h": 140
-						}
-					},
-					{
-						"item": "input_1R5DyTWD",
-						"type": "input",
-						"position": {
-							"x": 1010,
-							"y": 560,
-							"w": 170,
-							"h": 66
+							"h": 110
 						}
 					},
 					{
 						"item": "viz_7K3hgULp",
 						"position": {
 							"x": 950,
-							"y": 490,
+							"y": 410,
 							"w": 290,
 							"h": 40
 						},
