@@ -357,13 +357,14 @@
 			"showLastUpdated": false,
 			"options": {
 				"backgroundColor": "transparent",
-				"markerSize": 8,
 				"legendDisplay": "top",
 				"xAxisTitleText": "Beaconing Time Standard Deviation",
 				"xAxisLabelVisibility": "show",
 				"showRoundedXAxisLabels": true,
 				"yAxisTitleText": "Cardinality",
-				"yAxisAbbreviation": "off"
+				"yAxisAbbreviation": "off",
+				"markerSize": 5,
+				"xAxisMajorTickSize": 10
 			}
 		},
 		"viz_beaconing_sources": {
