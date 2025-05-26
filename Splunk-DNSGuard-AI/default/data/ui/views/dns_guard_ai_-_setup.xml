@@ -606,9 +606,7 @@
 				7
 			],
 			"containerOptions": {
-				"visibility": {
-					"hideWhenNoData": true
-				}
+				"visibility": {}
 			},
 			"showProgressBar": false,
 			"showLastUpdated": false
@@ -868,7 +866,7 @@
 			"options": {
 				"fontColor": "#ffffff",
 				"fontSize": "custom",
-				"markdown": "### Import Data into Splunk\n- Open Splunk Web\n- Navigate to Settings → Add Data\n- Click \"Upload\" and select the dns_events.json file\n- In the \"Select Source\" step:\n    - Set \"Source type\" to _json\n    - Set \"Index\" to poc\n- Click \"Next\" and review the settings\n- Click \"Submit\" to start the import",
+				"markdown": "### Import Data into Splunk\n- Open Splunk Web\n- Navigate to Settings → Add Data\n- Click \"Upload\" and select the dns_events.json file\n- In the \"Select Source\" step:\n    - Set \"Source type\" to '_json'\n    - Set \"Index\" to 'synthetic_data'\n- Click \"Next\" and review the settings\n- Click \"Submit\" to start the import",
 				"customFontSize": 18
 			},
 			"type": "splunk.markdown"
@@ -922,9 +920,7 @@
 				7
 			],
 			"containerOptions": {
-				"visibility": {
-					"hideWhenNoData": true
-				}
+				"visibility": {}
 			},
 			"showProgressBar": false,
 			"showLastUpdated": false,
