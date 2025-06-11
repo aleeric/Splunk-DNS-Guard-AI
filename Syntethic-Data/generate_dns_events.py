@@ -6,6 +6,7 @@ import json
 import math
 import os
 import random
+import statistics
 import string
 import time
 from collections import defaultdict
@@ -495,11 +496,12 @@ RECORD_TYPES = {
     "A": 80,  # 80% for normal traffic
     "AAAA": 15,  # 15% probability
     "MX": 2,  # Reduced to make TXT and ANY anomalies more visible
-    "TXT": 0.5,  # Very low default TXT usage
     "CNAME": 2,  # Reduced to emphasize A records more
     "NS": 0.3,  # Less common
     "PTR": 0.2,  # Less common
-    "ANY": 0.01,  # Extremely rare in normal traffic
+    # "TXT": 0.5,  # RIMOSSO per evitare TXT nei normali
+    # "ANY": 0.01,  # RIMOSSO per evitare ANY nei normali
+    # "AXFR": 0,  # AXFR solo per anomalie
 }
 
 # Rare record types for anomaly generation
@@ -737,21 +739,36 @@ def generate_internal_hosts():
 
 
 # Generate subdomains for a given domain
-def generate_subdomain(domain, length=None, entropy="normal"):
+# Aggiungo un controllo opzionale per limitare il numero di subdomains per dominio
+subdomain_registry = {}
+
+
+def generate_subdomain(
+    domain, length=None, entropy="normal", max_subdomains=3, allow_unlimited=True
+):
+    # Netflix.com può avere fino a 1337 subdomains, tutti gli altri max 3
+    if domain.lower() == "netflix.com":
+        max_subdomains = 1337
+        allow_unlimited = False
+    else:
+        max_subdomains = 3
+        allow_unlimited = False
+    if not allow_unlimited:
+        if domain not in subdomain_registry:
+            subdomain_registry[domain] = set()
+        # Se già raggiunto il massimo, riuso uno dei subdomains già generati
+        if len(subdomain_registry[domain]) >= max_subdomains:
+            return random.choice(list(subdomain_registry[domain])) + "." + domain
     if length is None:
         if entropy == "normal":
-            length = random.randint(1, 2)  # Normal subdomains are relatively short
+            length = random.randint(1, 2)
         elif entropy == "high":
-            length = random.randint(
-                3, 6
-            )  # More complex subdomains for shadowing/malicious
+            length = random.randint(3, 6)
         elif entropy == "extreme":
-            length = random.randint(5, 15)  # Extremely long for data exfiltration
-
+            length = random.randint(5, 15)
     subdomain_parts = []
     for _ in range(length):
         if entropy == "normal":
-            # Normal subdomains often have meaningful words
             part_options = [
                 "www",
                 "mail",
@@ -773,9 +790,7 @@ def generate_subdomain(domain, length=None, entropy="normal"):
                 "blog",
                 "docs",
             ]
-            if (
-                random.random() < 0.8 and part_options
-            ):  # 80% chance of using common subdomain
+            if random.random() < 0.8 and part_options:
                 part = random.choice(part_options)
             else:
                 part_length = random.randint(3, 6)
@@ -784,23 +799,22 @@ def generate_subdomain(domain, length=None, entropy="normal"):
                     for _ in range(part_length)
                 )
         elif entropy == "high":
-            # High entropy subdomains have more randomness
             part_length = random.randint(10, 15)
             part = "".join(
                 random.choice("abcdefghijklmnopqrstuvwxyz0123456789")
                 for _ in range(part_length)
             )
         elif entropy == "extreme":
-            # Extreme entropy subdomains for data exfiltration
             part_length = random.randint(40, 60)
             part = "".join(
                 random.choice("abcdefghijklmnopqrstuvwxyz0123456789")
                 for _ in range(part_length)
             )
-
         subdomain_parts.append(part)
-
-    return ".".join(subdomain_parts) + "." + domain
+    subdomain = ".".join(subdomain_parts)
+    if not allow_unlimited:
+        subdomain_registry[domain].add(subdomain)
+    return subdomain + "." + domain
 
 
 # Generate normal DNS event with more realistic patterns
@@ -843,15 +857,15 @@ def generate_normal_dns_event(host, timestamp):
 
     # Servers more likely to query direct domains and have consistent patterns
     if is_server:
-        if random.random() < 0.9:  # 90% direct domain for servers
+        if random.random() < 0.9:
             query = domain
         else:
-            query = generate_subdomain(domain)
+            query = generate_subdomain(domain, max_subdomains=3)
     else:
-        if random.random() < 0.7:  # 70% direct domain for workstations
+        if random.random() < 0.7:
             query = domain
         else:
-            query = generate_subdomain(domain)
+            query = generate_subdomain(domain, max_subdomains=3)
 
     # Choose record type based on weighted probabilities
     record_type = random.choices(
@@ -874,14 +888,10 @@ def generate_normal_dns_event(host, timestamp):
             answer = f"{random.randint(10, 30)} mail{random.randint(1, 5)}.{domain}"
         elif record_type == "CNAME":
             answer = f"cdn{random.randint(1, 10)}.{domain}"
-        elif record_type == "TXT":
-            answer = f"v=spf1 include:{domain} ~all"
         elif record_type == "NS":
             answer = f"ns{random.randint(1, 5)}.{domain}"
         elif record_type == "PTR":
             answer = f"{random.choice(['mail', 'www', 'ftp'])}.{domain}"
-        elif record_type == "ANY":
-            answer = "Multiple records returned"
 
     # Select a DNS server - Most companies have 2-3 internal DNS servers
     dns_servers = ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
@@ -969,41 +979,38 @@ def generate_normal_dns_event(host, timestamp):
 def generate_c2_tunneling(base_host, start_time):
     """
     Generate events with anomalously high query volumes
-    This simulates Command and Control or data exfiltration
-    Designed to trigger: dns_c2_tunneling_detection in Splunk
+    Solo su malware-payload.net e evil-c2-server.com il numero di eventi è molto alto, per altri domini è basso.
     """
     events = []
     host = base_host.copy()
-    c2_domain = random.choice(MALICIOUS_DOMAINS)
+    # Scegli il dominio C2 tra quelli che devono avere alto volume
+    high_c2_domains = ["malware-payload.net", "evil-c2-server.com"]
+    # Se l'host è associato a uno di questi domini, usa alto volume, altrimenti basso
+    if random.random() < 0.5:
+        c2_domain = high_c2_domains[0]
+    else:
+        c2_domain = high_c2_domains[1]
     config = ANOMALY_CONFIG["C2_TUNNELING"]
-
-    # Generate high concentration of events in 1-hour window to trigger hourly detection
     time_window_hours = config["time_window_hours"]
-    num_events = config["num_events"]
-
-    # Generate hourly timestamps to spread the events within the window
+    # Se il dominio è uno di quelli ad alto volume, usa il numero di eventi configurato, altrimenti 50
+    if c2_domain in high_c2_domains:
+        num_events = config["num_events"]
+    else:
+        num_events = 50
     for i in range(num_events):
         timestamp = start_time + datetime.timedelta(
             hours=random.uniform(0, time_window_hours),
             minutes=random.randint(0, 59),
             seconds=random.randint(0, 59),
         )
-
         event = generate_normal_dns_event(host, timestamp)
-
-        # C2 traffic has distinct patterns - highly random subdomains
-        event["query"] = generate_subdomain(c2_domain, entropy="high")
-
-        # Most C2 uses A records, sometimes AAAA and TXT
+        event["query"] = generate_subdomain(c2_domain, entropy="high", max_subdomains=3)
         event["record_type"] = random.choices(
             ["A", "AAAA", "TXT"], weights=[70, 15, 15], k=1
         )[0]
-
-        # Add anomaly type and metadata
         event["anomaly_type"] = "C2_TUNNELING"
         event["anomaly_description"] = config["description"]
         events.append(event)
-
     return events
 
 
@@ -1059,54 +1066,38 @@ def generate_beaconing(base_host, start_time):
 def generate_txt_record_anomaly(base_host, start_time):
     """
     Generate excessive use of TXT records
-    This simulates Command and Control or data exfiltration via DNS
-    Designed to trigger: dns_txt_record_detection in Splunk
+    Solo su steal-credentials.net
     """
     events = []
     host = base_host.copy()
-    c2_domain = random.choice(MALICIOUS_DOMAINS)
+    c2_domain = "steal-credentials.net"
     config = ANOMALY_CONFIG["TXT_RECORD_ANOMALY"]
-
     num_events = config["num_events"]
     min_content_length = config["min_content_length"]
     max_content_length = config["max_content_length"]
-
-    # Generate many TXT record queries from the same host
     for i in range(num_events):
-        # Spread over a few hours to ensure hourly counts are high
         timestamp = start_time + datetime.timedelta(
             hours=random.randint(0, 3),
             minutes=random.randint(0, 59),
             seconds=random.randint(0, 59),
         )
-
         event = generate_normal_dns_event(host, timestamp)
         event["record_type"] = "TXT"
-
-        # Create unique subdomain for each query
-        event["query"] = generate_subdomain(c2_domain, entropy="high")
-
-        # Simulate encoded data in TXT record (base64-like)
+        event["query"] = generate_subdomain(c2_domain, entropy="high", max_subdomains=3)
         data_length = random.randint(min_content_length, max_content_length)
-        # Create suspicious-looking base64 data with command patterns
         prefixes = ["cmd=", "exec=", "run=", "data=", ""]
         prefix = random.choice(prefixes)
-
         encoded_data = "".join(
             random.choice(
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/="
             )
             for _ in range(data_length - len(prefix))
         )
-
         event["answer"] = f'"{prefix}{encoded_data}"'
-        event["txt_content"] = f"{prefix}{encoded_data}"  # For Splunk analysis
-
-        # Add anomaly type and metadata
+        event["txt_content"] = f"{prefix}{encoded_data}"
         event["anomaly_type"] = "TXT_RECORD_ANOMALY"
         event["anomaly_description"] = config["description"]
         events.append(event)
-
     return events
 
 
@@ -1114,45 +1105,31 @@ def generate_txt_record_anomaly(base_host, start_time):
 def generate_any_record_anomaly(base_host, start_time):
     """
     Generate excessive use of ANY records
-    This often indicates reconnaissance activity or amplification attacks
-    Designed to trigger: dns_any_record_detection in Splunk
+    Solo su cryptominer.biz
     """
     events = []
     host = base_host.copy()
     config = ANOMALY_CONFIG["ANY_RECORD_ANOMALY"]
     num_events = config["num_events"]
-
-    # Use a malicious domain for the ANY record queries
-    malicious_domain = random.choice(MALICIOUS_DOMAINS)
-
-    # Create a sequence of ANY queries for reconnaissance
+    malicious_domain = "cryptominer.biz"
     for i in range(num_events):
         timestamp = start_time + datetime.timedelta(
             hours=random.randint(0, 4),
             minutes=random.randint(0, 59),
             seconds=random.randint(0, 59),
         )
-
         event = generate_normal_dns_event(host, timestamp)
         event["record_type"] = "ANY"
-
-        # Generate different subdomains of the malicious domain
-        if random.random() < 0.7:  # 70% chance to use subdomains
+        if random.random() < 0.7:
             subdomain = f"recon-{i % 100:03d}"
             event["query"] = f"{subdomain}.{malicious_domain}"
         else:
-            # Sometimes query the apex domain directly
             event["query"] = malicious_domain
-
-        # ANY queries typically return multiple records
         if event["reply_code"] == "NOERROR":
             event["answer"] = "Multiple records returned"
-
-        # Add anomaly type and metadata
         event["anomaly_type"] = "ANY_RECORD_ANOMALY"
         event["anomaly_description"] = config["description"]
         events.append(event)
-
     return events
 
 
@@ -1217,50 +1194,32 @@ def generate_hinfo_record_anomaly(base_host, start_time):
 def generate_axfr_record_anomaly(base_host, start_time):
     """
     Generate use of AXFR record types for zone transfer attempts
-    This can indicate reconnaissance or information gathering
-    Designed to trigger: dns_axfr_record_detection in Splunk
+    Solo su data-exfil.org
     """
     events = []
     host = base_host.copy()
     config = ANOMALY_CONFIG["AXFR_RECORD_ANOMALY"]
     num_events = config["num_events"]
-
-    # Use a malicious domain for the AXFR record queries
-    malicious_domain = random.choice(MALICIOUS_DOMAINS)
-
-    # AXFR queries are extremely rare in normal traffic
+    malicious_domain = "data-exfil.org"
     for i in range(num_events):
         timestamp = start_time + datetime.timedelta(
             hours=random.randint(0, 2),
             minutes=random.randint(0, 59),
             seconds=random.randint(0, 59),
         )
-
         event = generate_normal_dns_event(host, timestamp)
         event["record_type"] = "AXFR"
-
-        # Target the malicious domain directly or its nameservers
-        if random.random() < 0.6:  # 60% chance to query nameserver
+        if random.random() < 0.6:
             event["query"] = f"ns{random.randint(1, 3)}.{malicious_domain}"
         else:
-            # Sometimes query the domain directly
             event["query"] = malicious_domain
-
-        # Zone transfers are typically rejected
         event["reply_code"] = "REFUSED" if random.random() < 0.95 else "NOERROR"
-
-        # Use TCP for AXFR queries (AXFR always uses TCP)
         event["transport"] = "TCP"
-
-        # If successful (rare), provide a zone transfer response
         if event["reply_code"] == "NOERROR":
             event["answer"] = "Zone transfer successful - multiple records returned"
-
-        # Add anomaly type and metadata
         event["anomaly_type"] = "AXFR_RECORD_ANOMALY"
         event["anomaly_description"] = config["description"]
         events.append(event)
-
     return events
 
 
@@ -1291,11 +1250,15 @@ def generate_query_length_anomaly(base_host, start_time):
 
         # Generate an extremely long DNS query simulating encoded data
         # This will create subdomains over 100 chars
-        event["query"] = generate_subdomain(tunnel_domain, entropy="extreme")
+        event["query"] = generate_subdomain(
+            tunnel_domain, entropy="extreme", max_subdomains=3
+        )
 
         # Make sure query is long enough to trigger detection
         while len(event["query"]) < min_length:
-            event["query"] = generate_subdomain(tunnel_domain, entropy="extreme")
+            event["query"] = generate_subdomain(
+                tunnel_domain, entropy="extreme", max_subdomains=3
+            )
 
         # Query length anomalies often use A records to blend in
         event["record_type"] = "A" if random.random() < 0.8 else "TXT"
@@ -1315,55 +1278,52 @@ def generate_query_length_anomaly(base_host, start_time):
 def generate_domain_shadowing(base_host, start_time):
     """
     Generate many unique subdomains for a legitimate domain
-    This simulates domain shadowing attacks
-    Designed to trigger: dns_domain_shadowing_detection in Splunk
+    Questa versione genera 1337 subdomains solo per netflix.com, max 3 per gli altri.
     """
     events = []
     host = base_host.copy()
     config = ANOMALY_CONFIG["DOMAIN_SHADOWING"]
-
-    # Use a single legitimate top domain to shadow
-    target_domain = random.choice(TOP_DOMAINS[:10])  # Choose from top popular domains
+    target_domain = "netflix.com"
     num_events = config["num_events"]
-    unique_subdomains = config["unique_subdomains"]
+    unique_subdomains = 1337
 
-    # Generate a large number of highly unique subdomains for same parent domain
+    # Genera direttamente 1337 subdomains randomici unici
+    def random_subdomain():
+        return "".join(random.choices("abcdefghijklmnopqrstuvwxyz0123456789", k=12))
+
+    subdomains_list = []
+    subdomains_set = set()
+    while len(subdomains_list) < unique_subdomains:
+        sub = random_subdomain()
+        if sub not in subdomains_set:
+            subdomains_set.add(sub)
+            subdomains_list.append(sub)
+            if len(subdomains_list) % 200 == 0:
+                print(
+                    f"[Domain Shadowing] Generati {len(subdomains_list)} subdomains unici per {target_domain}..."
+                )
+
     for i in range(num_events):
         timestamp = start_time + datetime.timedelta(
             hours=random.randint(0, 8),
             minutes=random.randint(0, 59),
             seconds=random.randint(0, 59),
         )
-
         event = generate_normal_dns_event(host, timestamp)
-
-        # Create unique random subdomain with high entropy for each query
-        subdomain_id = i % unique_subdomains
-        subdomain = f"x{subdomain_id}-" + "".join(
-            random.choice("abcdefghijklmnopqrstuvwxyz0123456789")
-            for _ in range(random.randint(8, 15))
-        )
+        subdomain = subdomains_list[i % unique_subdomains]
         event["query"] = f"{subdomain}.{target_domain}"
         event["parent_domain"] = target_domain
         event["subdomain"] = subdomain
-
-        # Usually A records pointing to malicious IPs
         event["record_type"] = "A"
-
-        # Shadow domains often resolve to suspicious IPs
         if event["reply_code"] == "NOERROR":
-            # Generate suspicious-looking IPs
             suspicious_ranges = ["185.220.", "45.95.", "91.219.", "103.15."]
             suspicious_prefix = random.choice(suspicious_ranges)
             event["answer"] = (
                 f"{suspicious_prefix}{random.randint(0, 255)}.{random.randint(1, 255)}"
             )
-
-        # Add anomaly type and metadata
         event["anomaly_type"] = "DOMAIN_SHADOWING"
         event["anomaly_description"] = config["description"]
         events.append(event)
-
     return events
 
 
@@ -1695,142 +1655,109 @@ def main():
     print(f"Writing {len(all_events)} events to {OUTPUT_FILE}...")
     with open(OUTPUT_FILE, "w") as f:
         for event in all_events:
+            # Remove unwanted fields if present
+            event.pop("parent_domain", None)
+            event.pop("anomaly_description", None)
+            event.pop("anomaly_type", None)
+            event.pop("subdomain", None)  # Rimuovo subdomain
             f.write(json.dumps(event) + "\n")
 
-    # Create a summary file with details about the anomalies
-    print("Creating summary report...")
-    with open("dns_events_summary.txt", "w") as f:
-        f.write(
-            "====================================================================\n"
-        )
-        f.write(
-            "         SPLUNK DNSGUARD AI - TEST DATASET DOCUMENTATION            \n"
-        )
-        f.write(
-            "====================================================================\n\n"
-        )
-        f.write(f"Total DNS events generated: {len(all_events)}\n")
-        f.write(
-            f"Time range: {start_time.strftime('%Y-%m-%d %H:%M:%S')} to {end_time.strftime('%Y-%m-%d %H:%M:%S')}\n\n"
+    # --- ANALISI E STATISTICHE RICHIESTE ---
+    # 1. Beaconing: Deviazione standard intervalli per dominio
+    beaconing_gaps = defaultdict(list)
+    for event in all_events:
+        if event.get("eventtype") == "dns" and event.get("query", "").startswith(
+            "beacon-"
+        ):
+            domain = event["query"].split(".", 1)[-1]
+            gap = event.get("gap")
+            if gap is not None:
+                beaconing_gaps[domain].append(gap)
+    print("\n[BEACONING] Deviazione standard intervallo (secondi) per dominio:")
+    for domain, gaps in beaconing_gaps.items():
+        if len(gaps) > 1:
+            stddev = statistics.stdev(gaps)
+            print(f"  {domain}: stddev = {stddev:.2f} s su {len(gaps)} eventi")
+        else:
+            print(f"  {domain}: solo un evento")
+
+    # 2. Domain Shadowing: Conteggio subdns per ogni domain
+    shadowing_counts = defaultdict(set)
+    for event in all_events:
+        if event.get("eventtype") == "dns":
+            query = event.get("query", "")
+            parts = query.split(".")
+            if len(parts) >= 3:
+                domain = ".".join(parts[-2:])
+                sub = ".".join(parts[:-2])
+                if event.get("anomaly_type") == "DOMAIN_SHADOWING" or (
+                    sub and domain in TOP_DOMAINS
+                ):
+                    shadowing_counts[domain].add(sub)
+    print("\n[DOMAIN SHADOWING] Conteggio subdomain unici per dominio:")
+    for domain, subs in sorted(
+        shadowing_counts.items(), key=lambda x: len(x[1]), reverse=True
+    ):
+        print(f"  {domain}: {len(subs)} subdomains")
+
+    # 3. Query Length Anomalies: Lunghezza query per parent domain
+    query_length_per_domain = defaultdict(list)
+    for event in all_events:
+        if (
+            event.get("eventtype") == "dns"
+            and event.get("record_type") in ["A", "TXT"]
+            and event.get("query_length")
+        ):
+            query = event.get("query", "")
+            parts = query.split(".")
+            if len(parts) >= 2:
+                parent_domain = ".".join(parts[-2:])
+                query_length_per_domain[parent_domain].append(event["query_length"])
+    print("\n[QUERY LENGTH ANOMALY] Lunghezza query per parent domain:")
+    for domain, lengths in query_length_per_domain.items():
+        print(
+            f"  {domain}: min={min(lengths)}, max={max(lengths)}, avg={sum(lengths)//len(lengths)}"
         )
 
-        # Count events by anomaly type
-        anomaly_counts = defaultdict(int)
-        normal_count = 0
-
-        for event in all_events:
-            if "anomaly_type" in event:
-                anomaly_counts[event["anomaly_type"]] += 1
-            else:
-                normal_count += 1
-
-        f.write("EVENT COUNTS BY TYPE:\n")
-        f.write(f"- Normal DNS events: {normal_count}\n")
-        for anomaly_type, count in sorted(anomaly_counts.items()):
-            anomaly_description = next(
-                (
-                    event["anomaly_description"]
-                    for event in all_events
-                    if "anomaly_type" in event and event["anomaly_type"] == anomaly_type
-                ),
-                "",
-            )
-            f.write(f"- {anomaly_type}: {count} events - {anomaly_description}\n")
-
-        f.write("\nANOMALOUS HOSTS AND THEIR MALICIOUS DOMAINS:\n")
-        for hostname, anomaly_types in host_anomaly_map.items():
-            host_info = next(
-                (h for h in internal_hosts if h["hostname"] == hostname), None
-            )
-            if host_info:
-                anomalies_str = ", ".join(anomaly_types)
-                malicious_domain = host_malicious_domains.get(hostname, "N/A")
-                f.write(
-                    f"- {hostname} ({host_info['ip']}, {host_info['department']}):\n"
-                    f"  Anomaly Type: {anomalies_str}\n"
-                    f"  Malicious Domain: {malicious_domain}\n"
-                )
-
-        f.write("\nSPLUNK DETECTION METHODS:\n")
-        f.write(
-            "Each anomaly type is designed to trigger specific Splunk detection macros in DNSGuard AI:\n\n"
-        )
-        f.write("1. C2 Tunneling: `dns_c2_tunneling_detection`\n")
-        f.write(
-            "   Description: High volume of DNS queries from single host within short time period\n"
-        )
-        f.write(
-            "   Detection: Uses density function to find hourly query count outliers by src\n\n"
+    # 4. Record Type Anomalies: Conteggio TXT, ANY, AXFR per dominio
+    recordtype_counts = defaultdict(lambda: {"TXT": 0, "ANY": 0, "AXFR": 0})
+    for event in all_events:
+        if event.get("eventtype") == "dns":
+            query = event.get("query", "")
+            parts = query.split(".")
+            if len(parts) >= 2:
+                domain = ".".join(parts[-2:])
+                rt = event.get("record_type")
+                if rt in ["TXT", "ANY", "AXFR"]:
+                    recordtype_counts[domain][rt] += 1
+    print("\n[RECORD TYPE ANOMALY] Conteggio TXT, ANY, AXFR per dominio:")
+    for domain, counts in recordtype_counts.items():
+        print(
+            f"  {domain}: TXT={counts['TXT']}, ANY={counts['ANY']}, AXFR={counts['AXFR']}"
         )
 
-        f.write("2. Beaconing: `dns_beaconing_detection`\n")
-        f.write(
-            "   Description: Periodic DNS queries at regular intervals with minimal time variation\n"
-        )
-        f.write(
-            "   Detection: Analyzes consistency of time gaps between queries to same domain\n\n"
-        )
+    # 5. C2 Tunneling: Conteggio query per ora per dominio
+    c2_counts = defaultdict(lambda: defaultdict(int))
+    for event in all_events:
+        if event.get("eventtype") == "dns" and event.get("record_type") in [
+            "A",
+            "AAAA",
+            "TXT",
+        ]:
+            query = event.get("query", "")
+            parts = query.split(".")
+            if len(parts) >= 2:
+                domain = ".".join(parts[-2:])
+                ts = event.get("timestamp")
+                if ts:
+                    hour = ts[:13]  # yyyy-mm-ddTHH
+                    c2_counts[domain][hour] += 1
+    print("\n[C2 TUNNELING] Conteggio query per ora per dominio:")
+    for domain, hours in c2_counts.items():
+        max_hour = max(hours, key=hours.get)
+        print(f"  {domain}: max {hours[max_hour]} query nell'ora {max_hour}")
 
-        f.write("4. TXT Record Anomalies: `dns_txt_record_detection`\n")
-        f.write(
-            "   Description: Unusual volume of TXT record queries with encoded content\n"
-        )
-        f.write("   Detection: Identifies outliers in TXT record usage by host\n\n")
-
-        f.write("5. ANY Record Anomalies: `dns_any_record_detection`\n")
-        f.write(
-            "   Description: Unusual volume of ANY record queries indicating potential reconnaissance\n"
-        )
-        f.write("   Detection: Identifies outliers in ANY record usage by host\n\n")
-
-        f.write("6. HINFO Record Anomalies: `dns_hinfo_record_detection`\n")
-        f.write(
-            "   Description: Unusual HINFO record queries for system information gathering\n"
-        )
-        f.write("   Detection: Identifies outliers in HINFO record usage by host\n\n")
-
-        f.write("7. AXFR Record Anomalies: `dns_axfr_record_detection`\n")
-        f.write("   Description: Zone transfer attempts using AXFR queries\n")
-        f.write("   Detection: Identifies outliers in AXFR record usage by host\n\n")
-
-        f.write("8. Query Length Anomalies: `dns_query_length_detection`\n")
-        f.write(
-            "   Description: Abnormally long DNS query strings indicating potential data exfiltration\n"
-        )
-        f.write("   Detection: Identifies outliers in query string length by host\n\n")
-
-        f.write("9. Domain Shadowing: `dns_domain_shadowing_detection`\n")
-        f.write(
-            "   Description: Excessive unique subdomains for a single parent domain\n"
-        )
-        f.write(
-            "   Detection: Measures distinct subdomain count by parent domain and identifies outliers\n\n"
-        )
-
-        f.write("10. Behavioral Clustering: `dns_behavioral_clustering_detection`\n")
-        f.write(
-            "   Description: Multiple hosts exhibiting synchronized suspicious DNS behavior\n"
-        )
-        f.write(
-            "   Detection: Uses KMeans clustering on multiple DNS behavior features\n\n"
-        )
-
-        f.write(
-            "====================================================================\n"
-        )
-        f.write(
-            "This dataset has been optimized to clearly demonstrate each detection method.\n"
-        )
-        f.write(
-            "The anomalies are more pronounced than would typically be seen in the wild,\n"
-        )
-        f.write("making this dataset ideal for testing and demonstration purposes.\n")
-        f.write(
-            "====================================================================\n"
-        )
-
-    print(f"Generated {len(all_events)} DNS events and saved to {OUTPUT_FILE}")
-    print(f"Summary saved to dns_events_summary.txt")
+    print(f"\nGenerated {len(all_events)} DNS events and saved to {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
