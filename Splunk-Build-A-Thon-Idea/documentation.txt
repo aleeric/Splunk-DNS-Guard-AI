@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{float}
+
+\titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{}
+\title{\textbf{DNSGuard AI: Behavioral DNS threat detection with Splunk MLTK }}
+\author{Riccardo Alesci}
+\date{}
+
+\begin{document}
+\maketitle
+
+\vspace{-1em}
+
+\section{Problem Statement}
+The \textbf{Domain Name System (DNS)} is a fundamental pillar of modern network communication, responsible for resolving hostnames to IP addresses. Despite its critical role, \textbf{DNS} often remains \textbf{under-monitored} within enterprise security strategies, making it an attractive vector for threat actors. Advanced adversaries increasingly leverage DNS to establish \textbf{command-and-control (C2)} channels, exfiltrate \textbf{sensitive information}, and perform \textbf{stealth reconnaissance activities—all} while blending within legitimate traffic patterns.
+These attacks frequently exploit the inherent trust and ubiquity of \textbf{DNS}, using low-volume, protocol-compliant queries that bypass signature-based intrusion detection systems. The subtlety and evasiveness of \textbf{DNS-based threats} demand a behavioral and data-driven approach to detection.
+
+\textbf{DNSGuard AI} addresses this security gap by applying unsupervised machine learning and statistical analysis to \textbf{DNS telemetry} within the Splunk platform. By modeling baseline DNS behavior and detecting deviations indicative of malicious activity, \textbf{DNSGuard AI} provides real-time visibility into anomalous patterns that traditional tools fail to uncover—offering a scalable and adaptive defense mechanism for enterprise environments.
+
+
+\section{Solution Overview}
+\textbf{DNSGuard AI} is a Splunk App that integrates \textbf{behavioral analytics} and \textbf{anomaly detection models} via the \textbf{Machine Learning Toolkit (MLTK)}. It enables real-time threat visibility across enterprise DNS traffic. The app is fully \textbf{CIM-compliant} and integrates with \textbf{Splunk Enterprise Security}.
+
+\section{Machine Learning Approach}
+
+
+
+\subsection{Model Types}
+The app uses a combination of:
+\begin{itemize}[noitemsep]
+    \item \textbf{Density Function Algorithm}
+    \begin{itemize}[noitemsep]
+        \item \textbf{Beaconing}:  Detects regular, periodic DNS queries at consistent intervals—a hallmark of malware communicating with command and control servers. Analyzes consistency of time gaps between queries to the same domain
+    \end{itemize}
+    \item \textbf{Anomaly Detection Algorithm}
+    \begin{itemize}[noitemsep]
+        \item \textbf{Record Type Anomalies}: Detects abnormal usage of specific DNS record types often associated with reconnaissance or data exfiltration. Identifies anomalies in the usage of TXT (data exfiltration), ANY (broad queries), HINFO (host info leakage), and AXFR (zone transfer attempts) records by host.
+        \item \textbf{C2 Tunneling Detection}: Identifies hosts making an unusually high number of DNS queries, which could indicate command and control communication or data exfiltration through DNS tunneling. 
+        \item \textbf{Query Length Anomalies}: Detects unusually long DNS queries that may represent data exfiltration channels where sensitive information is encoded in the query itself. Identifies anomalies in query string length by host.
+        \item \textbf{Domain Shadowing}: Identifies patterns where many unique subdomains are requested for a legitimate domain, which may indicate an attacker using compromised DNS accounts to create malicious subdomains. Measures distinct subdomain count by parent domain and identifies anomalies.
+    \end{itemize}
+    \item \textbf{K Means Algorithm}
+    \begin{itemize}[noitemsep]
+        \item \textbf{Behavioral Clustering}: Groups hosts with similar abnormal DNS behavior, which can reveal coordinated attacks or infected host groups across the enterprise. Uses KMeans clustering on multiple DNS behavior features.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Key Features}
+Extracted features include:
+\begin{itemize}[noitemsep]
+    \item \texttt{query\_length}, \texttt{query\_frequency}
+    \item \texttt{reply\_code}, \texttt{record\_type}
+    \item \texttt{response\_time}, \texttt{distinct\_subdomains}
+\end{itemize}
+
+Justification is based on empirical analysis of known DNS-based threats and MITRE ATT\&CK mappings.
+
+\section{Installation and Configuration}
+
+\subsection*{Prerequisites}
+\begin{itemize}[noitemsep]
+    \item Splunk Enterprise/Cloud 8.0+
+    \item Splunk CIM App
+    \item Splunk MLTK App
+    \item Python for Scientific Computing
+\end{itemize}
+
+\subsection*{Steps}
+\begin{enumerate}[noitemsep]
+    \item Install the app into \texttt{\$SPLUNK\_HOME/etc/apps/}
+    \item Restart Splunk
+    \item Install all prerequisites via Splunkbase
+    \item Run \texttt{generate\_dns\_events.py} for synthetic testing (optional)
+    \item Use the Setup View to verify installation and configure data sources
+\end{enumerate}
+
+\section{Model Output Example}
+
+% Uncomment this line if you have the image
+% \includegraphics[width=0.9\linewidth]{example.png}
+
+\begin{table}[H]
+\centering
+\caption*{Example Detected Anomalies}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Host & Anomaly & Score & Events \\
+\midrule
+host123 & Beaconing & 0.95 & 1042 \\
+host356 & Long Query & 0.87 & 839 \\
+host999 & Shadowing & 0.90 & 1247 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Conclusion}
+DNSGuard AI gives security teams an advanced and scalable solution to detect DNS threats in real time. It combines machine learning, Splunk's search power, and a modular dashboard system to identify C2, exfiltration, and reconnaissance via DNS, filling a critical detection gap in enterprise defense.
+
+\end{document}
