@@ -88,17 +88,14 @@ DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies t
 2. **Clone the Repository**
    ```bash
    # Clone the repository
-   git clone https://github.com/yourusername/Splunk-DNSGuard-AI.git
+   git clone https://github.com/aleeric/Splunk-DNSGuard-AI.git
    ```
 
 3. **Install Splunk App**
    - Copy the `Splunk-DNSGuard-AI` directory to your Splunk apps directory:
      - Windows: `C:\Program Files\Splunk\etc\apps\`
      - Linux/Mac: `/opt/splunk/etc/apps/`
-   - Restart Splunk or reload the app:
-     - Open Splunk Web
-     - Go to Settings → Apps
-     - Find "DNSGuard-AI" and click "Restart"
+   - Restart Splunk
 
 > ⚠️ **IMPORTANT: POC/TESTING ONLY**  
 > The following steps (4-7) are **optional** and intended **only for testing and POC purposes**. These steps involve generating and importing synthetic data, which should **never** be performed in a production environment. Use these steps only in a dedicated test environment.
