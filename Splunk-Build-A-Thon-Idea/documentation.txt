@@ -50,16 +50,6 @@ These attacks frequently exploit the inherent trust and ubiquity of \textbf{DNS}
     \end{itemize}
 \end{itemize}
 
-\subsection{Key Features}
-Extracted features include:
-\begin{itemize}[noitemsep]
-    \item \texttt{query\_length}, \texttt{query\_frequency}
-    \item \texttt{reply\_code}, \texttt{record\_type}
-    \item \texttt{response\_time}, \texttt{distinct\_subdomains}
-\end{itemize}
-
-Justification is based on empirical analysis of known DNS-based threats and MITRE ATT\&CK mappings.
-
 \section{Installation and Configuration}
 
 \subsection*{Prerequisites}
@@ -70,33 +60,62 @@ Justification is based on empirical analysis of known DNS-based threats and MITR
     \item Python for Scientific Computing
 \end{itemize}
 
-\subsection*{Steps}
-\begin{enumerate}[noitemsep]
-    \item Install the app into \texttt{\$SPLUNK\_HOME/etc/apps/}
-    \item Restart Splunk
-    \item Install all prerequisites via Splunkbase
-    \item Run \texttt{generate\_dns\_events.py} for synthetic testing (optional)
-    \item Use the Setup View to verify installation and configure data sources
-\end{enumerate}
+\begin{verbatim}
+# Install all prerequisites via Splunkbase
+\end{verbatim}
 
-\section{Model Output Example}
+\subsection*{1. Clone the Repository}
+\begin{verbatim}
+# git clone https://github.com/aleeric/Splunk-DNSGuard-AI.git
+\end{verbatim}
 
-% Uncomment this line if you have the image
-% \includegraphics[width=0.9\linewidth]{example.png}
+\subsection*{2. Install Splunk App}
+Copy the \texttt{Splunk-DNSGuard-AI} directory into your Splunk apps folder, located at:
+\begin{itemize}[noitemsep]
+    \item \texttt{\$SPLUNK\_HOME/etc/apps/}
+\end{itemize}
+Then restart Splunk to apply the changes.
 
-\begin{table}[H]
-\centering
-\caption*{Example Detected Anomalies}
-\begin{tabular}{@{}llll@{}}
-\toprule
-Host & Anomaly & Score & Events \\
-\midrule
-host123 & Beaconing & 0.95 & 1042 \\
-host356 & Long Query & 0.87 & 839 \\
-host999 & Shadowing & 0.90 & 1247 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsection*{3. Generate Test Data}
+\begin{verbatim}
+# Navigate to the Syntethic-Data directory
+cd Synthetic-Data
+
+# Generate synthetic DNS data
+python generate_dns_events.py
+\end{verbatim}
+
+\subsection*{5. Import Data into Splunk using Splunk Web Interface}
+
+\begin{itemize}[noitemsep]
+    \item Open Splunk Web
+    \item Navigate to \textbf{Settings → Add Data}
+    \item Click \textbf{Upload} and select \texttt{dns\_events.json}
+    \item In the \textbf{Select Source} step:
+    \begin{itemize}
+        \item Set \textbf{Source type} to \texttt{\_json}
+        \item Create \& set \textbf{Index} to \texttt{synthetic\_data}
+    \end{itemize}
+    \item Click \textbf{Next}, review settings, then click \textbf{Submit}
+\end{itemize}
+
+\subsection*{6. Map Data to Network\_Resolution Data Model}
+\begin{itemize}[noitemsep]
+    \item Open Splunk Web
+    \item Navigate to \textbf{Settings → Data Models}
+    \item Select \textbf{Network\_Resolution}
+    \item Click \textbf{Edit → Add Dataset}
+    \item Add \texttt{synthetic\_data} to the list of indexed datasets
+    \item Save changes
+\end{itemize}
+
+\subsection*{7. Verify Installation}
+\begin{itemize}[noitemsep]
+    \item Open Splunk Web
+    \item Navigate to the \textbf{DNS Guard AI} app → Setup
+    \item Confirm that data is displayed correctly
+    \item Verify that all detection algorithms are functioning
+\end{itemize}
 
 \section{Conclusion}
 DNSGuard AI gives security teams an advanced and scalable solution to detect DNS threats in real time. It combines machine learning, Splunk's search power, and a modular dashboard system to identify C2, exfiltration, and reconnaissance via DNS, filling a critical detection gap in enterprise defense.
