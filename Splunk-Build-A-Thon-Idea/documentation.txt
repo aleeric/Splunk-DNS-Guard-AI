@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[6pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -11,7 +11,7 @@
 
 \titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{}
-\title{\textbf{DNSGuard AI: Behavioral DNS threat detection with Splunk MLTK }}
+\title{\textbf{DNSGuard AI}\\\large Behavioral DNS threat detection with Splunk MLTK}
 \author{Riccardo Alesci}
 \date{}
 
@@ -31,11 +31,7 @@ These attacks frequently exploit the inherent trust and ubiquity of \textbf{DNS}
 \textbf{DNSGuard AI} is a Splunk App that integrates \textbf{behavioral analytics} and \textbf{anomaly detection models} via the \textbf{Machine Learning Toolkit (MLTK)}. It enables real-time threat visibility across enterprise DNS traffic. The app is fully \textbf{CIM-compliant} and integrates with \textbf{Splunk Enterprise Security}.
 
 \section{Machine Learning Approach}
-
-
-
-\subsection{Model Types}
-The app uses a combination of:
+\textbf{DNS Guard AI} leverages an integrated set of:
 \begin{itemize}[noitemsep]
     \item \textbf{Density Function Algorithm}
     \begin{itemize}[noitemsep]
