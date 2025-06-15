@@ -1402,6 +1402,15 @@
 				"fontFamily": "Splunk Data Sans"
 			},
 			"type": "splunk.markdown"
+		},
+		"viz_6Etg5O5h": {
+			"type": "splunk.singlevalue",
+			"dataSources": {
+				"primary": "ds_gHp5Ov4r_ds_2YOW63hy"
+			},
+			"options": {
+				"backgroundColor": "transparent"
+			}
 		}
 	},
 	"dataSources": {
@@ -1430,7 +1439,7 @@
 		"ds_2YOW63hy": {
 			"type": "ds.search",
 			"options": {
-				"query": "| `dns_data` | `extract_sub_domain` | streamstats current=f last(_time) as last_time by src, domain | eval gap = last_time - _time | fit DensityFunction gap by \"src,domain\" dist=norm threshold=0.01 into dns_beacon_gap_model | search src = \"dummy_search\" | append [| summary dns_beacon_gap_model | search std < 60 NOT std=1e-06] | eval last_update = now(), anomalous_type = \"Beaconing\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Model Trained\"]\n",
+				"query": "| `dns_data` | `extract_sub_domain` | streamstats current=f last(_time) as last_time by src, domain | eval gap = last_time - _time | fit DensityFunction gap by \"src,domain\" dist=norm threshold=0.01 into dns_beacon_gap_model\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Model Trained\"]\n",
 				"queryParameters": {
 					"earliest": "0",
 					"latest": ""
@@ -1580,6 +1589,17 @@
 				}
 			},
 			"name": "setup_mltk_configuration_setup_beaconing_detection_model copy 13"
+		},
+		"ds_gHp5Ov4r_ds_2YOW63hy": {
+			"type": "ds.search",
+			"options": {
+				"query": "| summary dns_beacon_gap_model | search std < 60 NOT std=1e-06 \n|  eval last_update = now(), anomalous_type = \"Beaconing\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
+				"queryParameters": {
+					"earliest": "0",
+					"latest": ""
+				}
+			},
+			"name": "setup_mltk_configuration_setup_beaconing_detection_model copy 14"
 		}
 	},
 	"layout": {
@@ -2189,7 +2209,7 @@
 							"x": 0,
 							"y": 0,
 							"w": 1430,
-							"h": 1000
+							"h": 90
 						}
 					},
 					{
@@ -2197,9 +2217,9 @@
 						"type": "block",
 						"position": {
 							"x": 190,
-							"y": 260,
+							"y": 250,
 							"w": 320,
-							"h": 110
+							"h": 60
 						}
 					},
 					{
@@ -2521,6 +2541,16 @@
 							"h": 40
 						},
 						"type": "block"
+					},
+					{
+						"item": "viz_6Etg5O5h",
+						"type": "block",
+						"position": {
+							"x": 190,
+							"y": 310,
+							"w": 320,
+							"h": 60
+						}
 					}
 				],
 				"type": "absolute"
