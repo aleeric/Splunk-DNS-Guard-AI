@@ -16,17 +16,19 @@ A comprehensive DNS anomaly detection system using Splunk and machine learning t
 
 DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies that could indicate malicious activity such as command and control (C2) communication, data exfiltration, or reconnaissance. The system uses Splunk's powerful search capabilities combined with machine learning techniques to identify patterns that deviate from normal DNS behavior.
 
-##
+## Key Features
 
 ![](Images/readme/Splunk-DNSGuard-AI-IDEA-Key-Features.png)
 
-##
+## Detection Methods
 
 ![](Images/readme/Splunk-DNSGuard-AI-IDEA-Detection-Methods.png)
 
-##
+## Dashboard System
 
 ![](Images/readme/Splunk-DNSGuard-AI-IDEA-Dashboard-System.png)
+![](Images/views/dashboards_anomalies_overview.png)
+
  
 ## Getting Started
 
