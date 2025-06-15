@@ -104,7 +104,7 @@
 		"viz_NdDIgd2b": {
 			"options": {
 				"customFontSize": 29,
-				"markdown": "Anomalous DNS",
+				"markdown": "TXT Record Anomalous DNS",
 				"fontSize": "extraLarge"
 			},
 			"type": "splunk.markdown"
@@ -236,7 +236,15 @@
 					"align": "center"
 				},
 				"showInternalFields": false,
-				"count": 9
+				"count": 9,
+				"columnFormat": {
+					"Domain": {
+						"width": 153
+					},
+					"Anomalous Type": {
+						"width": 161
+					}
+				}
 			},
 			"containerOptions": {},
 			"showProgressBar": false,
@@ -393,7 +401,12 @@
 					"align": "center"
 				},
 				"showInternalFields": false,
-				"count": 9
+				"count": 9,
+				"columnFormat": {
+					"Anomalous Type": {
+						"width": 99
+					}
+				}
 			}
 		},
 		"viz_c2tunneling_summary": {
@@ -561,7 +574,12 @@
 					"align": "center"
 				},
 				"showInternalFields": false,
-				"count": 9
+				"count": 9,
+				"columnFormat": {
+					"Domain": {
+						"width": 89
+					}
+				}
 			}
 		},
 		"viz_domainshadowing_summary": {
@@ -684,33 +702,6 @@
 				]
 			}
 		},
-		"viz_recordtype_timeline": {
-			"type": "splunk.area",
-			"dataSources": {
-				"primary": "ds_recordtype_timeline"
-			},
-			"options": {
-				"backgroundColor": "transparent",
-				"dataValuesDisplay": "minmax",
-				"overlayFields": [],
-				"seriesColors": [
-					"#FF6ACE",
-					"#FFA476",
-					"#813193",
-					"#FF677B",
-					"#00CDAF"
-				],
-				"areaOpacity": 0.68,
-				"legendDisplay": "off",
-				"xAxisTitleText": "Time",
-				"xAxisLabelVisibility": "show",
-				"showXMajorGridLines": true,
-				"xAxisMajorTickVisibility": "show",
-				"yAxisTitleVisibility": "hide",
-				"showYAxisWithZero": true,
-				"yAxisMinorTickSize": 7
-			}
-		},
 		"viz_recordtype_sources": {
 			"type": "splunk.pie",
 			"dataSources": {
@@ -744,7 +735,7 @@
 			"options": {
 				"customFontSize": 29,
 				"fontSize": "extraLarge",
-				"markdown": "**DNS Activity by Time**"
+				"markdown": "**DNS Activity Over Time**"
 			},
 			"type": "splunk.markdown"
 		},
@@ -810,10 +801,11 @@
 				"nodeColor": "#000000",
 				"nodeHighlightColor": "#dc4e41",
 				"linkColor": "#f8be34",
-				"nodeHeight": 27,
 				"nodeSpacingX": 350,
-				"nodeSpacingY": 21,
-				"linkWidth": 4
+				"linkWidth": 4,
+				"nodeHeight": 19,
+				"nodeWidth": 139,
+				"nodeSpacingY": 16
 			}
 		},
 		"viz_DmzYJbOA": {
@@ -852,7 +844,7 @@
 		"viz_kb0eG3UR": {
 			"options": {
 				"customFontSize": 29,
-				"markdown": "**DNS by src**",
+				"markdown": "**DNS by Source IP**",
 				"fontSize": "extraLarge"
 			},
 			"type": "splunk.markdown"
@@ -991,7 +983,7 @@
 		"viz_UkFaEvQd": {
 			"options": {
 				"customFontSize": 29,
-				"markdown": "Domain Shadowing DNS",
+				"markdown": "Affected Source IP",
 				"fontSize": "extraLarge"
 			},
 			"type": "splunk.markdown"
@@ -1033,10 +1025,11 @@
 				"nodeColor": "#000000",
 				"nodeHighlightColor": "#dc4e41",
 				"linkColor": "#f8be34",
-				"nodeHeight": 27,
+				"nodeHeight": 19,
 				"nodeSpacingX": 350,
-				"nodeSpacingY": 21,
-				"linkWidth": 4
+				"nodeSpacingY": 16,
+				"linkWidth": 4,
+				"nodeWidth": 139
 			}
 		},
 		"viz_7m5bsOVg": {
@@ -1060,10 +1053,11 @@
 				"nodeColor": "#000000",
 				"nodeHighlightColor": "#dc4e41",
 				"linkColor": "#f8be34",
-				"nodeHeight": 27,
+				"nodeHeight": 19,
 				"nodeSpacingX": 350,
-				"nodeSpacingY": 21,
-				"linkWidth": 4
+				"nodeSpacingY": 16,
+				"linkWidth": 4,
+				"nodeWidth": 139
 			}
 		},
 		"viz_Hujx6jUD": {
@@ -1073,13 +1067,235 @@
 				"fontSize": "extraLarge"
 			},
 			"type": "splunk.markdown"
+		},
+		"viz_XkvjBszA": {
+			"type": "splunk.linkgraph",
+			"dataSources": {
+				"primary": "ds_RofgCOfz_ds_GUGDB17f_ds_wChB0JqS_ds_bkKtQGI3"
+			},
+			"containerOptions": {},
+			"showProgressBar": false,
+			"showLastUpdated": false,
+			"options": {
+				"backgroundColor": "transparent",
+				"nodeColor": "#000000",
+				"nodeHighlightColor": "#dc4e41",
+				"linkColor": "#f8be34",
+				"nodeHeight": 19,
+				"nodeSpacingX": 350,
+				"nodeSpacingY": 16,
+				"linkWidth": 4,
+				"nodeWidth": 139
+			}
+		},
+		"viz_yaKHt3wS": {
+			"type": "splunk.singlevalue",
+			"options": {
+				"unit": "",
+				"trendDisplay": "off",
+				"sparklineDisplay": "off",
+				"majorColor": "> majorValue | rangeValue(majorColorEditorConfig)",
+				"backgroundColor": "transparent"
+			},
+			"dataSources": {
+				"primary": "ds_gHIjvHTs_ds_recordtype_summary"
+			},
+			"context": {
+				"majorColorEditorConfig": [
+					{
+						"value": "#118832",
+						"to": 1
+					},
+					{
+						"value": "#D41F1F",
+						"from": 1
+					}
+				]
+			}
+		},
+		"viz_1kLYDZwT": {
+			"options": {
+				"customFontSize": 29,
+				"markdown": "HINFO Record Anomalous DNS",
+				"fontSize": "extraLarge"
+			},
+			"type": "splunk.markdown"
+		},
+		"viz_h7iKirSc": {
+			"type": "splunk.singlevalue",
+			"options": {
+				"unit": "",
+				"trendDisplay": "off",
+				"sparklineDisplay": "off",
+				"majorColor": "> majorValue | rangeValue(majorColorEditorConfig)",
+				"backgroundColor": "transparent"
+			},
+			"dataSources": {
+				"primary": "ds_tw1j95uO_ds_recordtype_summary"
+			},
+			"context": {
+				"majorColorEditorConfig": [
+					{
+						"value": "#118832",
+						"to": 1
+					},
+					{
+						"value": "#D41F1F",
+						"from": 1
+					}
+				]
+			}
+		},
+		"viz_RWM2OdqM": {
+			"options": {
+				"customFontSize": 29,
+				"markdown": "AXFR Record Anomalous DNS",
+				"fontSize": "extraLarge"
+			},
+			"type": "splunk.markdown"
+		},
+		"viz_VNEzfCpX": {
+			"type": "splunk.singlevalue",
+			"options": {
+				"unit": "",
+				"trendDisplay": "off",
+				"sparklineDisplay": "off",
+				"majorColor": "> majorValue | rangeValue(majorColorEditorConfig)",
+				"backgroundColor": "transparent"
+			},
+			"dataSources": {
+				"primary": "ds_egJR4a2m_ds_recordtype_summary"
+			},
+			"context": {
+				"majorColorEditorConfig": [
+					{
+						"value": "#118832",
+						"to": 1
+					},
+					{
+						"value": "#D41F1F",
+						"from": 1
+					}
+				]
+			}
+		},
+		"viz_DLVeF1Fe": {
+			"options": {
+				"customFontSize": 29,
+				"markdown": "ANY Record Anomalous DNS",
+				"fontSize": "extraLarge"
+			},
+			"type": "splunk.markdown"
+		},
+		"viz_FfkYakSS": {
+			"type": "splunk.singlevalue",
+			"options": {
+				"unit": "",
+				"trendDisplay": "off",
+				"sparklineDisplay": "off",
+				"majorColor": "> majorValue | rangeValue(majorColorEditorConfig)",
+				"backgroundColor": "transparent"
+			},
+			"dataSources": {
+				"primary": "ds_zLP3IxWQ_ds_B6kCbKQ5_ds_domainshadowing_summary"
+			},
+			"context": {
+				"majorColorEditorConfig": [
+					{
+						"value": "#118832",
+						"to": 1
+					},
+					{
+						"value": "#D41F1F",
+						"from": 1
+					}
+				]
+			}
+		},
+		"viz_H0OJBoAt": {
+			"options": {
+				"customFontSize": 29,
+				"markdown": "Affected Source IP",
+				"fontSize": "extraLarge"
+			},
+			"type": "splunk.markdown"
+		},
+		"viz_bUizrwZV": {
+			"eventHandlers": [],
+			"options": {
+				"fillColor": "#000000",
+				"fillOpacity": 0.89,
+				"rx": 10,
+				"strokeColor": "transparent"
+			},
+			"type": "splunk.rectangle"
+		},
+		"viz_fg2Rz2MA": {
+			"eventHandlers": [],
+			"options": {
+				"fillColor": "#013062",
+				"fillOpacity": 0.89,
+				"rx": 10,
+				"strokeColor": "transparent"
+			},
+			"type": "splunk.rectangle"
+		},
+		"viz_rMSEOpWG": {
+			"type": "splunk.pie",
+			"dataSources": {
+				"primary": "ds_wIDUVhim_ds_recordtype_sources"
+			},
+			"options": {
+				"showDonutHole": true,
+				"backgroundColor": "transparent"
+			}
+		},
+		"viz_I3KPBmot": {
+			"type": "splunk.area",
+			"dataSources": {
+				"primary": "ds_297CHp3v_ds_c2tunneling_timeline"
+			},
+			"options": {
+				"backgroundColor": "transparent"
+			},
+			"containerOptions": {},
+			"showProgressBar": false,
+			"showLastUpdated": false
+		},
+		"viz_l8uj7G6Q": {
+			"type": "splunk.linkgraph",
+			"dataSources": {
+				"primary": "ds_WX5xRlIO_ds_RofgCOfz_ds_GUGDB17f_ds_wChB0JqS_ds_bkKtQGI3"
+			},
+			"containerOptions": {},
+			"showProgressBar": false,
+			"showLastUpdated": false,
+			"options": {
+				"backgroundColor": "transparent",
+				"nodeColor": "#000000",
+				"nodeHighlightColor": "#dc4e41",
+				"linkColor": "#f8be34",
+				"nodeHeight": 19,
+				"nodeSpacingX": 350,
+				"nodeSpacingY": 16,
+				"linkWidth": 4,
+				"nodeWidth": 139
+			}
+		},
+		"viz_07nl60lP": {
+			"options": {
+				"customFontSize": 29,
+				"markdown": "Anomalous DNS",
+				"fontSize": "extraLarge"
+			},
+			"type": "splunk.markdown"
 		}
 	},
 	"dataSources": {
 		"ds_PBonl1My": {
 			"name": "dnsguardai_dashboards_anomalies_overview_detection_anomalous_dns",
 			"options": {
-				"query": "| inputlookup anomalous_dns_lookup\n| stats count by domain",
+				"query": "| inputlookup anomalous_dns_lookup\n| stats dc(domain)",
 				"queryParameters": {
 					"earliest": "$global_time.earliest$",
 					"latest": "$global_time.latest$"
@@ -1134,7 +1350,7 @@
 		"ds_nTQw3o1h_ds_CprPCKtV": {
 			"type": "ds.search",
 			"options": {
-				"query": "| inputlookup anomalous_dns_lookup\n| table domain anomalous_type\n| rename domain as Domain anomalous_type as \"Anomalous Type\"",
+				"query": "| inputlookup anomalous_dns_lookup\n| lookup whitelist_domain_lookup domain OUTPUT domain as whitelisted\n| eval whitelisted = if(isnotnull(whitelisted), \"True\", \"False\")\n| table domain anomalous_type whitelisted\n| rename domain as Domain anomalous_type as \"Anomalous Type\" whitelisted as Whitelisted",
 				"queryParameters": {
 					"earliest": "$global_time.earliest$",
 					"latest": "$global_time.latest$"
@@ -1167,7 +1383,7 @@
 		"ds_beaconing_table": {
 			"type": "ds.search",
 			"options": {
-				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"Beaconing\"\n| table domain anomalous_type\n| rename domain as Domain anomalous_type as \"Anomalous Type\"",
+				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"Beaconing\"\n| lookup whitelist_domain_lookup domain OUTPUT domain as whitelisted\n| eval whitelisted = if(isnotnull(whitelisted), \"True\", \"False\")\n| table domain anomalous_type whitelisted\n| rename domain as Domain anomalous_type as \"Anomalous Type\" whitelisted as Whitelisted",
 				"queryParameters": {
 					"earliest": "$global_time.earliest$",
 					"latest": "$global_time.latest$"
@@ -1211,7 +1427,7 @@
 		"ds_c2tunneling_table": {
 			"type": "ds.search",
 			"options": {
-				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"C2 Tunneling\"\n| table domain anomalous_type\n| rename domain as Domain anomalous_type as \"Anomalous Type\"",
+				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"C2 Tunneling\"\n| lookup whitelist_domain_lookup domain OUTPUT domain as whitelisted\n| eval whitelisted = if(isnotnull(whitelisted), \"True\", \"False\")\n| table domain anomalous_type whitelisted\n| rename domain as Domain anomalous_type as \"Anomalous Type\" whitelisted as Whitelisted",
 				"queryParameters": {
 					"earliest": "$global_time.earliest$",
 					"latest": "$global_time.latest$"
@@ -1255,7 +1471,7 @@
 		"ds_querylength_table": {
 			"type": "ds.search",
 			"options": {
-				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"Query Length\"\n| table domain anomalous_type\n| rename domain as Domain anomalous_type as \"Anomalous Type\"",
+				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"Query Length\"\n| lookup whitelist_domain_lookup domain OUTPUT domain as whitelisted\n| eval whitelisted = if(isnotnull(whitelisted), \"True\", \"False\")\n| table domain anomalous_type whitelisted\n| rename domain as Domain anomalous_type as \"Anomalous Type\" whitelisted as Whitelisted",
 				"queryParameters": {
 					"earliest": "$global_time.earliest$",
 					"latest": "$global_time.latest$"
@@ -1299,7 +1515,7 @@
 		"ds_domainshadowing_table": {
 			"type": "ds.search",
 			"options": {
-				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"Domain Shadowing\"\n| table domain anomalous_type\n| rename domain as Domain anomalous_type as \"Anomalous Type\"",
+				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"Domain Shadowing\"\n| lookup whitelist_domain_lookup domain OUTPUT domain as whitelisted\n| eval whitelisted = if(isnotnull(whitelisted), \"True\", \"False\")\n| table domain anomalous_type whitelisted\n| rename domain as Domain anomalous_type as \"Anomalous Type\" whitelisted as Whitelisted",
 				"queryParameters": {
 					"earliest": "$global_time.earliest$",
 					"latest": "$global_time.latest$"
@@ -1308,9 +1524,9 @@
 			"name": "dnsguardai_dashboards_domainshadowing_table"
 		},
 		"ds_recordtype_summary": {
-			"name": "dnsguardai_dashboards_recordtype_summary",
+			"name": "dnsguardai_dashboards_recordtype_txt_summary",
 			"options": {
-				"query": "| inputlookup record_type_anomalies_lookup\n| stats count by domain",
+				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type==\"TXT Record Anomalies\"\n| stats count",
 				"queryParameters": {
 					"earliest": "$global_time.earliest$",
 					"latest": "$global_time.latest$"
@@ -1332,7 +1548,7 @@
 		"ds_recordtype_sources": {
 			"type": "ds.search",
 			"options": {
-				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"TXT Record Anomalies\"\n| stats count by domain",
+				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"TXT Record Anomalies\" OR anomalous_type == \"HINFO Record Anomalies\" OR anomalous_type == \"AXFR Record Anomalies\" OR anomalous_type == \"ANY Record Anomalies\"\n| stats count by domain",
 				"queryParameters": {
 					"earliest": "$global_time.earliest$",
 					"latest": "$global_time.latest$"
@@ -1343,7 +1559,7 @@
 		"ds_recordtype_table": {
 			"type": "ds.search",
 			"options": {
-				"query": "| inputlookup record_type_anomalies_lookup\n| table domain src record_type\n| rename domain as Domain src as Source record_type as \"Record Type\"",
+				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"TXT Record Anomalies\" OR anomalous_type == \"HINFO Record Anomalies\" OR anomalous_type == \"AXFR Record Anomalies\" OR anomalous_type == \"ANY Record Anomalies\"\n| lookup whitelist_domain_lookup domain OUTPUT domain as whitelisted\n| eval whitelisted = if(isnotnull(whitelisted), \"True\", \"False\")\n| table domain anomalous_type whitelisted\n| rename domain as Domain anomalous_type as \"Anomalous Type\" whitelisted as Whitelisted",
 				"queryParameters": {
 					"earliest": "$global_time.earliest$",
 					"latest": "$global_time.latest$"
@@ -1421,7 +1637,7 @@
 			"type": "ds.search"
 		},
 		"ds_B6kCbKQ5_ds_domainshadowing_summary": {
-			"name": "dnsguardai_dashboards_domainshadowing_domain_shadowing_dns copy 1",
+			"name": "dnsguardai_dashboards_domainshadowing_affected_source_ip",
 			"options": {
 				"query": "| `dns_data` | `extract_sub_domain` | `lookup_anomalous_dns(\\\"Domain Shadowing\\\")` | dedup src \n| stats count",
 				"queryParameters": {
@@ -1452,6 +1668,94 @@
 				}
 			},
 			"name": "dnsguardai_dashboards_beaconing_dns_by_src copy 2"
+		},
+		"ds_RofgCOfz_ds_GUGDB17f_ds_wChB0JqS_ds_bkKtQGI3": {
+			"type": "ds.search",
+			"options": {
+				"query": "| `dns_data` | fields _time, src, query \n| `extract_sub_domain`\n| `lookup_anomalous_dns(\\\"Domain Shadowing\\\")`\n| stats count by src domain\n| table src domain",
+				"queryParameters": {
+					"earliest": "$global_time.earliest$",
+					"latest": "$global_time.latest$"
+				}
+			},
+			"name": "dnsguardai_dashboards_beaconing_dns_by_src copy 3"
+		},
+		"ds_gHIjvHTs_ds_recordtype_summary": {
+			"name": "dnsguardai_dashboards_recordtype_hinfo_summary",
+			"options": {
+				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type==\"HINFO Record Anomalies\"\n| stats count",
+				"queryParameters": {
+					"earliest": "$global_time.earliest$",
+					"latest": "$global_time.latest$"
+				}
+			},
+			"type": "ds.search"
+		},
+		"ds_tw1j95uO_ds_recordtype_summary": {
+			"name": "dnsguardai_dashboards_recordtype_axfr_summary",
+			"options": {
+				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type==\"AXFR Record Anomalies\"\n| stats count",
+				"queryParameters": {
+					"earliest": "$global_time.earliest$",
+					"latest": "$global_time.latest$"
+				}
+			},
+			"type": "ds.search"
+		},
+		"ds_egJR4a2m_ds_recordtype_summary": {
+			"name": "dnsguardai_dashboards_recordtype_any_summary",
+			"options": {
+				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type==\"ANY Record Anomalies\"\n| stats count",
+				"queryParameters": {
+					"earliest": "$global_time.earliest$",
+					"latest": "$global_time.latest$"
+				}
+			},
+			"type": "ds.search"
+		},
+		"ds_zLP3IxWQ_ds_B6kCbKQ5_ds_domainshadowing_summary": {
+			"name": "dnsguardai_dashboards_recordtype_affected_source_ip",
+			"options": {
+				"query": "| `dns_data` | `extract_sub_domain`\n| lookup anomalous_dns_lookup domain OUTPUT anomalous_type\n| where anomalous_type == \"TXT Record Anomalies\" OR anomalous_type == \"HINFO Record Anomalies\" OR anomalous_type == \"AXFR Record Anomalies\" OR anomalous_type == \"ANY Record Anomalies\"\n| dedup src \n| stats count",
+				"queryParameters": {
+					"earliest": "$global_time.earliest$",
+					"latest": "$global_time.latest$"
+				}
+			},
+			"type": "ds.search"
+		},
+		"ds_wIDUVhim_ds_recordtype_sources": {
+			"type": "ds.search",
+			"options": {
+				"query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type == \"TXT Record Anomalies\" OR anomalous_type == \"HINFO Record Anomalies\" OR anomalous_type == \"AXFR Record Anomalies\" OR anomalous_type == \"ANY Record Anomalies\"\n| stats count by anomalous_type",
+				"queryParameters": {
+					"earliest": "$global_time.earliest$",
+					"latest": "$global_time.latest$"
+				}
+			},
+			"name": "dnsguardai_dashboards_recordtype_sources2"
+		},
+		"ds_297CHp3v_ds_c2tunneling_timeline": {
+			"type": "ds.search",
+			"options": {
+				"query": "| `dns_data` | fields _time, src, query \n| `extract_sub_domain`\n| lookup anomalous_dns_lookup domain OUTPUT anomalous_type\n| where anomalous_type == \"TXT Record Anomalies\" OR anomalous_type == \"HINFO Record Anomalies\" OR anomalous_type == \"AXFR Record Anomalies\" OR anomalous_type == \"ANY Record Anomalies\"\n| timechart count by domain span=4h\n",
+				"queryParameters": {
+					"earliest": "$global_time.earliest$",
+					"latest": "$global_time.latest$"
+				}
+			},
+			"name": "dnsguardai_dashboards_recordtype_timelines"
+		},
+		"ds_WX5xRlIO_ds_RofgCOfz_ds_GUGDB17f_ds_wChB0JqS_ds_bkKtQGI3": {
+			"type": "ds.search",
+			"options": {
+				"query": "| `dns_data` | fields _time, src, query \n| `extract_sub_domain`\n| lookup anomalous_dns_lookup domain OUTPUT anomalous_type\n| where anomalous_type == \"TXT Record Anomalies\" OR anomalous_type == \"HINFO Record Anomalies\" OR anomalous_type == \"AXFR Record Anomalies\" OR anomalous_type == \"ANY Record Anomalies\"\n| stats count by src domain\n| table src domain",
+				"queryParameters": {
+					"earliest": "$global_time.earliest$",
+					"latest": "$global_time.latest$"
+				}
+			},
+			"name": "dnsguardai_dashboards_beaconing_dns_by_src copy 4"
 		}
 	},
 	"layout": {
@@ -1461,27 +1765,27 @@
 				"options": {
 					"backgroundColor": "#002345",
 					"display": "fit-to-width",
-					"height": 1000,
-					"width": 1430
+					"width": 1430,
+					"height": 920
 				},
 				"structure": [
 					{
 						"item": "viz_dPo55EbK",
 						"position": {
-							"x": 550,
+							"x": 730,
 							"y": 500,
-							"w": 370,
-							"h": 320
+							"w": 680,
+							"h": 410
 						},
 						"type": "block"
 					},
 					{
 						"item": "viz_ywHKPOMY",
 						"position": {
-							"x": 540,
+							"x": 720,
 							"y": 490,
-							"w": 370,
-							"h": 320
+							"w": 680,
+							"h": 410
 						},
 						"type": "block"
 					},
@@ -1510,7 +1814,7 @@
 						"position": {
 							"x": 30,
 							"y": 500,
-							"w": 500,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -1520,7 +1824,7 @@
 						"position": {
 							"x": 20,
 							"y": 490,
-							"w": 500,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -1592,16 +1896,6 @@
 							"y": 110,
 							"w": 500,
 							"h": 130.00000000000003
-						},
-						"type": "block"
-					},
-					{
-						"item": "viz_NdDIgd2b",
-						"position": {
-							"x": 320,
-							"y": 200,
-							"w": 150,
-							"h": 30
 						},
 						"type": "block"
 					},
@@ -1689,28 +1983,28 @@
 						"item": "viz_kzR921RJ",
 						"type": "block",
 						"position": {
-							"x": 540,
+							"x": 720,
 							"y": 490,
-							"w": 370,
-							"h": 320
+							"w": 680,
+							"h": 410
 						}
 					},
 					{
 						"item": "viz_Px53xKL4",
 						"type": "block",
 						"position": {
-							"x": 70,
-							"y": 500,
-							"w": 400,
-							"h": 400
+							"x": 20,
+							"y": 490,
+							"w": 680,
+							"h": 410
 						}
 					},
 					{
 						"item": "viz_iA8ihdEb",
 						"position": {
-							"x": 880,
-							"y": 140,
-							"w": 200,
+							"x": 870,
+							"y": 130,
+							"w": 220,
 							"h": 30
 						},
 						"type": "block"
@@ -1738,9 +2032,19 @@
 					{
 						"item": "viz_kb0eG3UR",
 						"position": {
-							"x": 670,
+							"x": 990,
 							"y": 510,
-							"w": 110,
+							"w": 160,
+							"h": 30
+						},
+						"type": "block"
+					},
+					{
+						"item": "viz_07nl60lP",
+						"position": {
+							"x": 320,
+							"y": 200,
+							"w": 150,
 							"h": 30
 						},
 						"type": "block"
@@ -1752,27 +2056,27 @@
 				"options": {
 					"backgroundColor": "#002345",
 					"display": "fit-to-width",
-					"height": 1000,
+					"height": 920,
 					"width": 1430
 				},
 				"structure": [
 					{
 						"item": "viz_dPo55EbK",
 						"position": {
-							"x": 550,
-							"y": 510,
-							"w": 860,
-							"h": 400
+							"x": 730,
+							"y": 500,
+							"w": 680,
+							"h": 410
 						},
 						"type": "block"
 					},
 					{
 						"item": "viz_ywHKPOMY",
 						"position": {
-							"x": 540,
-							"y": 500,
-							"w": 860,
-							"h": 400
+							"x": 720,
+							"y": 490,
+							"w": 680,
+							"h": 410
 						},
 						"type": "block"
 					},
@@ -1801,7 +2105,7 @@
 						"position": {
 							"x": 30,
 							"y": 500,
-							"w": 500,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -1811,7 +2115,7 @@
 						"position": {
 							"x": 20,
 							"y": 490,
-							"w": 500,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -1951,19 +2255,19 @@
 						"type": "block",
 						"position": {
 							"x": 560,
-							"y": 170,
+							"y": 120,
 							"w": 820,
-							"h": 290
+							"h": 340
 						}
 					},
 					{
 						"item": "viz_domainshadowing_table",
 						"type": "block",
 						"position": {
-							"x": 70,
-							"y": 500,
-							"w": 400,
-							"h": 400
+							"x": 20,
+							"y": 490,
+							"w": 680,
+							"h": 410
 						}
 					},
 					{
@@ -1989,9 +2293,9 @@
 					{
 						"item": "viz_UkFaEvQd",
 						"position": {
-							"x": 290,
+							"x": 310,
 							"y": 200,
-							"w": 220,
+							"w": 160,
 							"h": 30
 						},
 						"type": "block"
@@ -2009,12 +2313,22 @@
 					{
 						"item": "viz_Hujx6jUD",
 						"position": {
-							"x": 850,
-							"y": 530,
+							"x": 940,
+							"y": 500,
 							"w": 220,
 							"h": 30
 						},
 						"type": "block"
+					},
+					{
+						"item": "viz_XkvjBszA",
+						"type": "block",
+						"position": {
+							"x": 720,
+							"y": 530,
+							"w": 680,
+							"h": 360
+						}
 					}
 				],
 				"type": "absolute"
@@ -2023,16 +2337,16 @@
 				"options": {
 					"backgroundColor": "#002345",
 					"display": "fit-to-width",
-					"height": 1000,
+					"height": 920,
 					"width": 1430
 				},
 				"structure": [
 					{
 						"item": "viz_dPo55EbK",
 						"position": {
-							"x": 550,
+							"x": 730,
 							"y": 500,
-							"w": 860,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2040,9 +2354,9 @@
 					{
 						"item": "viz_ywHKPOMY",
 						"position": {
-							"x": 540,
+							"x": 720,
 							"y": 490,
-							"w": 860,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2072,7 +2386,7 @@
 						"position": {
 							"x": 30,
 							"y": 500,
-							"w": 500,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2082,7 +2396,7 @@
 						"position": {
 							"x": 20,
 							"y": 490,
-							"w": 500,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2221,20 +2535,20 @@
 						"item": "viz_querylength_timeline",
 						"type": "block",
 						"position": {
-							"x": 550,
-							"y": 160,
-							"w": 850,
-							"h": 310
+							"x": 560,
+							"y": 120,
+							"w": 820,
+							"h": 340
 						}
 					},
 					{
 						"item": "viz_querylength_table",
 						"type": "block",
 						"position": {
-							"x": 70,
-							"y": 500,
-							"w": 400,
-							"h": 400
+							"x": 20,
+							"y": 490,
+							"w": 680,
+							"h": 410
 						}
 					},
 					{
@@ -2280,8 +2594,8 @@
 					{
 						"item": "viz_7m5bsOVg",
 						"position": {
-							"x": 860,
-							"y": 510,
+							"x": 930,
+							"y": 500,
 							"w": 230,
 							"h": 30
 						},
@@ -2291,9 +2605,9 @@
 						"item": "viz_moFLOhYt",
 						"type": "block",
 						"position": {
-							"x": 600,
-							"y": 540,
-							"w": 750,
+							"x": 720,
+							"y": 530,
+							"w": 680,
 							"h": 360
 						}
 					}
@@ -2304,16 +2618,16 @@
 				"options": {
 					"backgroundColor": "#002345",
 					"display": "fit-to-width",
-					"height": 1000,
+					"height": 920,
 					"width": 1430
 				},
 				"structure": [
 					{
 						"item": "viz_dPo55EbK",
 						"position": {
-							"x": 550,
+							"x": 730,
 							"y": 500,
-							"w": 860,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2321,9 +2635,9 @@
 					{
 						"item": "viz_ywHKPOMY",
 						"position": {
-							"x": 540,
+							"x": 720,
 							"y": 490,
-							"w": 860,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2353,7 +2667,7 @@
 						"position": {
 							"x": 30,
 							"y": 500,
-							"w": 500,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2363,7 +2677,7 @@
 						"position": {
 							"x": 20,
 							"y": 490,
-							"w": 500,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2503,15 +2817,15 @@
 						"type": "block",
 						"position": {
 							"x": 560,
-							"y": 160,
+							"y": 120,
 							"w": 820,
-							"h": 300
+							"h": 340
 						}
 					},
 					{
 						"item": "viz_fDXHMg8D",
 						"position": {
-							"x": 860,
+							"x": 960,
 							"y": 510,
 							"w": 230,
 							"h": 30
@@ -2522,10 +2836,10 @@
 						"item": "viz_beaconing_table",
 						"type": "block",
 						"position": {
-							"x": 70,
-							"y": 500,
-							"w": 400,
-							"h": 400
+							"x": 20,
+							"y": 490,
+							"w": 680,
+							"h": 410
 						}
 					},
 					{
@@ -2552,10 +2866,10 @@
 						"item": "viz_PPSjPOqn",
 						"type": "block",
 						"position": {
-							"x": 590,
-							"y": 550,
-							"w": 760,
-							"h": 340
+							"x": 720,
+							"y": 540,
+							"w": 680,
+							"h": 360
 						}
 					},
 					{
@@ -2585,16 +2899,16 @@
 				"options": {
 					"backgroundColor": "#002345",
 					"display": "fit-to-width",
-					"height": 1000,
+					"height": 920,
 					"width": 1430
 				},
 				"structure": [
 					{
 						"item": "viz_dPo55EbK",
 						"position": {
-							"x": 550,
+							"x": 730,
 							"y": 500,
-							"w": 860,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2602,9 +2916,9 @@
 					{
 						"item": "viz_ywHKPOMY",
 						"position": {
-							"x": 540,
+							"x": 720,
 							"y": 490,
-							"w": 860,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2634,7 +2948,7 @@
 						"position": {
 							"x": 30,
 							"y": 500,
-							"w": 500,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2644,7 +2958,7 @@
 						"position": {
 							"x": 20,
 							"y": 490,
-							"w": 500,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2784,19 +3098,19 @@
 						"type": "block",
 						"position": {
 							"x": 560,
-							"y": 160,
+							"y": 120,
 							"w": 820,
-							"h": 300
+							"h": 340
 						}
 					},
 					{
 						"item": "viz_c2tunneling_table",
 						"type": "block",
 						"position": {
-							"x": 70,
-							"y": 500,
-							"w": 400,
-							"h": 400
+							"x": 20,
+							"y": 490,
+							"w": 680,
+							"h": 410
 						}
 					},
 					{
@@ -2842,7 +3156,7 @@
 					{
 						"item": "viz_mDjJioVY",
 						"position": {
-							"x": 860,
+							"x": 960,
 							"y": 510,
 							"w": 230,
 							"h": 30
@@ -2853,10 +3167,10 @@
 						"item": "viz_CHJNwu6f",
 						"type": "block",
 						"position": {
-							"x": 580,
-							"y": 550,
-							"w": 780,
-							"h": 340
+							"x": 720,
+							"y": 540,
+							"w": 680,
+							"h": 360
 						}
 					}
 				],
@@ -2866,27 +3180,27 @@
 				"options": {
 					"backgroundColor": "#002345",
 					"display": "fit-to-width",
-					"height": 1000,
+					"height": 1150,
 					"width": 1430
 				},
 				"structure": [
 					{
 						"item": "viz_dPo55EbK",
 						"position": {
-							"x": 550,
-							"y": 420,
-							"w": 370,
-							"h": 320
+							"x": 730,
+							"y": 730,
+							"w": 680,
+							"h": 410
 						},
 						"type": "block"
 					},
 					{
 						"item": "viz_ywHKPOMY",
 						"position": {
-							"x": 540,
-							"y": 410,
-							"w": 370,
-							"h": 320
+							"x": 720,
+							"y": 720,
+							"w": 680,
+							"h": 410
 						},
 						"type": "block"
 					},
@@ -2914,8 +3228,8 @@
 						"item": "viz_JejslW73",
 						"position": {
 							"x": 30,
-							"y": 500,
-							"w": 500,
+							"y": 730,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2924,8 +3238,8 @@
 						"item": "viz_W9C4tWDg",
 						"position": {
 							"x": 20,
-							"y": 490,
-							"w": 500,
+							"y": 720,
+							"w": 680,
 							"h": 410
 						},
 						"type": "block"
@@ -2985,7 +3299,7 @@
 						"position": {
 							"x": 30,
 							"y": 120,
-							"w": 500,
+							"w": 1380,
 							"h": 130
 						},
 						"type": "block"
@@ -2995,7 +3309,7 @@
 						"position": {
 							"x": 20,
 							"y": 110,
-							"w": 500,
+							"w": 1380,
 							"h": 130
 						},
 						"type": "block"
@@ -3004,8 +3318,8 @@
 						"item": "viz_recordtype_summary",
 						"type": "block",
 						"position": {
-							"x": 220,
-							"y": 120,
+							"x": 110,
+							"y": 110,
 							"w": 110,
 							"h": 110
 						}
@@ -3013,9 +3327,9 @@
 					{
 						"item": "viz_NdDIgd2b",
 						"position": {
-							"x": 210,
-							"y": 206,
-							"w": 150,
+							"x": 40,
+							"y": 200,
+							"w": 300,
 							"h": 30
 						},
 						"type": "block"
@@ -3027,7 +3341,7 @@
 							"x": 30,
 							"y": 270,
 							"w": 480,
-							"h": 200
+							"h": 190
 						}
 					},
 					{
@@ -3054,9 +3368,9 @@
 						"item": "viz_I4UrFwp4",
 						"position": {
 							"x": 550,
-							"y": 120,
+							"y": 270,
 							"w": 860,
-							"h": 280
+							"h": 440
 						},
 						"type": "block"
 					},
@@ -3064,28 +3378,18 @@
 						"item": "viz_YyhQEPMy",
 						"position": {
 							"x": 540,
-							"y": 110,
+							"y": 260,
 							"w": 860,
-							"h": 280
+							"h": 440
 						},
 						"type": "block"
 					},
 					{
-						"item": "viz_recordtype_timeline",
-						"type": "block",
-						"position": {
-							"x": 560,
-							"y": 130,
-							"w": 820,
-							"h": 250
-						}
-					},
-					{
 						"item": "viz_fDXHMg8D",
 						"position": {
-							"x": 670,
-							"y": 430,
-							"w": 110,
+							"x": 940,
+							"y": 740,
+							"w": 220,
 							"h": 30
 						},
 						"type": "block"
@@ -3094,10 +3398,10 @@
 						"item": "viz_recordtype_table",
 						"type": "block",
 						"position": {
-							"x": 70,
-							"y": 500,
-							"w": 400,
-							"h": 400
+							"x": 20,
+							"y": 720,
+							"w": 680,
+							"h": 410
 						}
 					},
 					{
@@ -3109,6 +3413,136 @@
 							"h": 50
 						},
 						"type": "block"
+					},
+					{
+						"item": "viz_yaKHt3wS",
+						"type": "block",
+						"position": {
+							"x": 390,
+							"y": 110,
+							"w": 110,
+							"h": 110
+						}
+					},
+					{
+						"item": "viz_1kLYDZwT",
+						"position": {
+							"x": 330,
+							"y": 200,
+							"w": 260,
+							"h": 30
+						},
+						"type": "block"
+					},
+					{
+						"item": "viz_h7iKirSc",
+						"type": "block",
+						"position": {
+							"x": 700,
+							"y": 110,
+							"w": 110,
+							"h": 110
+						}
+					},
+					{
+						"item": "viz_RWM2OdqM",
+						"position": {
+							"x": 640,
+							"y": 200,
+							"w": 250,
+							"h": 30
+						},
+						"type": "block"
+					},
+					{
+						"item": "viz_VNEzfCpX",
+						"type": "block",
+						"position": {
+							"x": 990,
+							"y": 110,
+							"w": 110,
+							"h": 110
+						}
+					},
+					{
+						"item": "viz_DLVeF1Fe",
+						"position": {
+							"x": 940,
+							"y": 200,
+							"w": 260,
+							"h": 30
+						},
+						"type": "block"
+					},
+					{
+						"item": "viz_FfkYakSS",
+						"type": "block",
+						"position": {
+							"x": 1240,
+							"y": 110,
+							"w": 110,
+							"h": 110
+						}
+					},
+					{
+						"item": "viz_H0OJBoAt",
+						"type": "block",
+						"position": {
+							"x": 1220,
+							"y": 200,
+							"w": 160,
+							"h": 30
+						}
+					},
+					{
+						"item": "viz_bUizrwZV",
+						"position": {
+							"x": 30,
+							"y": 500,
+							"w": 500,
+							"h": 210
+						},
+						"type": "block"
+					},
+					{
+						"item": "viz_fg2Rz2MA",
+						"position": {
+							"x": 20,
+							"y": 490,
+							"w": 500,
+							"h": 210
+						},
+						"type": "block"
+					},
+					{
+						"item": "viz_rMSEOpWG",
+						"type": "block",
+						"position": {
+							"x": 30,
+							"y": 500,
+							"w": 480,
+							"h": 190
+						}
+					},
+					{
+						"item": "viz_I3KPBmot",
+						"type": "block",
+						"position": {
+							"x": 540,
+							"y": 270,
+							"w": 860,
+							"h": 420
+						}
+					},
+					{
+						"item": "viz_l8uj7G6Q",
+						"type": "block",
+						"position": {
+							"x": 730,
+							"y": 770,
+							"w": 660,
+							"h": 350
+						}
 					}
 				],
 				"type": "absolute"
