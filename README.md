@@ -26,7 +26,6 @@ DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies t
 
 ## Dashboard System
 
-![](Images/readme/Splunk-DNSGuard-AI-IDEA-Dashboard-System.png)
 ![](Images/views/dashboards_anomalies_overview.png)
 
  
@@ -34,7 +33,6 @@ DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies t
 
 ### Prerequisites
 
-#### 🐍 Python Requirements
 - **Python Version**: 3.6 or higher
   - To check your Python version, open a terminal and run:
     ```bash
@@ -43,7 +41,6 @@ DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies t
   - If you need to install Python, download it from [python.org](https://www.python.org/downloads/)
   - During installation, make sure to check "Add Python to PATH"
 
-#### 🔍 Splunk Requirements
 - **Splunk Enterprise / Splunk Cloud**: Version 8.0 or higher
   - Download Splunk from [splunk.com](https://www.splunk.com/en_us/download/splunk-enterprise.html)
   - Follow the installation guide for your operating system
@@ -67,7 +64,7 @@ DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies t
        - [Windows 64-bit](https://splunkbase.splunk.com/app/2883/)
      - Install through Splunk Web interface: Apps → Browse more apps → Search "Python for Scientific Computing"
 
-#### ⭐ Integrations (Recommended)
+#### Integrations (Recommended)
 - [Splunk Enterprise Security](https://splunkbase.splunk.com/app/263)
   - Provides advanced security monitoring capabilities
   - Includes pre-built risk factors configuration and alerts
@@ -104,9 +101,9 @@ DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies t
 
 4. **Generate Test Data**
    ```bash
-   # Navigate to the Syntethic-Data directory
-   cd Syntethic-Data
-   
+   # Navigate to the Synthetic-Data directory
+   cd Synthetic-Data
+
    # Generate synthetic DNS data
    python generate_dns_events.py
    ```
