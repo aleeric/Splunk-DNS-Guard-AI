@@ -1,0 +1,62 @@
+Splunk DNSGuard AI
+What is DNSGuard AI?
+DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies that could indicate malicious activity such as command and control (C2) communication, data exfiltration, or reconnaissance. The system uses Splunk's powerful search capabilities combined with machine learning techniques to identify patterns that deviate from normal DNS behavior.
+
+The system offers a comprehensive defense mechanism that goes beyond traditional signature-based detection by analyzing behavior, timing patterns, and statistical anomalies in DNS queries across the organization.
+
+Key Benefits
+Real-time Detection: Continuous monitoring of DNS traffic for immediate threat identification
+Comprehensive Analysis: Multiple detection methods working in concert to identify various types of threats
+Splunk Machine Learning Toolkit Integration: Advanced algorithms for pattern recognition and anomaly detection
+Enterprise-Ready: Scalable solution designed for large network environments
+CIM Compliance: Fully compatible with Splunk's Common Information Model
+Comprehensive Dashboard System: Includes specialized dashboards for each detection method and an overview dashboard for high-level threat monitoring.
+Detection Methods Implemented
+DNSGuard AI incorporates the following detection methods, each targeting a specific type of DNS-based attack vector.
+
+Detection Method	Description
+Beaconing Detection	Detects regular, periodic DNS queries at consistent intervals—a hallmark of malware communicating with command and control servers. Analyzes consistency of time gaps between queries to the same domain.
+C2 Tunneling Detection	Identifies hosts making an unusually high number of DNS queries, which could indicate command and control communication or data exfiltration through DNS tunneling. Uses density function to find hourly query count outliers by source.
+Query Length Anomalies	Detects unusually long DNS queries that may represent data exfiltration channels where sensitive information is encoded in the query itself. Identifies outliers in query string length by host.
+Domain Shadowing	Identifies patterns where many unique subdomains are requested for a legitimate domain, which may indicate an attacker using compromised DNS accounts to create malicious subdomains. Measures distinct subdomain count by parent domain and identifies outliers.
+Record Type Anomalies	Detects abnormal usage of specific DNS record types often associated with reconnaissance or data exfiltration. Identifies outliers in the usage of TXT (data exfiltration), ANY (broad queries), HINFO (host info leakage), and AXFR (zone transfer attempts) records by host.
+Behavioral Clustering	Groups hosts with similar abnormal DNS behavior, which can reveal coordinated attacks or infected host groups across the enterprise. Uses KMeans clustering on multiple DNS behavior features.
+Splunk Prerequisites
+Splunk Enterprise / Splunk Cloud: Version 8.0 or higher
+Essential Apps: 
+Splunk Common Information Model (CIM)
+Splunk Machine Learning Toolkit (MLTK)
+Python for Scientific Computing
+Integrations (Recommended)
+Splunk Enterprise Security
+Provides advanced security monitoring capabilities
+Includes pre-built risk factors configuration and alerts
+DGA App for Splunk
+Specialized in Domain Generation Algorithm detection and analysis
+Complements DNSGuard-AI's detection capabilities
+Dashboard System
+The DNS Guard AI system includes a comprehensive set of dashboards:
+
+DNS Anomalies Overview: Provides a high-level view of the threat landscape with real-time monitoring and top anomalies summary.
+Beaconing Dashboard: Visualizes periodic communication patterns, beaconing frequency analysis, and suspicious host identification.
+C2 Tunneling Dashboard: Focuses on command and control detection, tunneling pattern analysis, and compromised host identification.
+Query Length Anomalies Dashboard: Shows query size distribution, length threshold monitoring, and potential exfiltration detection.
+Domain Shadowing Dashboard: Provides subdomain analysis, domain reputation monitoring, and shadow domain detection.
+Record Type Anomalies Dashboard: Displays record type distribution, unusual record type detection, and reconnaissance activity monitoring.
+Synthetic Data Testing
+For testing and demonstration purposes, the application includes a custom Python script that generates synthetic DNS data specifically for the app’s proof of concept. The generated events adhere to the Common Information Model (CIM), particularly the Network Resolution data model, ensuring compatibility with Splunk’s detection and enrichment features. The synthetic dataset simulates a wide range of DNS anomalies
+
+Practical Applications
+DNSGuard AI offers security teams a powerful tool to:
+
+Detect malware infections before they cause significant damage
+Identify data exfiltration attempts through DNS channels
+Discover reconnaissance activities targeting the organization's infrastructure
+Expose coordinated attacks affecting multiple systems
+Provide early warning of sophisticated persistent threats
+By focusing on DNS traffic—a protocol critical for network operations but often overlooked in security monitoring—DNSGuard AI fills a crucial gap in enterprise defense strategies, offering a specialized layer of protection against modern cyber threats. 
+
+If you’d like to follow the progress and updates of this project, feel free to check out the GitHub repository:
+
+Splunk DNSGuard AI
+If the file upload failed, this is the link to the PDF file of the idea -> LINK

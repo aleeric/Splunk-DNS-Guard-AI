@@ -12,7 +12,7 @@
 
 \titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{}
-\title{\textbf{DNSGuard AI}\\\large Behavioral DNS threat detection with Splunk MLTK}
+\title{\textbf{DNS Guard AI}\\\large Behavioral DNS threat detection with Splunk MLTK}
 \author{Riccardo Alesci}
 \date{}
 
@@ -25,7 +25,7 @@
 The \textbf{Domain Name System (DNS)} is a fundamental pillar of modern network communication, responsible for resolving hostnames to IP addresses. Despite its critical role, \textbf{DNS} often remains \textbf{under-monitored} within enterprise security strategies, making it an attractive vector for threat actors. Advanced adversaries increasingly leverage DNS to establish \textbf{command-and-control (C2)} channels, exfiltrate \textbf{sensitive information}, and perform \textbf{stealth reconnaissance activities—all} while blending within legitimate traffic patterns.
 These attacks frequently exploit the inherent trust and ubiquity of \textbf{DNS}, using low-volume, protocol-compliant queries that bypass signature-based intrusion detection systems. The subtlety and evasiveness of \textbf{DNS-based threats} demand a behavioral and data-driven approach to detection.
 
-\textbf{DNSGuard AI} addresses this security gap by applying unsupervised machine learning and statistical analysis to \textbf{DNS telemetry} within the Splunk platform. By modeling baseline DNS behavior and detecting deviations indicative of malicious activity, \textbf{DNSGuard AI} provides real-time visibility into anomalous patterns that traditional tools fail to uncover—offering a scalable and adaptive defense mechanism for enterprise environments.
+\textbf{DNS Guard AI} addresses this security gap by applying unsupervised machine learning and statistical analysis to \textbf{DNS telemetry} within the Splunk platform. By modeling baseline DNS behavior and detecting deviations indicative of malicious activity, \textbf{DNS Guard AI} provides real-time visibility into anomalous patterns that traditional tools fail to uncover—offering a scalable and adaptive defense mechanism for enterprise environments.
 
 \section{Solution Overview}
 
@@ -34,11 +34,11 @@ These attacks frequently exploit the inherent trust and ubiquity of \textbf{DNS}
     \includegraphics[width=0.45\textwidth]{architecture.png}
 \end{wrapfigure}
 
-The architecture illustrates how DNSGuard AI processes DNS events mapped to the \textbf{Network\_Resolution} data model in Splunk. \textbf{Model training} searches extract features from historical DNS traffic to train machine learning models via the \textbf{MLTK} (1a). In parallel, \textbf{anomaly detection} searches continuously scan incoming DNS data to identify suspicious behavior such as \textbf{exfiltration}, \textbf{tunneling}, or \textbf{domain shadowing} (1b). Detected anomalies are stored in a \textbf{KV Store collection} and compared against a \textbf{whitelist} to suppress false positives. Validated anomalies are then sent to two systems: the \textbf{dashboard interface} for visual monitoring, and \textbf{Splunk Enterprise Security} (ES) for risk scoring and alert generation (2). This design ensures scalable, real-time DNS threat detection tightly integrated with Splunk’s security ecosystem.
+The architecture illustrates how DNS Guard AI processes DNS events mapped to the \textbf{Network\_Resolution} data model in Splunk. \textbf{Model training} searches extract features from historical DNS traffic to train machine learning models via the \textbf{MLTK} (1a). In parallel, \textbf{anomaly detection} searches continuously scan incoming DNS data to identify suspicious behavior such as \textbf{exfiltration}, \textbf{tunneling}, or \textbf{domain shadowing} (1b). Detected anomalies are stored in a \textbf{KV Store collection} and compared against a \textbf{whitelist} to suppress false positives. Validated anomalies are then sent to two systems: the \textbf{dashboard interface} for visual monitoring, and \textbf{Splunk Enterprise Security} (ES) for risk scoring and alert generation (2). This design ensures scalable, real-time DNS threat detection tightly integrated with Splunk’s security ecosystem.
 
 
 \section{Machine Learning Approach}
-The detection engine of \textbf{DNSGuard} AI integrates multiple unsupervised learning algorithms to identify deviations from normal DNS behavior across diverse threat dimensions:
+The detection engine of \textbf{DNS Guard} AI integrates multiple unsupervised learning algorithms to identify deviations from normal DNS behavior across diverse threat dimensions:
 \begin{itemize}[noitemsep]
     \item \textbf{Density Function Algorithm}
     \begin{itemize}[noitemsep]
@@ -60,55 +60,53 @@ The detection engine of \textbf{DNSGuard} AI integrates multiple unsupervised le
 \section{Installation and Configuration}
 
 \subsection*{Prerequisites}
-Install the following from Splunkbase:
 \begin{itemize}[noitemsep]
     \item Splunk Enterprise/Cloud 8.0+
+    \item Splunk machine with at least \textbf{16 GB of RAM} is required for the app to run well
+\end{itemize}
+
+Install the following apps from Splunkbase:
+\begin{itemize}[noitemsep]
     \item Splunk CIM App
     \item Splunk MLTK App
     \item Python for Scientific Computing
 \end{itemize}
 
-\subsection*{1. Install the App}
+\subsection*{1. Install the App \& Generate Test Data}
 \begin{itemize}[noitemsep]
     \item Clone the repo:
     \begin{verbatim}
-git clone https://github.com/aleeric/Splunk-DNSGuard-AI.git
+git clone https://github.com/aleeric/Splunk-DNS-Guard-AI.git
     \end{verbatim}
-    \item Move the folder to \texttt{\$SPLUNK\_HOME/etc/apps/} and restart Splunk.
+    \item Move the folder \texttt{Splunk-DNS-Guard-AI/} to \texttt{\$SPLUNK\_HOME/etc/apps/} and restart Splunk.
+    \item Commands on Terminal
+    \begin{verbatim}
+        cd Synthetic-Data
+        python generate_dns_events.py
+    \end{verbatim}
+    \item New JSON file \textbf{dns\_events.json} created
 \end{itemize}
 
-\subsection*{2. Generate Test Data}
-\begin{verbatim}
-cd Synthetic-Data
-python generate_dns_events.py
-\end{verbatim}
-
-\subsection*{3. Import Data into Splunk}
-\textbf{Via Web Interface}:
+\subsection*{2. Import Synthetic Data into Splunk}
+\textbf{Via Splunk Web}:
 \begin{itemize}[noitemsep]
-    \item Go to \textbf{Settings → Add Data → Upload}
-    \item Select \texttt{dns\_events.json}, set \textbf{Source type} to \texttt{\_json}, create index \texttt{synthetic\_data}
-    \item Click \textbf{Next} → \textbf{Submit}
+    \item Go to \textbf{Settings → Data Inputs → File \& Directories → New Local File \& Directory → }Browse \& Select\textbf{ 'dns\_events.json' → }Select\textbf{ 'Index Once' → }Click\textbf{ Next}
+    \item Select \textbf{'synthetic-data'} from \textbf{Source type} list → \textbf{App Context: 'Search \& Reporting (search)'} → \textbf{Host field value: 'dns-guard-simulator'} → Create a new index →\textbf{ Index name: 'synthetic-data'} (Important!); leave the other fields as they are. → Click \textbf{Save} → Click \textbf{Review} → Click \textbf{Submit}
 \end{itemize}
 
-\subsection*{4. Map to Network\_Resolution Model}
+\subsection*{3. Map to Network\_Resolution Model}
 \begin{itemize}[noitemsep]
-    \item Go to \textbf{Settings → Data Models → Network\_Resolution}
-    \item Click \textbf{Edit → Add Dataset}, include \texttt{synthetic\_data}, then save
+    \item Go to \textbf{Apps → Manage Apps → }Search\textbf{ 'CIM' → }Click\textbf{ Set up → }Search\textbf{ "Network Resolution" → }Insert\textbf{ 'synthetic-data' }into\textbf{ 'Indexes allowlist' }field\textbf{ → }Click\textbf{ Save}
 \end{itemize}
 
 \subsection*{5. Verify Setup}
 \begin{itemize}[noitemsep]
-    \item Open the app in Splunk Web
-    \item Check dashboards and validate that detections work
+    \item Open \textbf{DNS Guard AI} on Splunk Web Interface
+    \item Go to \textbf{setup} → Follow Steps
 \end{itemize}
-
 
 \section{Conclusion}
 
-DNSGuard AI gives security teams an advanced and scalable solution to detect DNS threats in real time. It combines machine learning, Splunk's search power, and a modular dashboard system to identify C2, exfiltration, and reconnaissance via DNS, filling a critical detection gap in enterprise defense.
-
-
-
+DNS Guard AI gives security teams an advanced and scalable solution to detect DNS threats in real time. It combines machine learning, Splunk's search power, and a modular dashboard system to identify C2, exfiltration, and reconnaissance via DNS, filling a critical detection gap in enterprise defense.
 
 \end{document}

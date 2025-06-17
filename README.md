@@ -18,11 +18,11 @@ DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies t
 
 ## Key Features
 
-![](Images/readme/Splunk-DNSGuard-AI-IDEA-Key-Features.png)
+![](Images/readme/Splunk-DNS-Guard-AI-IDEA-Key-Features.png)
 
 ## Detection Methods
 
-![](Images/readme/Splunk-DNSGuard-AI-IDEA-Detection-Methods.png)
+![](Images/readme/Splunk-DNS-Guard-AI-IDEA-Detection-Methods.png)
 
 ## Dashboard System
 
@@ -72,7 +72,7 @@ DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies t
 
 - [DGA App for Splunk](https://splunkbase.splunk.com/app/3559)
   - Specialized in Domain Generation Algorithm detection and analysis
-  - Complements DNSGuard-AI's detection capabilities
+  - Complements DNS Guard AI's detection capabilities
   - Install through Splunk Web interface: Apps → Browse more apps → Search "DGA"
 
 ### Installation Steps
@@ -80,18 +80,18 @@ DNS Guard AI is a Splunk App designed to detect various types of DNS anomalies t
 1. **Prepare Your Environment**
    ```bash
    # Create a new directory for the project
-   mkdir Splunk-DNSGuard-AI
-   cd Splunk-DNSGuard-AI
+   mkdir Splunk-DNS-Guard-AI
+   cd Splunk-DNS-Guard-AI
    ```
 
 2. **Clone the Repository**
    ```bash
    # Clone the repository
-   git clone https://github.com/aleeric/Splunk-DNSGuard-AI.git
+   git clone https://github.com/aleeric/Splunk-DNS-Guard-AI.git
    ```
 
 3. **Install Splunk App**
-   - Copy the `Splunk-DNSGuard-AI` directory to your Splunk apps directory:
+   - Copy the `Splunk-DNS-Guard-AI` directory to your Splunk apps directory:
      - Windows: `C:\Program Files\Splunk\etc\apps\`
      - Linux/Mac: `/opt/splunk/etc/apps/`
    - Restart Splunk
