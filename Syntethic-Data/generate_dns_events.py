@@ -148,7 +148,7 @@ def create_base_event(timestamp, src_ip, query, record_type):
 
     return {
         "_time": event_time_str,
-        "vendor_product": "PythonDNSSimulator",
+        "vendor_product": "Splunk-DNS-Guard-AI",
         "query": query,
         "record_type": record_type,
         "src": src_ip,
@@ -437,9 +437,6 @@ def main():
         for event in events:
             # Rename '_time' to 'time' for Splunk and add other metadata fields
             event["timestamp"] = event.pop("_time")
-            event["sourcetype"] = "isc:bind:query"
-            event["host"] = "DNS_SIMULATOR_HOST"
-            event["source"] = f"udp:{DNS_SERVER_IP}"
 
             f.write(json.dumps(event) + "\n")
 
