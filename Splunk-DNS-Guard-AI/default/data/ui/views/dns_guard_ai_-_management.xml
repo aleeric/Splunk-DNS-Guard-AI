@@ -1,0 +1,941 @@
+
+<dashboard version="2" theme="dark">
+    <label>Management</label>
+    <description></description>
+    <definition><![CDATA[
+{
+    "title": "Management",
+    "description": "",
+    "inputs": {},
+    "defaults": {
+        "dataSources": {
+            "ds.search": {
+                "options": {
+                    "queryParameters": {
+                        "earliest": "$global_time.earliest$",
+                        "latest": "$global_time.latest$"
+                    }
+                }
+            }
+        }
+    },
+    "visualizations": {
+        "viz_1kyyHWzO": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_2L7U0XY9": {
+            "options": {
+                "preserveAspectRatio": true,
+                "src": "/static/app/Splunk-DNS-Guard-AI/images/logo-nobg.png"
+            },
+            "type": "splunk.image"
+        },
+        "viz_6ZrXvxyS": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_CZF9chHU": {
+            "options": {
+                "preserveAspectRatio": true,
+                "src": "/static/app/Splunk-DNS-Guard-AI/images/logo-nobg.png"
+            },
+            "type": "splunk.image"
+        },
+        "viz_CcUQr1i8": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_FO5NRItW": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_FjgR8xYx": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_IlDlE9pG": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_LmpTVfTC": {
+            "containerOptions": {},
+            "context": {
+                "Is_ScheduledColumnFormatEditorConfig": {
+                    "string": {
+                        "unitPosition": "after"
+                    }
+                },
+                "Is_ScheduledRowBackgroundColorsEditorConfig": [
+                    {
+                        "match": "False",
+                        "value": "#D41F1F"
+                    },
+                    {
+                        "match": "True",
+                        "value": "#669922"
+                    }
+                ],
+                "Is_ScheduledRowColorsEditorConfig": [
+                    "#ffffff"
+                ],
+                "is_scheduledRowBackgroundColorsEditorConfig": [
+                    {
+                        "match": "False",
+                        "value": "#D41F1F"
+                    },
+                    {
+                        "match": "True",
+                        "value": "#669922"
+                    }
+                ],
+                "is_scheduledRowColorsEditorConfig": [
+                    "#ffffff"
+                ]
+            },
+            "dataSources": {
+                "primary": "ds_M4m6Zv7s"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "columnFormat": {
+                    "Description": {
+                        "width": 255
+                    },
+                    "Is Scheduled": {
+                        "align": "auto",
+                        "data": "> table | seriesByName(\"Is Scheduled\") | formatByType(Is_ScheduledColumnFormatEditorConfig)",
+                        "headerAlign": "auto",
+                        "rowBackgroundColors": "> table | seriesByName(\"Is Scheduled\") | matchValue(Is_ScheduledRowBackgroundColorsEditorConfig)",
+                        "rowColors": "> table | seriesByName('Is Scheduled') | pick(Is_ScheduledRowColorsEditorConfig)",
+                        "textOverflow": "break-word"
+                    },
+                    "alert.expires": {
+                        "width": 60
+                    },
+                    "cron_schedule": {
+                        "width": 60
+                    },
+                    "is_scheduled": {
+                        "align": "auto",
+                        "data": "> table | seriesByName(\"is_scheduled\") | formatByType(is_scheduledColumnFormatEditorConfig)",
+                        "headerAlign": "auto",
+                        "rowBackgroundColors": "> table | seriesByName(\"is_scheduled\") | matchValue(is_scheduledRowBackgroundColorsEditorConfig)",
+                        "rowColors": "> table | seriesByName(\"is_scheduled\") | pick(is_scheduledRowColorsEditorConfig)",
+                        "textOverflow": "break-word",
+                        "width": 60
+                    },
+                    "next_scheduled_time": {
+                        "width": 60
+                    },
+                    "title": {
+                        "width": 60
+                    }
+                },
+                "fontSize": "large",
+                "tableFormat": {
+                    "align": "center",
+                    "headerAlign": "center",
+                    "headerBackgroundColor": "> backgroundColor | setColorChannel(tableHeaderBackgroundColorConfig)",
+                    "headerColor": "> headerBackgroundColor | maxContrast(tableRowColorMaxContrast)",
+                    "rowBackgroundColors": "> table | seriesByIndex(0) | pick(tableAltRowBackgroundColorsByBackgroundColor)",
+                    "rowColors": "> rowBackgroundColors | maxContrast(tableRowColorMaxContrast)"
+                }
+            },
+            "type": "splunk.table"
+        },
+        "viz_LyEueaRp": {
+            "options": {
+                "customFontSize": 21,
+                "fontSize": "custom",
+                "markdown": "### DNS Guard AI"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_N2FyAFIu": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_PS2rCUZV": {
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_TGK6fTKJ": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_U6OWdvjY": {
+            "options": {
+                "customFontSize": 29,
+                "fontSize": "custom",
+                "markdown": "### Lookups"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_UzNb1QCR": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_VB4Yk0jG": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_VGNZqne5": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_Vho9zMcT": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_YKuSDX7z": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_YPb28aiB": {
+            "options": {
+                "customFontSize": 29,
+                "fontSize": "custom",
+                "markdown": "### Saved Searches"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_YcarBgIG": {
+            "containerOptions": {},
+            "context": {
+                "Is_ScheduledColumnFormatEditorConfig": {
+                    "string": {
+                        "unitPosition": "after"
+                    }
+                },
+                "Is_ScheduledRowBackgroundColorsEditorConfig": [
+                    {
+                        "match": "False",
+                        "value": "#D41F1F"
+                    },
+                    {
+                        "match": "True",
+                        "value": "#669922"
+                    }
+                ],
+                "Is_ScheduledRowColorsEditorConfig": [
+                    "#ffffff"
+                ],
+                "is_scheduledRowBackgroundColorsEditorConfig": [
+                    {
+                        "match": "False",
+                        "value": "#D41F1F"
+                    },
+                    {
+                        "match": "True",
+                        "value": "#669922"
+                    }
+                ],
+                "is_scheduledRowColorsEditorConfig": [
+                    "#ffffff"
+                ]
+            },
+            "dataSources": {
+                "primary": "ds_N7Y8pHRC"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "columnFormat": {
+                    "Description": {
+                        "width": 255
+                    },
+                    "Is Scheduled": {
+                        "align": "auto",
+                        "data": "> table | seriesByName(\"Is Scheduled\") | formatByType(Is_ScheduledColumnFormatEditorConfig)",
+                        "headerAlign": "auto",
+                        "rowBackgroundColors": "> table | seriesByName(\"Is Scheduled\") | matchValue(Is_ScheduledRowBackgroundColorsEditorConfig)",
+                        "rowColors": "> table | seriesByName('Is Scheduled') | pick(Is_ScheduledRowColorsEditorConfig)",
+                        "textOverflow": "break-word"
+                    },
+                    "alert.expires": {
+                        "width": 60
+                    },
+                    "cron_schedule": {
+                        "width": 60
+                    },
+                    "is_scheduled": {
+                        "align": "auto",
+                        "data": "> table | seriesByName(\"is_scheduled\") | formatByType(is_scheduledColumnFormatEditorConfig)",
+                        "headerAlign": "auto",
+                        "rowBackgroundColors": "> table | seriesByName(\"is_scheduled\") | matchValue(is_scheduledRowBackgroundColorsEditorConfig)",
+                        "rowColors": "> table | seriesByName(\"is_scheduled\") | pick(is_scheduledRowColorsEditorConfig)",
+                        "textOverflow": "break-word",
+                        "width": 60
+                    },
+                    "next_scheduled_time": {
+                        "width": 60
+                    },
+                    "title": {
+                        "width": 60
+                    }
+                },
+                "fontSize": "large",
+                "tableFormat": {
+                    "align": "center",
+                    "headerAlign": "center",
+                    "headerBackgroundColor": "> backgroundColor | setColorChannel(tableHeaderBackgroundColorConfig)",
+                    "headerColor": "> headerBackgroundColor | maxContrast(tableRowColorMaxContrast)",
+                    "rowBackgroundColors": "> table | seriesByIndex(0) | pick(tableAltRowBackgroundColorsByBackgroundColor)",
+                    "rowColors": "> rowBackgroundColors | maxContrast(tableRowColorMaxContrast)"
+                }
+            },
+            "type": "splunk.table"
+        },
+        "viz_a6vZrywF": {
+            "containerOptions": {},
+            "context": {
+                "Is_ScheduledColumnFormatEditorConfig": {
+                    "string": {
+                        "unitPosition": "after"
+                    }
+                },
+                "Is_ScheduledRowBackgroundColorsEditorConfig": [
+                    {
+                        "match": "False",
+                        "value": "#D41F1F"
+                    },
+                    {
+                        "match": "True",
+                        "value": "#669922"
+                    }
+                ],
+                "Is_ScheduledRowColorsEditorConfig": [
+                    "#ffffff"
+                ],
+                "is_scheduledRowBackgroundColorsEditorConfig": [
+                    {
+                        "match": "False",
+                        "value": "#D41F1F"
+                    },
+                    {
+                        "match": "True",
+                        "value": "#669922"
+                    }
+                ],
+                "is_scheduledRowColorsEditorConfig": [
+                    "#ffffff"
+                ]
+            },
+            "dataSources": {
+                "primary": "ds_6dsXStlb"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "columnFormat": {
+                    "Description": {
+                        "width": 255
+                    },
+                    "Is Scheduled": {
+                        "align": "auto",
+                        "data": "> table | seriesByName(\"Is Scheduled\") | formatByType(Is_ScheduledColumnFormatEditorConfig)",
+                        "headerAlign": "auto",
+                        "rowBackgroundColors": "> table | seriesByName(\"Is Scheduled\") | matchValue(Is_ScheduledRowBackgroundColorsEditorConfig)",
+                        "rowColors": "> table | seriesByName('Is Scheduled') | pick(Is_ScheduledRowColorsEditorConfig)",
+                        "textOverflow": "break-word"
+                    },
+                    "alert.expires": {
+                        "width": 60
+                    },
+                    "cron_schedule": {
+                        "width": 60
+                    },
+                    "is_scheduled": {
+                        "align": "auto",
+                        "data": "> table | seriesByName(\"is_scheduled\") | formatByType(is_scheduledColumnFormatEditorConfig)",
+                        "headerAlign": "auto",
+                        "rowBackgroundColors": "> table | seriesByName(\"is_scheduled\") | matchValue(is_scheduledRowBackgroundColorsEditorConfig)",
+                        "rowColors": "> table | seriesByName(\"is_scheduled\") | pick(is_scheduledRowColorsEditorConfig)",
+                        "textOverflow": "break-word",
+                        "width": 60
+                    },
+                    "next_scheduled_time": {
+                        "width": 60
+                    },
+                    "title": {
+                        "width": 60
+                    }
+                },
+                "fontSize": "large",
+                "tableFormat": {
+                    "align": "center",
+                    "headerAlign": "center",
+                    "headerBackgroundColor": "> backgroundColor | setColorChannel(tableHeaderBackgroundColorConfig)",
+                    "headerColor": "> headerBackgroundColor | maxContrast(tableRowColorMaxContrast)",
+                    "rowBackgroundColors": "> table | seriesByIndex(0) | pick(tableAltRowBackgroundColorsByBackgroundColor)",
+                    "rowColors": "> rowBackgroundColors | maxContrast(tableRowColorMaxContrast)"
+                }
+            },
+            "type": "splunk.table"
+        },
+        "viz_azLnATIm": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_f89Xfe6c": {
+            "options": {
+                "customFontSize": 29,
+                "fontSize": "custom",
+                "markdown": "### Whitelist CSV"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_kkxwNfWi": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_rzQWGcZR": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_tCSn930e": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_tEpEyWgI": {
+            "options": {
+                "customFontSize": 21,
+                "fontSize": "custom",
+                "markdown": "### DNS Guard AI"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_tfYPqi37": {
+            "options": {
+                "customFontSize": 29,
+                "fontSize": "custom",
+                "markdown": "### Anomalous DNS KV Store"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_uOz1s5vM": {
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_vNRxjTkU": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        }
+    },
+    "dataSources": {
+        "ds_6dsXStlb": {
+            "name": "dnsguardai_management_lookup_kvstore_table",
+            "options": {
+                "query": "| inputlookup anomalous_dns_lookup\n| table domain anomalous_type last_update\n| eval last_update = strftime(last_update, \"%Y-%m-%d %H:%M:%S %Z\")\n| rename anomalous_type as \"Anomalous Type\" domain as Domain last_update as \"Last Update\"",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_M4m6Zv7s": {
+            "name": "dnsguardai_management_lookup_csv_table",
+            "options": {
+                "query": "| inputlookup whitelist_domain_lookup\n| rename domain as Domain",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_N7Y8pHRC": {
+            "name": "dnsguardai_management_savedsearches_table",
+            "options": {
+                "query": "|rest/servicesNS/-/Splunk-DNS-Guard-AI/saved/searches splunk_server=local\n| search title=\"DNSGuardAI*\" OR title=\"Threat - DNSGuardAI*\"\n| eval is_scheduled = if(is_scheduled=\"1\", \"True\", \"False\")\n| table title description next_scheduled_time is_scheduled cron_schedule\n| rename title as Title description as Description next_scheduled_time as \"Next Scheduled Time\" is_scheduled as \"Is Scheduled\" cron_schedule as \"Cron Schedule\"",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        }
+    },
+    "layout": {
+        "globalInputs": [],
+        "layoutDefinitions": {
+            "layout_1": {
+                "options": {
+                    "backgroundColor": "#002345",
+                    "display": "fit-to-width",
+                    "height": 1000,
+                    "width": 1430
+                },
+                "structure": [
+                    {
+                        "item": "viz_CcUQr1i8",
+                        "position": {
+                            "h": 70,
+                            "w": 280,
+                            "x": 30,
+                            "y": 30
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_IlDlE9pG",
+                        "position": {
+                            "h": 70,
+                            "w": 280,
+                            "x": 20,
+                            "y": 20
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_CZF9chHU",
+                        "position": {
+                            "h": 50,
+                            "w": 60,
+                            "x": 40,
+                            "y": 30
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_LyEueaRp",
+                        "position": {
+                            "h": 40,
+                            "w": 190,
+                            "x": 100,
+                            "y": 40
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_kkxwNfWi",
+                        "position": {
+                            "h": 860,
+                            "w": 1370,
+                            "x": 30,
+                            "y": 120
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_vNRxjTkU",
+                        "position": {
+                            "h": 860,
+                            "w": 1370,
+                            "x": 20,
+                            "y": 110
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_VB4Yk0jG",
+                        "position": {
+                            "h": 70,
+                            "w": 1070,
+                            "x": 330,
+                            "y": 30
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_FjgR8xYx",
+                        "position": {
+                            "h": 70,
+                            "w": 1070,
+                            "x": 320,
+                            "y": 20
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_YPb28aiB",
+                        "position": {
+                            "h": 50,
+                            "w": 280,
+                            "x": 710,
+                            "y": 34
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_uOz1s5vM",
+                        "position": {
+                            "h": 1000,
+                            "w": 1430,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_YcarBgIG",
+                        "position": {
+                            "h": 830,
+                            "w": 1340,
+                            "x": 40,
+                            "y": 130
+                        },
+                        "type": "block"
+                    }
+                ],
+                "type": "absolute"
+            },
+            "layout_LH0thsh1": {
+                "options": {
+                    "backgroundColor": "#002345",
+                    "display": "fit-to-width",
+                    "height": 1000,
+                    "width": 1430
+                },
+                "structure": [
+                    {
+                        "item": "viz_N2FyAFIu",
+                        "position": {
+                            "h": 70,
+                            "w": 280,
+                            "x": 30,
+                            "y": 30
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_FO5NRItW",
+                        "position": {
+                            "h": 70,
+                            "w": 280,
+                            "x": 20,
+                            "y": 20
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_2L7U0XY9",
+                        "position": {
+                            "h": 50,
+                            "w": 60,
+                            "x": 40,
+                            "y": 30
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_tEpEyWgI",
+                        "position": {
+                            "h": 40,
+                            "w": 190,
+                            "x": 100,
+                            "y": 40
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_YKuSDX7z",
+                        "position": {
+                            "h": 70,
+                            "w": 1080,
+                            "x": 330,
+                            "y": 30
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_1kyyHWzO",
+                        "position": {
+                            "h": 70,
+                            "w": 1080,
+                            "x": 320,
+                            "y": 20
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_U6OWdvjY",
+                        "position": {
+                            "h": 50,
+                            "w": 180,
+                            "x": 730,
+                            "y": 34
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_6ZrXvxyS",
+                        "position": {
+                            "h": 770,
+                            "w": 670,
+                            "x": 30,
+                            "y": 210
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_TGK6fTKJ",
+                        "position": {
+                            "h": 70,
+                            "w": 670,
+                            "x": 30,
+                            "y": 120
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_azLnATIm",
+                        "position": {
+                            "h": 70,
+                            "w": 670,
+                            "x": 20,
+                            "y": 110
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_tfYPqi37",
+                        "position": {
+                            "h": 50,
+                            "w": 450,
+                            "x": 130,
+                            "y": 124
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_UzNb1QCR",
+                        "position": {
+                            "h": 770,
+                            "w": 670,
+                            "x": 740,
+                            "y": 210
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_rzQWGcZR",
+                        "position": {
+                            "h": 770,
+                            "w": 670,
+                            "x": 20,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_Vho9zMcT",
+                        "position": {
+                            "h": 770,
+                            "w": 670,
+                            "x": 730,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_VGNZqne5",
+                        "position": {
+                            "h": 70,
+                            "w": 670,
+                            "x": 740,
+                            "y": 120
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_tCSn930e",
+                        "position": {
+                            "h": 70,
+                            "w": 670,
+                            "x": 730,
+                            "y": 110
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_f89Xfe6c",
+                        "position": {
+                            "h": 50,
+                            "w": 240,
+                            "x": 950,
+                            "y": 124
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_PS2rCUZV",
+                        "position": {
+                            "h": 1000,
+                            "w": 1430,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_a6vZrywF",
+                        "position": {
+                            "h": 750,
+                            "w": 650,
+                            "x": 30,
+                            "y": 210
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_LmpTVfTC",
+                        "position": {
+                            "h": 750,
+                            "w": 650,
+                            "x": 740,
+                            "y": 210
+                        },
+                        "type": "block"
+                    }
+                ],
+                "type": "absolute"
+            }
+        },
+        "options": {
+            "showTitleAndDescription": false
+        },
+        "tabs": {
+            "items": [
+                {
+                    "label": "Saved Searches",
+                    "layoutId": "layout_1"
+                },
+                {
+                    "label": "Lookups",
+                    "layoutId": "layout_LH0thsh1"
+                }
+            ]
+        }
+    },
+    "applicationProperties": {
+        "collapseNavigation": false,
+        "downsampleVisualizations": true,
+        "hideEdit": false,
+        "hideExport": true,
+        "hideOpenInSearch": true
+    }
+}
+    ]]></definition>
+    <meta type="hiddenElements"><![CDATA[
+{
+	"hideEdit": false,
+	"hideOpenInSearch": true,
+	"hideExport": true
+}
+    ]]></meta>
+</dashboard>
