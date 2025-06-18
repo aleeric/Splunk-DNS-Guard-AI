@@ -30,12 +30,41 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_7AJKhFyL": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_88wqAiCv": {
+            "eventHandlers": [],
+            "options": {
+                "fontFamily": "Splunk Platform Mono",
+                "fontSize": "custom",
+                "markdown": "This project was developed as part of the **Splunk Build-a-tho**n 2025 competition, specifically for Track 4: AI/ML. The competition focuses on developing ML-based threat detections inside Splunk using MLTK, bringing data into Splunk and building real-time pipelines to capture threat actors."
+            },
+            "type": "splunk.markdown"
+        },
         "viz_8YUqlyIG": {
             "options": {
                 "icon": "splunk-enterprise-kvstore://icon-check__e29f784a-31a2-4544-813f-efce24d5be32.svg",
                 "showValue": false
             },
             "type": "splunk.singlevalueicon"
+        },
+        "viz_9VO4fZog": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
         },
         "viz_CZF9chHU": {
             "options": {
@@ -143,6 +172,15 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_VSOnPbtk": {
+            "eventHandlers": [],
+            "options": {
+                "fontFamily": "Splunk Platform Mono",
+                "fontSize": "custom",
+                "markdown": "Prototype Version 1.0.0"
+            },
+            "type": "splunk.markdown"
+        },
         "viz_W2vy1pTP": {
             "eventHandlers": [],
             "options": {
@@ -249,6 +287,13 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_riSUVtcm": {
+            "options": {
+                "preserveAspectRatio": true,
+                "src": "/static/app/Splunk-DNS-Guard-AI/images/trophy.png"
+            },
+            "type": "splunk.image"
+        },
         "viz_vkSPVzKb": {
             "eventHandlers": [],
             "options": {
@@ -305,11 +350,61 @@
                 },
                 "structure": [
                     {
+                        "item": "viz_riSUVtcm",
+                        "position": {
+                            "h": 80,
+                            "w": 90,
+                            "x": 450,
+                            "y": 630
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_88wqAiCv",
+                        "position": {
+                            "h": 80,
+                            "w": 490,
+                            "x": 550,
+                            "y": 630
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_VSOnPbtk",
+                        "position": {
+                            "h": 30,
+                            "w": 230,
+                            "x": 630,
+                            "y": 150
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_7AJKhFyL",
+                        "position": {
+                            "h": 400,
+                            "w": 720,
+                            "x": 370,
+                            "y": 210
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_9VO4fZog",
+                        "position": {
+                            "h": 400,
+                            "w": 720,
+                            "x": 360,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
                         "item": "viz_W2vy1pTP",
                         "position": {
                             "h": 130,
                             "w": 300,
-                            "x": 50,
+                            "x": 400,
                             "y": 240
                         },
                         "type": "block"
@@ -319,7 +414,7 @@
                         "position": {
                             "h": 130,
                             "w": 300,
-                            "x": 40,
+                            "x": 390,
                             "y": 230
                         },
                         "type": "block"
@@ -329,7 +424,7 @@
                         "position": {
                             "h": 60,
                             "w": 110,
-                            "x": 160,
+                            "x": 510,
                             "y": 270
                         },
                         "type": "block"
@@ -339,7 +434,7 @@
                         "position": {
                             "h": 40,
                             "w": 40,
-                            "x": 110,
+                            "x": 460,
                             "y": 272
                         },
                         "type": "block"
@@ -369,7 +464,7 @@
                         "position": {
                             "h": 130,
                             "w": 300,
-                            "x": 390,
+                            "x": 740,
                             "y": 240
                         },
                         "type": "block"
@@ -409,7 +504,7 @@
                         "position": {
                             "h": 130,
                             "w": 300,
-                            "x": 380,
+                            "x": 730,
                             "y": 230
                         },
                         "type": "block"
@@ -419,7 +514,7 @@
                         "position": {
                             "h": 60,
                             "w": 228,
-                            "x": 450,
+                            "x": 800,
                             "y": 270
                         },
                         "type": "block"
@@ -429,8 +524,8 @@
                         "position": {
                             "h": 130,
                             "w": 300,
-                            "x": 730,
-                            "y": 240
+                            "x": 400,
+                            "y": 430
                         },
                         "type": "block"
                     },
@@ -439,8 +534,8 @@
                         "position": {
                             "h": 130,
                             "w": 300,
-                            "x": 720,
-                            "y": 230
+                            "x": 390,
+                            "y": 420
                         },
                         "type": "block"
                     },
@@ -449,8 +544,8 @@
                         "position": {
                             "h": 60,
                             "w": 210,
-                            "x": 800,
-                            "y": 270
+                            "x": 470,
+                            "y": 460
                         },
                         "type": "block"
                     },
@@ -459,8 +554,8 @@
                         "position": {
                             "h": 130,
                             "w": 300,
-                            "x": 1070,
-                            "y": 240
+                            "x": 740,
+                            "y": 430
                         },
                         "type": "block"
                     },
@@ -469,8 +564,8 @@
                         "position": {
                             "h": 130,
                             "w": 300,
-                            "x": 1060,
-                            "y": 230
+                            "x": 730,
+                            "y": 420
                         },
                         "type": "block"
                     },
@@ -479,8 +574,8 @@
                         "position": {
                             "h": 60,
                             "w": 210,
-                            "x": 1140,
-                            "y": 270
+                            "x": 810,
+                            "y": 460
                         },
                         "type": "block"
                     },
@@ -489,7 +584,7 @@
                         "position": {
                             "h": 40,
                             "w": 40,
-                            "x": 400,
+                            "x": 750,
                             "y": 272
                         },
                         "type": "block"
@@ -499,8 +594,8 @@
                         "position": {
                             "h": 40,
                             "w": 40,
-                            "x": 1085,
-                            "y": 272
+                            "x": 755,
+                            "y": 462
                         },
                         "type": "block"
                     },
@@ -509,8 +604,8 @@
                         "position": {
                             "h": 40,
                             "w": 40,
-                            "x": 750,
-                            "y": 270
+                            "x": 420,
+                            "y": 460
                         },
                         "type": "block"
                     },
@@ -525,42 +620,22 @@
                         "type": "block"
                     },
                     {
-                        "item": "viz_wQpjLPnA",
-                        "position": {
-                            "h": 140,
-                            "w": 310,
-                            "x": 380,
-                            "y": 230
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_oFb4TI2u",
-                        "position": {
-                            "h": 140,
-                            "w": 310,
-                            "x": 720,
-                            "y": 230
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_aL8bKl7Q",
-                        "position": {
-                            "h": 140,
-                            "w": 310,
-                            "x": 40,
-                            "y": 230
-                        },
-                        "type": "block"
-                    },
-                    {
                         "item": "viz_GyrtNEOn",
                         "position": {
                             "h": 30,
                             "w": 100,
-                            "x": 1180,
-                            "y": 310
+                            "x": 850,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_wQpjLPnA",
+                        "position": {
+                            "h": 140,
+                            "w": 310,
+                            "x": 730,
+                            "y": 230
                         },
                         "type": "block"
                     },
@@ -569,7 +644,27 @@
                         "position": {
                             "h": 140,
                             "w": 310,
-                            "x": 1060,
+                            "x": 730,
+                            "y": 420
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_oFb4TI2u",
+                        "position": {
+                            "h": 140,
+                            "w": 310,
+                            "x": 390,
+                            "y": 420
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_aL8bKl7Q",
+                        "position": {
+                            "h": 140,
+                            "w": 310,
+                            "x": 390,
                             "y": 230
                         },
                         "type": "block"
