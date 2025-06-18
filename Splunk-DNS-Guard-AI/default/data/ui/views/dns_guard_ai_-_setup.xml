@@ -469,7 +469,7 @@
             "eventHandlers": [
                 {
                     "options": {
-                        "app": "Splunk-DNSGuard-AI",
+                        "app": "Splunk-DNS-Guard-AI",
                         "dashboard": "dns_guard_ai_-_menu"
                     },
                     "type": "drilldown.linkToDashboard"
@@ -1820,7 +1820,7 @@
                 "options": {
                     "backgroundColor": "#002345",
                     "display": "fit-to-width",
-                    "height": 700,
+                    "height": 1000,
                     "width": 1430
                 },
                 "structure": [
@@ -1892,7 +1892,7 @@
                         "item": "viz_nAzJmeC4",
                         "position": {
                             "h": 50,
-                            "w": 320,
+                            "w": 360,
                             "x": 560,
                             "y": 110
                         },
@@ -2092,7 +2092,7 @@
                         "item": "viz_p6MaJFKQ",
                         "position": {
                             "h": 30,
-                            "w": 250,
+                            "w": 360,
                             "x": 590,
                             "y": 170
                         },
@@ -2161,7 +2161,7 @@
                     {
                         "item": "viz_PL75NZsx",
                         "position": {
-                            "h": 700,
+                            "h": 1000,
                             "w": 1430,
                             "x": 0,
                             "y": 0
@@ -2960,7 +2960,7 @@
                 "options": {
                     "backgroundColor": "#002345",
                     "display": "fit-to-width",
-                    "height": 700,
+                    "height": 1000,
                     "width": 1430
                 },
                 "structure": [
@@ -3185,7 +3185,7 @@
                     {
                         "item": "viz_YvnK5G1D",
                         "position": {
-                            "h": 700,
+                            "h": 1000,
                             "w": 1440,
                             "x": -10,
                             "y": 0
@@ -3229,7 +3229,7 @@
                 "options": {
                     "backgroundColor": "#002345",
                     "display": "fit-to-width",
-                    "height": 700,
+                    "height": 1000,
                     "width": 1430
                 },
                 "structure": [
@@ -3564,7 +3564,7 @@
                     {
                         "item": "viz_ew1XepxX",
                         "position": {
-                            "h": 700,
+                            "h": 1000,
                             "w": 1440,
                             "x": -10,
                             "y": 0
