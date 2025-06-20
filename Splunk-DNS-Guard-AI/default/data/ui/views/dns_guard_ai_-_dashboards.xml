@@ -898,6 +898,17 @@
             "showProgressBar": false,
             "type": "splunk.sankey"
         },
+        "viz_e7FDvZe8": {
+            "dataSources": {
+                "primary": "ds_UQ3bHO9A"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "lineColor": "#f8be34",
+                "showNullAxis": false
+            },
+            "type": "splunk.parallelcoordinates"
+        },
         "viz_fDXHMg8D": {
             "options": {
                 "customFontSize": 29,
@@ -1447,6 +1458,17 @@
                 "queryParameters": {
                     "earliest": "$global_time.earliest$",
                     "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_UQ3bHO9A": {
+            "name": "test_cluster",
+            "options": {
+                "query": "| inputlookup cluster_src_lookup\n| where cluster=1\n| table src, avg_distinct_subdomains, avg_query_freq_hourly, avg_len, beacon_stdev, max_len, txt_ratio, any_ratio, hinfo_ratio, axfr_ratio",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
                 }
             },
             "type": "ds.search"
@@ -2977,6 +2999,27 @@
                 ],
                 "type": "absolute"
             },
+            "layout_F28J9uK0": {
+                "options": {
+                    "backgroundColor": "#002345",
+                    "display": "fit-to-width",
+                    "height": 1000,
+                    "width": 1430
+                },
+                "structure": [
+                    {
+                        "item": "viz_e7FDvZe8",
+                        "position": {
+                            "h": 480,
+                            "w": 1380,
+                            "x": 20,
+                            "y": 410
+                        },
+                        "type": "block"
+                    }
+                ],
+                "type": "absolute"
+            },
             "layout_dz9Glh1x": {
                 "options": {
                     "backgroundColor": "#002345",
@@ -3678,6 +3721,10 @@
                 {
                     "label": "Record Type Anomalies",
                     "layoutId": "layout_s9EChSUy"
+                },
+                {
+                    "label": "Behavioral Clustering",
+                    "layoutId": "layout_F28J9uK0"
                 }
             ]
         }

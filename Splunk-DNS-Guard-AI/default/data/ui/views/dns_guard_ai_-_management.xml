@@ -47,6 +47,14 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_8d5xq5rK": {
+            "options": {
+                "customFontSize": 29,
+                "fontSize": "custom",
+                "markdown": "### Cluster SRC KV Store"
+            },
+            "type": "splunk.markdown"
+        },
         "viz_CZF9chHU": {
             "options": {
                 "preserveAspectRatio": true,
@@ -93,6 +101,92 @@
                 "strokeColor": "transparent"
             },
             "type": "splunk.rectangle"
+        },
+        "viz_JIWIAiKn": {
+            "containerOptions": {},
+            "context": {
+                "Is_ScheduledColumnFormatEditorConfig": {
+                    "string": {
+                        "unitPosition": "after"
+                    }
+                },
+                "Is_ScheduledRowBackgroundColorsEditorConfig": [
+                    {
+                        "match": "False",
+                        "value": "#D41F1F"
+                    },
+                    {
+                        "match": "True",
+                        "value": "#669922"
+                    }
+                ],
+                "Is_ScheduledRowColorsEditorConfig": [
+                    "#ffffff"
+                ],
+                "is_scheduledRowBackgroundColorsEditorConfig": [
+                    {
+                        "match": "False",
+                        "value": "#D41F1F"
+                    },
+                    {
+                        "match": "True",
+                        "value": "#669922"
+                    }
+                ],
+                "is_scheduledRowColorsEditorConfig": [
+                    "#ffffff"
+                ]
+            },
+            "dataSources": {
+                "primary": "ds_ccEUIVLJ_ds_6dsXStlb"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "columnFormat": {
+                    "Description": {
+                        "width": 255
+                    },
+                    "Is Scheduled": {
+                        "align": "auto",
+                        "data": "> table | seriesByName(\"Is Scheduled\") | formatByType(Is_ScheduledColumnFormatEditorConfig)",
+                        "headerAlign": "auto",
+                        "rowBackgroundColors": "> table | seriesByName(\"Is Scheduled\") | matchValue(Is_ScheduledRowBackgroundColorsEditorConfig)",
+                        "rowColors": "> table | seriesByName('Is Scheduled') | pick(Is_ScheduledRowColorsEditorConfig)",
+                        "textOverflow": "break-word"
+                    },
+                    "alert.expires": {
+                        "width": 60
+                    },
+                    "cron_schedule": {
+                        "width": 60
+                    },
+                    "is_scheduled": {
+                        "align": "auto",
+                        "data": "> table | seriesByName(\"is_scheduled\") | formatByType(is_scheduledColumnFormatEditorConfig)",
+                        "headerAlign": "auto",
+                        "rowBackgroundColors": "> table | seriesByName(\"is_scheduled\") | matchValue(is_scheduledRowBackgroundColorsEditorConfig)",
+                        "rowColors": "> table | seriesByName(\"is_scheduled\") | pick(is_scheduledRowColorsEditorConfig)",
+                        "textOverflow": "break-word",
+                        "width": 60
+                    },
+                    "next_scheduled_time": {
+                        "width": 60
+                    },
+                    "title": {
+                        "width": 60
+                    }
+                },
+                "fontSize": "large",
+                "tableFormat": {
+                    "align": "center",
+                    "headerAlign": "center",
+                    "headerBackgroundColor": "> backgroundColor | setColorChannel(tableHeaderBackgroundColorConfig)",
+                    "headerColor": "> headerBackgroundColor | maxContrast(tableRowColorMaxContrast)",
+                    "rowBackgroundColors": "> table | seriesByIndex(0) | pick(tableAltRowBackgroundColorsByBackgroundColor)",
+                    "rowColors": "> rowBackgroundColors | maxContrast(tableRowColorMaxContrast)"
+                }
+            },
+            "type": "splunk.table"
         },
         "viz_LmpTVfTC": {
             "containerOptions": {},
@@ -254,6 +348,16 @@
             "type": "splunk.rectangle"
         },
         "viz_Vho9zMcT": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_XJnf4GN1": {
             "eventHandlers": [],
             "options": {
                 "fillColor": "#013062",
@@ -481,6 +585,16 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_prAmq1YT": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
         "viz_rzQWGcZR": {
             "eventHandlers": [],
             "options": {
@@ -517,6 +631,16 @@
             },
             "type": "splunk.markdown"
         },
+        "viz_ts2N4Se0": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
         "viz_uOz1s5vM": {
             "options": {
                 "fillColor": "transparent",
@@ -528,6 +652,16 @@
             "eventHandlers": [],
             "options": {
                 "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_xXnVGlAD": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
                 "fillOpacity": 0.89,
                 "rx": 10,
                 "strokeColor": "transparent"
@@ -562,6 +696,17 @@
             "name": "dnsguardai_management_savedsearches_table",
             "options": {
                 "query": "|rest/servicesNS/-/Splunk-DNS-Guard-AI/saved/searches splunk_server=local\n| search title=\"DNSGuardAI*\" OR title=\"Threat - DNSGuardAI*\"\n| eval is_scheduled = if(is_scheduled=\"1\", \"True\", \"False\")\n| table title description next_scheduled_time is_scheduled cron_schedule\n| rename title as Title description as Description next_scheduled_time as \"Next Scheduled Time\" is_scheduled as \"Is Scheduled\" cron_schedule as \"Cron Schedule\"",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_ccEUIVLJ_ds_6dsXStlb": {
+            "name": "dnsguardai_management_lookup_kvstore_table copy 1",
+            "options": {
+                "query": "| inputlookup cluster_src_lookup\n| table src cluster cluster_distance last_update\n| eval last_update = strftime(last_update, \"%Y-%m-%d %H:%M:%S %Z\")\n| rename src as \"Source IP\" cluster as Cluster cluster_distance as \"Cluster Distance\" last_update as \"Last Update\"",
                 "queryParameters": {
                     "earliest": "-24h@h",
                     "latest": "now"
@@ -698,7 +843,7 @@
                 "options": {
                     "backgroundColor": "#002345",
                     "display": "fit-to-width",
-                    "height": 1000,
+                    "height": 1050,
                     "width": 1430
                 },
                 "structure": [
@@ -775,8 +920,8 @@
                     {
                         "item": "viz_6ZrXvxyS",
                         "position": {
-                            "h": 770,
-                            "w": 670,
+                            "h": 240,
+                            "w": 1380,
                             "x": 30,
                             "y": 210
                         },
@@ -786,7 +931,7 @@
                         "item": "viz_TGK6fTKJ",
                         "position": {
                             "h": 70,
-                            "w": 670,
+                            "w": 1380,
                             "x": 30,
                             "y": 120
                         },
@@ -796,7 +941,7 @@
                         "item": "viz_azLnATIm",
                         "position": {
                             "h": 70,
-                            "w": 670,
+                            "w": 1380,
                             "x": 20,
                             "y": 110
                         },
@@ -807,26 +952,26 @@
                         "position": {
                             "h": 50,
                             "w": 450,
-                            "x": 130,
-                            "y": 124
+                            "x": 485,
+                            "y": 126
                         },
                         "type": "block"
                     },
                     {
                         "item": "viz_UzNb1QCR",
                         "position": {
-                            "h": 770,
-                            "w": 670,
-                            "x": 740,
-                            "y": 210
+                            "h": 130,
+                            "w": 1380,
+                            "x": 30,
+                            "y": 560
                         },
                         "type": "block"
                     },
                     {
                         "item": "viz_rzQWGcZR",
                         "position": {
-                            "h": 770,
-                            "w": 670,
+                            "h": 240,
+                            "w": 1380,
                             "x": 20,
                             "y": 200
                         },
@@ -835,10 +980,10 @@
                     {
                         "item": "viz_Vho9zMcT",
                         "position": {
-                            "h": 770,
-                            "w": 670,
-                            "x": 730,
-                            "y": 200
+                            "h": 130,
+                            "w": 1380,
+                            "x": 20,
+                            "y": 550
                         },
                         "type": "block"
                     },
@@ -846,9 +991,9 @@
                         "item": "viz_VGNZqne5",
                         "position": {
                             "h": 70,
-                            "w": 670,
-                            "x": 740,
-                            "y": 120
+                            "w": 1380,
+                            "x": 30,
+                            "y": 470
                         },
                         "type": "block"
                     },
@@ -856,9 +1001,9 @@
                         "item": "viz_tCSn930e",
                         "position": {
                             "h": 70,
-                            "w": 670,
-                            "x": 730,
-                            "y": 110
+                            "w": 1380,
+                            "x": 20,
+                            "y": 460
                         },
                         "type": "block"
                     },
@@ -867,15 +1012,65 @@
                         "position": {
                             "h": 50,
                             "w": 240,
-                            "x": 950,
-                            "y": 124
+                            "x": 580,
+                            "y": 470
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_xXnVGlAD",
+                        "position": {
+                            "h": 240,
+                            "w": 1380,
+                            "x": 30,
+                            "y": 800
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_prAmq1YT",
+                        "position": {
+                            "h": 70,
+                            "w": 1380,
+                            "x": 30,
+                            "y": 710
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_ts2N4Se0",
+                        "position": {
+                            "h": 70,
+                            "w": 1380,
+                            "x": 20,
+                            "y": 700
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_8d5xq5rK",
+                        "position": {
+                            "h": 50,
+                            "w": 450,
+                            "x": 525,
+                            "y": 716
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_XJnf4GN1",
+                        "position": {
+                            "h": 240,
+                            "w": 1380,
+                            "x": 20,
+                            "y": 790
                         },
                         "type": "block"
                     },
                     {
                         "item": "viz_PS2rCUZV",
                         "position": {
-                            "h": 1000,
+                            "h": 1050,
                             "w": 1430,
                             "x": 0,
                             "y": 0
@@ -885,8 +1080,8 @@
                     {
                         "item": "viz_a6vZrywF",
                         "position": {
-                            "h": 750,
-                            "w": 650,
+                            "h": 230,
+                            "w": 1360,
                             "x": 30,
                             "y": 210
                         },
@@ -895,10 +1090,20 @@
                     {
                         "item": "viz_LmpTVfTC",
                         "position": {
-                            "h": 750,
-                            "w": 650,
-                            "x": 740,
-                            "y": 210
+                            "h": 110,
+                            "w": 1360,
+                            "x": 30,
+                            "y": 560
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_JIWIAiKn",
+                        "position": {
+                            "h": 230,
+                            "w": 1360,
+                            "x": 30,
+                            "y": 800
                         },
                         "type": "block"
                     }
