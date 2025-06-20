@@ -92,15 +92,6 @@
             },
             "type": "splunk.markdown"
         },
-        "viz_GyrtNEOn": {
-            "eventHandlers": [],
-            "options": {
-                "customFontSize": 19,
-                "fontSize": "custom",
-                "markdown": "### (SOON)"
-            },
-            "type": "splunk.markdown"
-        },
         "viz_IlDlE9pG": {
             "eventHandlers": [],
             "options": {
@@ -138,7 +129,15 @@
             "type": "splunk.markdown"
         },
         "viz_PUbwWiz5": {
-            "eventHandlers": [],
+            "eventHandlers": [
+                {
+                    "options": {
+                        "app": "Splunk-DNS-Guard-AI",
+                        "dashboard": "dns_guard_ai_-_integrations"
+                    },
+                    "type": "drilldown.linkToDashboard"
+                }
+            ],
             "options": {
                 "fillColor": "transparent",
                 "strokeColor": "transparent"
@@ -227,7 +226,7 @@
         "viz_chxMv9ih": {
             "eventHandlers": [],
             "options": {
-                "fillColor": "#31373e",
+                "fillColor": "#013062",
                 "fillOpacity": 0.89,
                 "rx": 10,
                 "strokeColor": "transparent"
@@ -616,16 +615,6 @@
                             "w": 1430,
                             "x": 0,
                             "y": 0
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_GyrtNEOn",
-                        "position": {
-                            "h": 30,
-                            "w": 100,
-                            "x": 850,
-                            "y": 500
                         },
                         "type": "block"
                     },

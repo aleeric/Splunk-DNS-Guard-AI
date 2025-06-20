@@ -4,6 +4,7 @@
   <view name="dns_guard_ai_-_setup"/>
   <view name="dns_guard_ai_-_management"/>
   <view name="dns_guard_ai_-_dashboards"/>
+  <view name="dns_guard_ai_-_integrations"/>
   <view name="alerts" />
   <view name="search" />
 </nav> 
