@@ -37,6 +37,14 @@
             },
             "type": "splunk.markdown"
         },
+        "viz_0jTfla3k": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "Max Length DNS"
+            },
+            "type": "splunk.markdown"
+        },
         "viz_1kLYDZwT": {
             "options": {
                 "customFontSize": 29,
@@ -45,9 +53,116 @@
             },
             "type": "splunk.markdown"
         },
+        "viz_22ueAaXa": {
+            "dataSources": {
+                "primary": "ds_YgLIud8R_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
+        "viz_28p6DpD0": {
+            "options": {
+                "customFontSize": 21,
+                "fontSize": "custom",
+                "markdown": "### DNS Guard AI"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_2HzSil2A": {
+            "dataSources": {
+                "primary": "ds_OA4Pazi2_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "numberPrecision": 4,
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
+        "viz_2L5gOxs8": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_2PebLLyg": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_2ZrCUuUi": {
+            "dataSources": {
+                "primary": "ds_K4aq0GUm_ds_1a9gmaLd_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
+        "viz_2ePp15Pg": {
+            "dataSources": {
+                "primary": "ds_TSNpE0s0_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
         "viz_3SDBQrA0": {
             "options": {
                 "fillColor": "transparent",
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_3Slbo2OJ": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_3x1lHs4V": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#ec9960",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_4QP8OqUm": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
                 "strokeColor": "transparent"
             },
             "type": "splunk.rectangle"
@@ -129,6 +244,32 @@
             "showProgressBar": false,
             "type": "splunk.area"
         },
+        "viz_6OCV1YxL": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_6TQVPGaC": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "AVG Query Length"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_7TvpVPVN": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "AXFR Ratio"
+            },
+            "type": "splunk.markdown"
+        },
         "viz_7m5bsOVg": {
             "options": {
                 "customFontSize": 29,
@@ -136,6 +277,46 @@
                 "markdown": "**Link Graph Relationships**"
             },
             "type": "splunk.markdown"
+        },
+        "viz_8zQLIGAm": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_A69CKvwU": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_B2Y22460": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_BmZbit44": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
         },
         "viz_CHJNwu6f": {
             "containerOptions": {},
@@ -174,6 +355,16 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_CfSmz7gr": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
         "viz_DLVeF1Fe": {
             "options": {
                 "customFontSize": 29,
@@ -181,6 +372,19 @@
                 "markdown": "ANY Record Anomalous DNS"
             },
             "type": "splunk.markdown"
+        },
+        "viz_DcN1smG7": {
+            "dataSources": {
+                "primary": "ds_qpm7QC3L_ds_JFk48LiU_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "numberPrecision": 4,
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
         },
         "viz_DgIqDSin": {
             "options": {
@@ -209,6 +413,28 @@
             "options": {
                 "backgroundColor": "transparent",
                 "majorColor": "> majorValue | rangeValue(majorColorEditorConfig)",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
+        "viz_DzcQ36T4": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_EX2AbZEw": {
+            "dataSources": {
+                "primary": "ds_glU4SPhJ_ds_gHIjvHTs_ds_recordtype_summary"
+            },
+            "options": {
+                "backgroundColor": "transparent",
                 "sparklineDisplay": "off",
                 "trendDisplay": "off",
                 "unit": ""
@@ -260,6 +486,37 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_GBY4uNHh": {
+            "dataSources": {
+                "primary": "ds_XYmaq8Ba_ds_OA4Pazi2_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "numberPrecision": 4,
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
+        "viz_GCpRXy4i": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "TXT Ratio"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_GJ4l1Hgk": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
         "viz_H0OJBoAt": {
             "options": {
                 "customFontSize": 29,
@@ -268,6 +525,26 @@
             },
             "type": "splunk.markdown"
         },
+        "viz_H9ExauL2": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_HQoCiF1j": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
         "viz_Hujx6jUD": {
             "options": {
                 "customFontSize": 29,
@@ -275,6 +552,16 @@
                 "markdown": "**Link Graph Relationships**"
             },
             "type": "splunk.markdown"
+        },
+        "viz_HvuSUU5d": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
         },
         "viz_I3KPBmot": {
             "containerOptions": {},
@@ -317,6 +604,98 @@
                 "strokeColor": "transparent"
             },
             "type": "splunk.rectangle"
+        },
+        "viz_JgqTblKf": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_JpLa4PUS": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_Jz0BaZ3O": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_JzQeDdOB": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_KXdVjWHU": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_KpqjRfcM": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_LGyyY4RK": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_MVHiZf7N": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_MbWqITPh": {
+            "dataSources": {
+                "primary": "ds_1a9gmaLd_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
         },
         "viz_NFZ9SRTC": {
             "context": {
@@ -363,6 +742,26 @@
             "eventHandlers": [],
             "options": {
                 "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_PAzHQZ33": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_PFj7bEcc": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
                 "fillOpacity": 0.89,
                 "rx": 10,
                 "strokeColor": "transparent"
@@ -419,6 +818,16 @@
             "showProgressBar": false,
             "type": "splunk.table"
         },
+        "viz_QYWTqB1O": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
         "viz_Qf58nJoW": {
             "context": {
                 "majorColorEditorConfig": [
@@ -444,11 +853,27 @@
             },
             "type": "splunk.singlevalue"
         },
+        "viz_RCRP10rX": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "AXFR Ratio"
+            },
+            "type": "splunk.markdown"
+        },
         "viz_RWM2OdqM": {
             "options": {
                 "customFontSize": 29,
                 "fontSize": "extraLarge",
                 "markdown": "AXFR Record Anomalous DNS"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_RaRohVQx": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "Query Freq Hourly"
             },
             "type": "splunk.markdown"
         },
@@ -499,6 +924,38 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_SwoxQeSh": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "Beacon StDev"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_TnhHQkT4": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "AVG Query Length"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_U2lx6qyS": {
+            "options": {
+                "customFontSize": 29,
+                "fontSize": "custom",
+                "markdown": "### Cluster 1"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_U6wk4w85": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "Beacon StDev"
+            },
+            "type": "splunk.markdown"
+        },
         "viz_URNQRHUq": {
             "options": {
                 "customFontSize": 29,
@@ -514,6 +971,26 @@
                 "markdown": "Affected Source IP"
             },
             "type": "splunk.markdown"
+        },
+        "viz_V0BIXq6j": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_VHG1cQWm": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
         },
         "viz_VNEzfCpX": {
             "context": {
@@ -540,6 +1017,18 @@
             },
             "type": "splunk.singlevalue"
         },
+        "viz_VeSMizAa": {
+            "dataSources": {
+                "primary": "ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
         "viz_VgwldXSC": {
             "eventHandlers": [],
             "options": {
@@ -550,7 +1039,25 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_VipBwY8x": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "Max Length DNS"
+            },
+            "type": "splunk.markdown"
+        },
         "viz_W9C4tWDg": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_WiwRYtzH": {
             "eventHandlers": [],
             "options": {
                 "fillColor": "#013062",
@@ -567,6 +1074,28 @@
                 "markdown": "### Anomalies Overview"
             },
             "type": "splunk.markdown"
+        },
+        "viz_XNoh3PKS": {
+            "dataSources": {
+                "primary": "ds_slP5P2ha_ds_YgLIud8R_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
+        "viz_XVudsovu": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
         },
         "viz_XkvjBszA": {
             "containerOptions": {},
@@ -589,6 +1118,16 @@
             "type": "splunk.linkgraph"
         },
         "viz_YyhQEPMy": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_Z2LFkn5Z": {
             "eventHandlers": [],
             "options": {
                 "fillColor": "#013062",
@@ -622,6 +1161,54 @@
                 "unit": ""
             },
             "type": "splunk.singlevalue"
+        },
+        "viz_ZShRamBV": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_ZXaD6v4Z": {
+            "dataSources": {
+                "primary": "ds_zbiDyOft_ds_8FSljBFu_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
+        "viz_ZnvBoR5P": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "HINFO Ratio"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_a302MiJV": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_azLhiQCF": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "TXT Ratio"
+            },
+            "type": "splunk.markdown"
         },
         "viz_bUizrwZV": {
             "eventHandlers": [],
@@ -712,6 +1299,19 @@
             "showProgressBar": false,
             "type": "splunk.scatter"
         },
+        "viz_bzkv8jov": {
+            "dataSources": {
+                "primary": "ds_ml5gz1Qn_ds_aB3YLoqT_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "numberPrecision": 4,
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
         "viz_c2tunneling_sources": {
             "dataSources": {
                 "primary": "ds_c2tunneling_sources"
@@ -778,11 +1378,31 @@
             "showProgressBar": false,
             "type": "splunk.area"
         },
+        "viz_cGCC8Mkc": {
+            "dataSources": {
+                "primary": "ds_mpYKQIS5_ds_q745drBO_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
         "viz_ckhVy5OK": {
             "options": {
                 "customFontSize": 29,
                 "fontSize": "custom",
                 "markdown": "### Query Length Anomalies"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_d5ouEd2R": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "ANY Ratio"
             },
             "type": "splunk.markdown"
         },
@@ -797,6 +1417,16 @@
             "eventHandlers": [],
             "options": {
                 "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_dmzFpvGK": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
                 "fillOpacity": 0.89,
                 "rx": 10,
                 "strokeColor": "transparent"
@@ -898,16 +1528,61 @@
             "showProgressBar": false,
             "type": "splunk.sankey"
         },
+        "viz_dpGDwN99": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_e1NuUdK6": {
+            "dataSources": {
+                "primary": "ds_aB3YLoqT_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "numberPrecision": 4,
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
         "viz_e7FDvZe8": {
+            "containerOptions": {},
             "dataSources": {
                 "primary": "ds_UQ3bHO9A"
             },
             "options": {
                 "backgroundColor": "transparent",
-                "lineColor": "#f8be34",
+                "lineColor": "#b6c75a",
+                "lineOpacity": 0.6,
                 "showNullAxis": false
             },
             "type": "splunk.parallelcoordinates"
+        },
+        "viz_edwg9GFY": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_eivwYV1V": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
         },
         "viz_fDXHMg8D": {
             "options": {
@@ -925,6 +1600,24 @@
             },
             "type": "splunk.markdown"
         },
+        "viz_fOLGzmZW": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_faJRdfiP": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "HINFO Ratio"
+            },
+            "type": "splunk.markdown"
+        },
         "viz_fg2Rz2MA": {
             "eventHandlers": [],
             "options": {
@@ -935,7 +1628,67 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_flOzaFpZ": {
+            "dataSources": {
+                "primary": "ds_q745drBO_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
         "viz_fpmYyOuw": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_g3HGJlRu": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_g7dTtuoi": {
+            "dataSources": {
+                "primary": "ds_DRRRgXmZ_ds_glU4SPhJ_ds_gHIjvHTs_ds_recordtype_summary"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
+        "viz_gVWe51fp": {
+            "options": {
+                "customFontSize": 21,
+                "fontSize": "custom",
+                "markdown": "### SOURCE IP COUNT"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_gXD7SjTO": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "Distrinct SubDNS"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_gaZ5OUPt": {
             "eventHandlers": [],
             "options": {
                 "fillColor": "#000000",
@@ -1017,6 +1770,24 @@
             },
             "type": "splunk.markdown"
         },
+        "viz_k5bCQTtP": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_kBPPrSno": {
+            "options": {
+                "customFontSize": 29,
+                "fontSize": "custom",
+                "markdown": "### Cluster 0"
+            },
+            "type": "splunk.markdown"
+        },
         "viz_kb0eG3UR": {
             "options": {
                 "customFontSize": 29,
@@ -1066,6 +1837,16 @@
             "showProgressBar": false,
             "type": "splunk.linkgraph"
         },
+        "viz_lnZXm2ea": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
         "viz_mDjJioVY": {
             "options": {
                 "customFontSize": 29,
@@ -1104,12 +1885,86 @@
             "showProgressBar": false,
             "type": "splunk.linkgraph"
         },
+        "viz_nDN5LbkZ": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_nUnutM8F": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_nubK6m2p": {
+            "options": {
+                "customFontSize": 21,
+                "fontSize": "custom",
+                "markdown": "### SOURCE IP COUNT"
+            },
+            "type": "splunk.markdown"
+        },
         "viz_oDQzkjUP": {
             "options": {
                 "fillColor": "transparent",
                 "strokeColor": "transparent"
             },
             "type": "splunk.rectangle"
+        },
+        "viz_pOWJSKI7": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_q8sRHGGP": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#013062",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_qDh9d26y": {
+            "dataSources": {
+                "primary": "ds_6aOw9hDO_ds_lSKMllAx_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "numberPrecision": 4,
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
+        "viz_qgeGbfdy": {
+            "dataSources": {
+                "primary": "ds_JFk48LiU_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "numberPrecision": 4,
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
         },
         "viz_querylength_sources": {
             "dataSources": {
@@ -1228,6 +2083,14 @@
             },
             "type": "splunk.pie"
         },
+        "viz_rO9ljjPb": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "Query Freq Hourly"
+            },
+            "type": "splunk.markdown"
+        },
         "viz_recordtype_sources": {
             "dataSources": {
                 "primary": "ds_recordtype_sources"
@@ -1282,6 +2145,28 @@
             },
             "type": "splunk.table"
         },
+        "viz_sERv76mJ": {
+            "dataSources": {
+                "primary": "ds_8FSljBFu_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
+        "viz_tUkhHd4J": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
         "viz_umkfvMMT": {
             "options": {
                 "customFontSize": 29,
@@ -1289,6 +2174,39 @@
                 "markdown": "### Domain Shadowing"
             },
             "type": "splunk.markdown"
+        },
+        "viz_vV1NPtJl": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#000000",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_w15ADY55": {
+            "dataSources": {
+                "primary": "ds_lSKMllAx_ds_wHrBTzr7"
+            },
+            "options": {
+                "backgroundColor": "transparent",
+                "numberPrecision": 4,
+                "sparklineDisplay": "off",
+                "trendDisplay": "off",
+                "unit": ""
+            },
+            "type": "splunk.singlevalue"
+        },
+        "viz_w8OXOLl4": {
+            "eventHandlers": [],
+            "options": {
+                "fillColor": "#62b3b2",
+                "fillOpacity": 0.89,
+                "rx": 10,
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
         },
         "viz_woQAln1q": {
             "eventHandlers": [],
@@ -1305,6 +2223,14 @@
                 "customFontSize": 29,
                 "fontSize": "extraLarge",
                 "markdown": "Query Length DNS"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_xywmdiI8": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "Distrinct SubDNS"
             },
             "type": "splunk.markdown"
         },
@@ -1342,9 +2268,43 @@
                 "strokeColor": "transparent"
             },
             "type": "splunk.rectangle"
+        },
+        "viz_zZ8iiEdZ": {
+            "options": {
+                "customFontSize": 15,
+                "fontSize": "custom",
+                "markdown": "ANY Ratio"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_zuhk9qdd": {
+            "options": {
+                "customFontSize": 29,
+                "fontSize": "custom",
+                "markdown": "### Behavioral Clustering"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_zz1cqz16": {
+            "options": {
+                "preserveAspectRatio": true,
+                "src": "/static/app/Splunk-DNS-Guard-AI/images/logo-nobg.png"
+            },
+            "type": "splunk.image"
         }
     },
     "dataSources": {
+        "ds_1a9gmaLd_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster0_query_freq_hourly",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==0\n| table avg_query_freq_hourly",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
         "ds_297CHp3v_ds_c2tunneling_timeline": {
             "name": "dnsguardai_dashboards_recordtype_timelines",
             "options": {
@@ -1363,6 +2323,28 @@
                 "queryParameters": {
                     "earliest": "$global_time.earliest$",
                     "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_6aOw9hDO_ds_lSKMllAx_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster1_any_ratio",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==1\n| table any_ratio",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_8FSljBFu_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster0_distinct_subdns",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==0\n| table avg_distinct_subdomains",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
                 }
             },
             "type": "ds.search"
@@ -1429,6 +2411,17 @@
             },
             "type": "ds.search"
         },
+        "ds_DRRRgXmZ_ds_glU4SPhJ_ds_gHIjvHTs_ds_recordtype_summary": {
+            "name": "dnsguardai_dashboards_clustering_cluster1_src_count",
+            "options": {
+                "query": "| inputlookup cluster_src_lookup\n| where cluster==1\n| stats count",
+                "queryParameters": {
+                    "earliest": "$global_time.earliest$",
+                    "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
         "ds_GUGDB17f_ds_wChB0JqS_ds_bkKtQGI3": {
             "name": "dnsguardai_dashboards_beaconing_dns_by_src copy 2",
             "options": {
@@ -1440,10 +2433,54 @@
             },
             "type": "ds.search"
         },
+        "ds_JFk48LiU_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster0_hinfo_ratio",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==0\n| table hinfo_ratio",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_K4aq0GUm_ds_1a9gmaLd_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster1_query_freq_hourly",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==1\n| table avg_query_freq_hourly",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_OA4Pazi2_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster0_txt_ratio",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==0\n| table txt_ratio",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
         "ds_PBonl1My": {
             "name": "dnsguardai_dashboards_anomalies_overview_detection_anomalous_dns",
             "options": {
                 "query": "| inputlookup anomalous_dns_lookup\n| stats dc(domain)",
+                "queryParameters": {
+                    "earliest": "$global_time.earliest$",
+                    "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_R65sbeDD_ds_u7ROugjs_ds_glU4SPhJ_ds_gHIjvHTs_ds_recordtype_summary": {
+            "name": "dnsguardai_dashboards_recordtype_hinfo_summary copy 3",
+            "options": {
+                "query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type==\"HINFO Record Anomalies\"\n| stats count",
                 "queryParameters": {
                     "earliest": "$global_time.earliest$",
                     "latest": "$global_time.latest$"
@@ -1462,10 +2499,21 @@
             },
             "type": "ds.search"
         },
+        "ds_TSNpE0s0_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster1_avg_query_length",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==1\n| table avg_len",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
         "ds_UQ3bHO9A": {
             "name": "test_cluster",
             "options": {
-                "query": "| inputlookup cluster_src_lookup\n| where cluster=1\n| table src, avg_distinct_subdomains, avg_query_freq_hourly, avg_len, beacon_stdev, max_len, txt_ratio, any_ratio, hinfo_ratio, axfr_ratio",
+                "query": "| inputlookup cluster_src_lookup\n| where cluster=1\n| table beacon_stdev avg_query_freq_hourly avg_len avg_distinct_subdomains max_len txt_ratio any_ratio hinfo_ratio axfr_ratio cluster\n| rename beacon_stdev as \"Beacon StDev\"  avg_query_freq_hourly as \"Query Freq Hourly\" avg_len as \"AVG Query Length\" avg_distinct_subdomains as \"Distinct SubDNS\"  max_len as \"Max Length DNS\" txt_ratio as \"TXT Ratio\" any_ratio as \"ANY Ratio\" hinfo_ratio as \"HINFO Ratio\" axfr_ratio as \"AXFR Ratio\" cluster as Cluster",
                 "queryParameters": {
                     "earliest": "-24h@h",
                     "latest": "now"
@@ -1491,6 +2539,39 @@
                 "queryParameters": {
                     "earliest": "$global_time.earliest$",
                     "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_XYmaq8Ba_ds_OA4Pazi2_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster1_txt_ratio",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==1\n| table txt_ratio",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_YgLIud8R_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster0_beacon_stdev",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==0\n| table beacon_stdev",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_aB3YLoqT_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster0_axfr_ratio",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==0\n| table axfr_ratio",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
                 }
             },
             "type": "ds.search"
@@ -1649,6 +2730,17 @@
             },
             "type": "ds.search"
         },
+        "ds_glU4SPhJ_ds_gHIjvHTs_ds_recordtype_summary": {
+            "name": "dnsguardai_dashboards_clustering_cluster0_src_count",
+            "options": {
+                "query": "| inputlookup cluster_src_lookup\n| where cluster==0\n| stats count",
+                "queryParameters": {
+                    "earliest": "$global_time.earliest$",
+                    "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
         "ds_hmGZr3DD_ds_PBonl1My": {
             "name": "dnsguardai_dashboards_anomalies_overview_detection_anomalous_detections",
             "options": {
@@ -1656,6 +2748,39 @@
                 "queryParameters": {
                     "earliest": "$global_time.earliest$",
                     "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_lSKMllAx_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster0_any_ratio",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==0\n| table any_ratio",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_ml5gz1Qn_ds_aB3YLoqT_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster1_axfr_ratio",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==1\n| table axfr_ratio",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_mpYKQIS5_ds_q745drBO_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster1_max_length_dns",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==1\n| table max_len",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
                 }
             },
             "type": "ds.search"
@@ -1678,6 +2803,28 @@
                 "queryParameters": {
                     "earliest": "$global_time.earliest$",
                     "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_q745drBO_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster0_max_length_dns",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==0\n| table max_len",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_qpm7QC3L_ds_JFk48LiU_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster1_hinfo_ratio",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==1\n| table hinfo_ratio",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
                 }
             },
             "type": "ds.search"
@@ -1719,6 +2866,17 @@
             "name": "dnsguardai_dashboards_querylength_timeline",
             "options": {
                 "query": "| `dns_data` | eval query_length = len(query) | where isnotnull(query_length) AND query_length > 0 \n| `extract_sub_domain`\n| stats max(query_length) as max_query_length by domain\n| sort - max_query_length\n| rename domain as Domain max_query_length as \"Max Query Length\"\n| head 10\n\n",
+                "queryParameters": {
+                    "earliest": "$global_time.earliest$",
+                    "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_rFrzVkq4_ds_u7ROugjs_ds_glU4SPhJ_ds_gHIjvHTs_ds_recordtype_summary": {
+            "name": "dnsguardai_dashboards_recordtype_hinfo_summary copy 4",
+            "options": {
+                "query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type==\"HINFO Record Anomalies\"\n| stats count",
                 "queryParameters": {
                     "earliest": "$global_time.earliest$",
                     "latest": "$global_time.latest$"
@@ -1770,10 +2928,32 @@
             },
             "type": "ds.search"
         },
+        "ds_slP5P2ha_ds_YgLIud8R_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster1_beacon_stdev",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==1\n| table beacon_stdev",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
         "ds_tw1j95uO_ds_recordtype_summary": {
             "name": "dnsguardai_dashboards_recordtype_axfr_summary",
             "options": {
                 "query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type==\"AXFR Record Anomalies\"\n| stats count",
+                "queryParameters": {
+                    "earliest": "$global_time.earliest$",
+                    "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_u7ROugjs_ds_glU4SPhJ_ds_gHIjvHTs_ds_recordtype_summary": {
+            "name": "dnsguardai_dashboards_recordtype_hinfo_summary copy 2",
+            "options": {
+                "query": "| inputlookup anomalous_dns_lookup\n| where anomalous_type==\"HINFO Record Anomalies\"\n| stats count",
                 "queryParameters": {
                     "earliest": "$global_time.earliest$",
                     "latest": "$global_time.latest$"
@@ -1799,6 +2979,17 @@
             },
             "type": "ds.search"
         },
+        "ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster0_avg_query_length",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==0\n| table avg_len",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
+                }
+            },
+            "type": "ds.search"
+        },
         "ds_wIDUVhim_ds_recordtype_sources": {
             "name": "dnsguardai_dashboards_recordtype_sources2",
             "options": {
@@ -1817,6 +3008,17 @@
                 "queryParameters": {
                     "earliest": "$global_time.earliest$",
                     "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_zbiDyOft_ds_8FSljBFu_ds_wHrBTzr7": {
+            "name": "dnsguardai_dashboards_clustering_cluster1_distinct_subdns",
+            "options": {
+                "query": "| summary dns_behavior_clusters\n| where cluster==1\n| table avg_distinct_subdomains",
+                "queryParameters": {
+                    "earliest": "-24h@h",
+                    "latest": "now"
                 }
             },
             "type": "ds.search"
@@ -3003,17 +4205,967 @@
                 "options": {
                     "backgroundColor": "#002345",
                     "display": "fit-to-width",
-                    "height": 1000,
+                    "height": 1500,
                     "width": 1430
                 },
                 "structure": [
                     {
+                        "item": "viz_fOLGzmZW",
+                        "position": {
+                            "h": 330,
+                            "w": 1390,
+                            "x": 20,
+                            "y": 670
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_a302MiJV",
+                        "position": {
+                            "h": 330,
+                            "w": 1390,
+                            "x": 10,
+                            "y": 660
+                        },
+                        "type": "block"
+                    },
+                    {
                         "item": "viz_e7FDvZe8",
                         "position": {
-                            "h": 480,
-                            "w": 1380,
+                            "h": 310,
+                            "w": 1370,
                             "x": 20,
-                            "y": 410
+                            "y": 670
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_tUkhHd4J",
+                        "position": {
+                            "h": 70,
+                            "w": 260,
+                            "x": 30,
+                            "y": 30
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_KpqjRfcM",
+                        "position": {
+                            "h": 70,
+                            "w": 260,
+                            "x": 20,
+                            "y": 20
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_zz1cqz16",
+                        "position": {
+                            "h": 50,
+                            "w": 60,
+                            "x": 30,
+                            "y": 30
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_28p6DpD0",
+                        "position": {
+                            "h": 40,
+                            "w": 220,
+                            "x": 90,
+                            "y": 40
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_g3HGJlRu",
+                        "position": {
+                            "h": 70,
+                            "w": 1100,
+                            "x": 310,
+                            "y": 30
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_QYWTqB1O",
+                        "position": {
+                            "h": 70,
+                            "w": 1100,
+                            "x": 300,
+                            "y": 20
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_zuhk9qdd",
+                        "position": {
+                            "h": 50,
+                            "w": 400,
+                            "x": 630,
+                            "y": 30
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_3x1lHs4V",
+                        "position": {
+                            "h": 530,
+                            "w": 700,
+                            "x": 10,
+                            "y": 120
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_w8OXOLl4",
+                        "position": {
+                            "h": 530,
+                            "w": 700,
+                            "x": 710,
+                            "y": 120
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_JzQeDdOB",
+                        "position": {
+                            "h": 70,
+                            "w": 680,
+                            "x": 20,
+                            "y": 110
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_V0BIXq6j",
+                        "position": {
+                            "h": 70,
+                            "w": 680,
+                            "x": 720,
+                            "y": 110
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_kBPPrSno",
+                        "position": {
+                            "h": 50,
+                            "w": 180,
+                            "x": 269,
+                            "y": 123
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_U2lx6qyS",
+                        "position": {
+                            "h": 50,
+                            "w": 180,
+                            "x": 980,
+                            "y": 123
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_eivwYV1V",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 580,
+                            "y": 210
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_Z2LFkn5Z",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 570,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_gaZ5OUPt",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 430,
+                            "y": 210
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_8zQLIGAm",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 420,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_nDN5LbkZ",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 280,
+                            "y": 210
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_k5bCQTtP",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 270,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_nUnutM8F",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 580,
+                            "y": 360
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_ZShRamBV",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 570,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_pOWJSKI7",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 430.00000000000006,
+                            "y": 360
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_edwg9GFY",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 420.00000000000006,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_2L5gOxs8",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 280.00000000000006,
+                            "y": 360
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_lnZXm2ea",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 270.00000000000006,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_VeSMizAa",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 570,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_H9ExauL2",
+                        "position": {
+                            "h": 250,
+                            "w": 230,
+                            "x": 30,
+                            "y": 250
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_GJ4l1Hgk",
+                        "position": {
+                            "h": 250,
+                            "w": 230,
+                            "x": 20,
+                            "y": 240
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_EX2AbZEw",
+                        "position": {
+                            "h": 250,
+                            "w": 230,
+                            "x": 20,
+                            "y": 240
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_Jz0BaZ3O",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 580,
+                            "y": 510
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_VHG1cQWm",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 570,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_KXdVjWHU",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 430.00000000000006,
+                            "y": 510
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_4QP8OqUm",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 420.00000000000006,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_HQoCiF1j",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 280.00000000000006,
+                            "y": 510
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_WiwRYtzH",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 270.00000000000006,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_SwoxQeSh",
+                        "position": {
+                            "h": 30,
+                            "w": 120,
+                            "x": 290,
+                            "y": 320
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_rO9ljjPb",
+                        "position": {
+                            "h": 30,
+                            "w": 140,
+                            "x": 423,
+                            "y": 320
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_TnhHQkT4",
+                        "position": {
+                            "h": 30,
+                            "w": 140,
+                            "x": 573,
+                            "y": 320
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_gXD7SjTO",
+                        "position": {
+                            "h": 30,
+                            "w": 130,
+                            "x": 280,
+                            "y": 470
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_0jTfla3k",
+                        "position": {
+                            "h": 30,
+                            "w": 127,
+                            "x": 430,
+                            "y": 470
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_GCpRXy4i",
+                        "position": {
+                            "h": 30,
+                            "w": 90,
+                            "x": 600,
+                            "y": 470
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_d5ouEd2R",
+                        "position": {
+                            "h": 30,
+                            "w": 90,
+                            "x": 300,
+                            "y": 620
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_faJRdfiP",
+                        "position": {
+                            "h": 30,
+                            "w": 110,
+                            "x": 440,
+                            "y": 620
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_RCRP10rX",
+                        "position": {
+                            "h": 30,
+                            "w": 110,
+                            "x": 590,
+                            "y": 620
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_nubK6m2p",
+                        "position": {
+                            "h": 40,
+                            "w": 320,
+                            "x": 20,
+                            "y": 510
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_MbWqITPh",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 420,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_22ueAaXa",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 270,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_2HzSil2A",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 570,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_flOzaFpZ",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 420,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_sERv76mJ",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 270,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_e1NuUdK6",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 570,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_qgeGbfdy",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 420,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_w15ADY55",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 270,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_DzcQ36T4",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1280,
+                            "y": 210
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_dmzFpvGK",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1270,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_PFj7bEcc",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1130,
+                            "y": 210
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_PAzHQZ33",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1120,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_6OCV1YxL",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 980.0000000000001,
+                            "y": 210
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_dpGDwN99",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 970.0000000000001,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_BmZbit44",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1280,
+                            "y": 360
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_q8sRHGGP",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1270,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_B2Y22460",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1130.0000000000002,
+                            "y": 360
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_2PebLLyg",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1120.0000000000002,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_vV1NPtJl",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 980.0000000000002,
+                            "y": 360
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_XVudsovu",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 970.0000000000002,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_2ePp15Pg",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1270,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_CfSmz7gr",
+                        "position": {
+                            "h": 250,
+                            "w": 230,
+                            "x": 730.0000000000001,
+                            "y": 250
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_JgqTblKf",
+                        "position": {
+                            "h": 250,
+                            "w": 230,
+                            "x": 720.0000000000001,
+                            "y": 240
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_g7dTtuoi",
+                        "position": {
+                            "h": 250,
+                            "w": 220,
+                            "x": 730,
+                            "y": 240
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_A69CKvwU",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1280,
+                            "y": 510
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_3Slbo2OJ",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1270,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_LGyyY4RK",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1130.0000000000002,
+                            "y": 510
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_JpLa4PUS",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1120.0000000000002,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_HvuSUU5d",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 980.0000000000002,
+                            "y": 510
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_MVHiZf7N",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 970.0000000000002,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_U6wk4w85",
+                        "position": {
+                            "h": 30,
+                            "w": 120,
+                            "x": 990.0000000000001,
+                            "y": 320
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_RaRohVQx",
+                        "position": {
+                            "h": 30,
+                            "w": 140,
+                            "x": 1123,
+                            "y": 320
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_6TQVPGaC",
+                        "position": {
+                            "h": 30,
+                            "w": 140,
+                            "x": 1273,
+                            "y": 320
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_xywmdiI8",
+                        "position": {
+                            "h": 30,
+                            "w": 130,
+                            "x": 980.0000000000001,
+                            "y": 470
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_VipBwY8x",
+                        "position": {
+                            "h": 30,
+                            "w": 127,
+                            "x": 1130,
+                            "y": 470
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_azLhiQCF",
+                        "position": {
+                            "h": 30,
+                            "w": 90,
+                            "x": 1300,
+                            "y": 470
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_zZ8iiEdZ",
+                        "position": {
+                            "h": 30,
+                            "w": 90,
+                            "x": 1000.0000000000001,
+                            "y": 620
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_ZnvBoR5P",
+                        "position": {
+                            "h": 30,
+                            "w": 110,
+                            "x": 1140,
+                            "y": 620
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_7TvpVPVN",
+                        "position": {
+                            "h": 30,
+                            "w": 110,
+                            "x": 1290,
+                            "y": 620
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_gVWe51fp",
+                        "position": {
+                            "h": 40,
+                            "w": 320,
+                            "x": 720.0000000000001,
+                            "y": 510
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_2ZrCUuUi",
+                        "position": {
+                            "h": 100,
+                            "w": 120,
+                            "x": 1130,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_XNoh3PKS",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 970.0000000000001,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_GBY4uNHh",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1270,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_cGCC8Mkc",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1120,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_ZXaD6v4Z",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 970.0000000000001,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_bzkv8jov",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1270,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_DcN1smG7",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1120,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_qDh9d26y",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 970.0000000000001,
+                            "y": 500
                         },
                         "type": "block"
                     }
