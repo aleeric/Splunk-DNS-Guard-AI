@@ -388,6 +388,24 @@
         "viz_YcarBgIG": {
             "containerOptions": {},
             "context": {
+                "DisabledColumnFormatEditorConfig": {
+                    "string": {
+                        "unitPosition": "after"
+                    }
+                },
+                "DisabledRowBackgroundColorsEditorConfig": [
+                    {
+                        "match": "True",
+                        "value": "#d41f1f"
+                    },
+                    {
+                        "match": "False",
+                        "value": "#669922"
+                    }
+                ],
+                "DisabledRowColorsEditorConfig": [
+                    "#ffffff"
+                ],
                 "Is_ScheduledColumnFormatEditorConfig": {
                     "string": {
                         "unitPosition": "after"
@@ -428,6 +446,14 @@
                 "columnFormat": {
                     "Description": {
                         "width": 255
+                    },
+                    "Disabled": {
+                        "align": "auto",
+                        "data": "> table | seriesByName(\"Disabled\") | formatByType(DisabledColumnFormatEditorConfig)",
+                        "headerAlign": "auto",
+                        "rowBackgroundColors": "> table | seriesByName(\"Disabled\") | matchValue(DisabledRowBackgroundColorsEditorConfig)",
+                        "rowColors": "> table | seriesByName('Disabled') | pick(DisabledRowColorsEditorConfig)",
+                        "textOverflow": "break-word"
                     },
                     "Is Scheduled": {
                         "align": "auto",
@@ -695,7 +721,7 @@
         "ds_N7Y8pHRC": {
             "name": "dnsguardai_management_savedsearches_table",
             "options": {
-                "query": "|rest/servicesNS/-/Splunk-DNS-Guard-AI/saved/searches splunk_server=local\n| search title=\"DNSGuardAI*\" OR title=\"Threat - DNSGuardAI*\"\n| eval is_scheduled = if(is_scheduled=\"1\", \"True\", \"False\")\n| table title description next_scheduled_time is_scheduled cron_schedule\n| rename title as Title description as Description next_scheduled_time as \"Next Scheduled Time\" is_scheduled as \"Is Scheduled\" cron_schedule as \"Cron Schedule\"",
+                "query": "|rest/servicesNS/-/Splunk-DNS-Guard-AI/saved/searches splunk_server=local\n| search title=\"DNSGuardAI*\" OR title=\"Threat - DNSGuardAI*\"\n| eval is_scheduled = if(is_scheduled=\"1\", \"True\", \"False\"), disabled = if(disabled=\"1\", \"True\", \"False\")\n| table title description disabled is_scheduled next_scheduled_time cron_schedule\n| rename title as Title description as Description next_scheduled_time as \"Next Scheduled Time\" is_scheduled as \"Is Scheduled\" cron_schedule as \"Cron Schedule\" disabled as \"Disabled\"",
                 "queryParameters": {
                     "earliest": "-24h@h",
                     "latest": "now"
