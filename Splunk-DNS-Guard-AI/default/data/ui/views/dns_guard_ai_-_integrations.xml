@@ -189,7 +189,7 @@
         "ds_mReZg6Gn": {
             "name": "Search_1",
             "options": {
-                "query": "| rest/servicesNS/-/Splunk-DNS-Guard-AI/configs/conf-risk_factors splunk_server=local\n| search title=\"DNS Guard AI*\"\n| spath input=conditions\n| rename {}.comparator as comparator {}.field as field {}.value as val {}.value_type as value_type\n| eval disabled = if(disabled=\"1\", \"True\", \"False\"), comparator = case(comparator=\"equal\", \" = \"), condition = field . comparator . value\n| table title description condition value disabled\n| rename title as Factor description as Description condition as Condition value as \"Risk Value\" disabled as Disabled",
+                "query": "| rest/servicesNS/-/Splunk-DNS-Guard-AI/configs/conf-risk_factors splunk_server=local\n| search title=\"DNS Guard AI*\"\n| spath input=conditions\n| rename {}.comparator as comparator {}.field as field {}.value as val {}.value_type as value_type\n| eval disabled = if(disabled=\"1\", \"True\", \"False\"), comparator = case(comparator=\"equal\", \" = \"), condition = field . comparator . \"\\\"\" . val . \"\\\"\"\n| table title description condition value disabled\n| rename title as Factor description as Description condition as Condition value as \"Risk Value\" disabled as Disabled",
                 "queryParameters": {
                     "earliest": "-24h@h",
                     "latest": "now"
