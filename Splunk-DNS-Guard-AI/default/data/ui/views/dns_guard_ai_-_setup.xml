@@ -1155,7 +1155,7 @@
                 "customFontSize": 18,
                 "fontColor": "#ffffff",
                 "fontSize": "custom",
-                "markdown": "### Import Data into Splunk via Splunk Web\n\n- Go to **Settings** → **Data Inputs** → **File & Directories** → **New Local File & Directory** →\nBrowse & Select ’**dns events.json’** → Select **’Index Once’** → Click **Next**\n\n- Select  **’synthetic-data’** from Source type list → **App Context: ’Search & Reporting (search)’**\n→ Host field value: **’dns-guard-simulator’** → Create a new index → Index name: **’synthetic-\ndata’** (Important!); leave the other fields as they are. → Click **Save** → Click **Review** → Click **Submit**"
+                "markdown": "### Import Data into Splunk via Splunk Web\n\n- Go to **Settings** → **Add Data** → **Upload** files from my computer → Select File **dns_events.json** → Click **Next**\n\n- Select  **’synthetic-data’** from Source type list → Click **Next** → Host field value: **’dns-guard-simulator’** → Create a new index → Index name: **’synthetic-\ndata’** (Important!); leave the other fields as they are. → Click **Save** → Click **Review** → Click **Submit**"
             },
             "type": "splunk.markdown"
         },
@@ -3507,7 +3507,7 @@
                             "h": 150,
                             "w": 810,
                             "x": 330,
-                            "y": 347
+                            "y": 345
                         },
                         "type": "block"
                     },
