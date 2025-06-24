@@ -115,6 +115,13 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_sZGLtiRV": {
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
         "viz_sa8rWrPI": {
             "context": {
                 "DisabledColumnFormatEditorConfig": {
@@ -143,7 +150,7 @@
                 "backgroundColor": "transparent",
                 "columnFormat": {
                     "Condition": {
-                        "width": 60
+                        "width": 104
                     },
                     "Description": {
                         "width": 90
@@ -300,16 +307,6 @@
                         "type": "block"
                     },
                     {
-                        "item": "viz_sa8rWrPI",
-                        "position": {
-                            "h": 710,
-                            "w": 1340,
-                            "x": 40,
-                            "y": 250
-                        },
-                        "type": "block"
-                    },
-                    {
                         "item": "viz_u1zubxrH",
                         "position": {
                             "h": 60,
@@ -338,18 +335,28 @@
                             "y": 168
                         },
                         "type": "block"
+                    },
+                    {
+                        "item": "viz_sZGLtiRV",
+                        "position": {
+                            "h": 1000,
+                            "w": 1430,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_sa8rWrPI",
+                        "position": {
+                            "h": 710,
+                            "w": 1340,
+                            "x": 40,
+                            "y": 250
+                        },
+                        "type": "block"
                     }
                 ],
-                "type": "absolute"
-            },
-            "layout_MZAN9Mvw": {
-                "options": {
-                    "backgroundColor": "#002345",
-                    "display": "fit-to-width",
-                    "height": 1000,
-                    "width": 1430
-                },
-                "structure": [],
                 "type": "absolute"
             }
         },
@@ -361,10 +368,6 @@
                 {
                     "label": "Enterprise Security",
                     "layoutId": "layout_1"
-                },
-                {
-                    "label": "DGA App",
-                    "layoutId": "layout_MZAN9Mvw"
                 }
             ]
         }
