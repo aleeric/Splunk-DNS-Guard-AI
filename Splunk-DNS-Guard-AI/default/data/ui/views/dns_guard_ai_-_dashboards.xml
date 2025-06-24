@@ -4,7 +4,7 @@
     <description></description>
     <definition><![CDATA[
 {
-    "title": "Dashboards",
+    "title": "DNS Guard AI - Dashboards",
     "description": "",
     "inputs": {
         "input_Jpc3C7jh": {
@@ -605,6 +605,13 @@
             },
             "type": "splunk.rectangle"
         },
+        "viz_ISI4kcXv": {
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
         "viz_IlDlE9pG": {
             "eventHandlers": [],
             "options": {
@@ -994,11 +1001,11 @@
                 },
                 "ClusterRowBackgroundColorsEditorConfig": [
                     {
-                        "match": 1,
+                        "to": 1,
                         "value": "#ec9960"
                     },
                     {
-                        "match": 0,
+                        "from": 1,
                         "value": "#62b3b2"
                     }
                 ],
@@ -1019,7 +1026,7 @@
                         "align": "auto",
                         "data": "> table | seriesByName(\"Cluster\") | formatByType(ClusterColumnFormatEditorConfig)",
                         "headerAlign": "auto",
-                        "rowBackgroundColors": "> table | seriesByName(\"Cluster\") | matchValue(ClusterRowBackgroundColorsEditorConfig)",
+                        "rowBackgroundColors": "> table | seriesByName(\"Cluster\") | rangeValue(ClusterRowBackgroundColorsEditorConfig)",
                         "rowColors": "> table | seriesByName('Cluster') | pick(ClusterRowColorsEditorConfig)",
                         "textOverflow": "break-word"
                     },
@@ -2587,7 +2594,7 @@
             "type": "ds.search"
         },
         "ds_UQ3bHO9A": {
-            "name": "test_cluster",
+            "name": "dnsguardai_dashboards_clustering_par",
             "options": {
                 "query": "| inputlookup cluster_src_lookup\n| table beacon_stdev avg_query_freq_hourly avg_len avg_distinct_subdomains max_len txt_ratio any_ratio hinfo_ratio axfr_ratio cluster\n| rename beacon_stdev as \"Beacon StDev\"  avg_query_freq_hourly as \"Query Freq Hourly\" avg_len as \"AVG Query Length\" avg_distinct_subdomains as \"Distinct SubDNS\"  max_len as \"Max Length DNS\" txt_ratio as \"TXT Ratio\" any_ratio as \"ANY Ratio\" hinfo_ratio as \"HINFO Ratio\" axfr_ratio as \"AXFR Ratio\" cluster as Cluster",
                 "queryParameters": {
@@ -2829,7 +2836,7 @@
             "type": "ds.search"
         },
         "ds_kRwrchvz": {
-            "name": "Search_1",
+            "name": "dnsguardai_dashboards_clustering_table",
             "options": {
                 "query": "| inputlookup cluster_src_lookup\n| table cluster src beacon_stdev avg_query_freq_hourly avg_len avg_distinct_subdomains max_len txt_ratio any_ratio hinfo_ratio axfr_ratio \n| rename beacon_stdev as \"Beacon StDev\"  avg_query_freq_hourly as \"Query Freq Hourly\" avg_len as \"AVG Query Length\" avg_distinct_subdomains as \"Distinct SubDNS\"  max_len as \"Max Length DNS\" txt_ratio as \"TXT Ratio\" any_ratio as \"ANY Ratio\" hinfo_ratio as \"HINFO Ratio\" axfr_ratio as \"AXFR Ratio\" cluster as Cluster"
             },
@@ -4323,16 +4330,6 @@
                         "type": "block"
                     },
                     {
-                        "item": "viz_e7FDvZe8",
-                        "position": {
-                            "h": 310,
-                            "w": 1450,
-                            "x": 30,
-                            "y": 690
-                        },
-                        "type": "block"
-                    },
-                    {
                         "item": "viz_tUkhHd4J",
                         "position": {
                             "h": 70,
@@ -4583,16 +4580,6 @@
                         "type": "block"
                     },
                     {
-                        "item": "viz_VeSMizAa",
-                        "position": {
-                            "h": 100,
-                            "w": 130,
-                            "x": 590,
-                            "y": 200
-                        },
-                        "type": "block"
-                    },
-                    {
                         "item": "viz_H9ExauL2",
                         "position": {
                             "h": 250,
@@ -4609,16 +4596,6 @@
                             "w": 230,
                             "x": 40,
                             "y": 240
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_EX2AbZEw",
-                        "position": {
-                            "h": 240,
-                            "w": 220,
-                            "x": 50,
-                            "y": 250
                         },
                         "type": "block"
                     },
@@ -4783,86 +4760,6 @@
                         "type": "block"
                     },
                     {
-                        "item": "viz_MbWqITPh",
-                        "position": {
-                            "h": 100,
-                            "w": 130,
-                            "x": 440,
-                            "y": 200
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_22ueAaXa",
-                        "position": {
-                            "h": 100,
-                            "w": 130,
-                            "x": 290,
-                            "y": 200
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_2HzSil2A",
-                        "position": {
-                            "h": 100,
-                            "w": 130,
-                            "x": 590,
-                            "y": 350
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_flOzaFpZ",
-                        "position": {
-                            "h": 100,
-                            "w": 130,
-                            "x": 440,
-                            "y": 350
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_sERv76mJ",
-                        "position": {
-                            "h": 100,
-                            "w": 130,
-                            "x": 290,
-                            "y": 350
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_e1NuUdK6",
-                        "position": {
-                            "h": 100,
-                            "w": 130,
-                            "x": 590,
-                            "y": 500
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_qgeGbfdy",
-                        "position": {
-                            "h": 100,
-                            "w": 130,
-                            "x": 440,
-                            "y": 500
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_w15ADY55",
-                        "position": {
-                            "h": 100,
-                            "w": 130,
-                            "x": 290,
-                            "y": 500
-                        },
-                        "type": "block"
-                    },
-                    {
                         "item": "viz_DzcQ36T4",
                         "position": {
                             "h": 100,
@@ -4983,16 +4880,6 @@
                         "type": "block"
                     },
                     {
-                        "item": "viz_2ePp15Pg",
-                        "position": {
-                            "h": 100,
-                            "w": 130,
-                            "x": 1340,
-                            "y": 200
-                        },
-                        "type": "block"
-                    },
-                    {
                         "item": "viz_CfSmz7gr",
                         "position": {
                             "h": 250,
@@ -5009,16 +4896,6 @@
                             "w": 230,
                             "x": 790,
                             "y": 240
-                        },
-                        "type": "block"
-                    },
-                    {
-                        "item": "viz_g7dTtuoi",
-                        "position": {
-                            "h": 240,
-                            "w": 220,
-                            "x": 800,
-                            "y": 250
                         },
                         "type": "block"
                     },
@@ -5183,6 +5060,146 @@
                         "type": "block"
                     },
                     {
+                        "item": "viz_EnrNogV7",
+                        "position": {
+                            "h": 440,
+                            "w": 1470,
+                            "x": 20,
+                            "y": 1040
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_ISI4kcXv",
+                        "position": {
+                            "h": 1500,
+                            "w": 1520,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_EX2AbZEw",
+                        "position": {
+                            "h": 240,
+                            "w": 220,
+                            "x": 50,
+                            "y": 250
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_22ueAaXa",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 290,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_MbWqITPh",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 440,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_VeSMizAa",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 590,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_2HzSil2A",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 590,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_flOzaFpZ",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 440,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_sERv76mJ",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 290,
+                            "y": 350
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_w15ADY55",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 290,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_qgeGbfdy",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 440,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_e1NuUdK6",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 590,
+                            "y": 500
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_g7dTtuoi",
+                        "position": {
+                            "h": 240,
+                            "w": 220,
+                            "x": 800,
+                            "y": 250
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_XNoh3PKS",
+                        "position": {
+                            "h": 100,
+                            "w": 130,
+                            "x": 1040,
+                            "y": 200
+                        },
+                        "type": "block"
+                    },
+                    {
                         "item": "viz_2ZrCUuUi",
                         "position": {
                             "h": 100,
@@ -5193,11 +5210,11 @@
                         "type": "block"
                     },
                     {
-                        "item": "viz_XNoh3PKS",
+                        "item": "viz_2ePp15Pg",
                         "position": {
                             "h": 100,
                             "w": 130,
-                            "x": 1040,
+                            "x": 1340,
                             "y": 200
                         },
                         "type": "block"
@@ -5233,11 +5250,11 @@
                         "type": "block"
                     },
                     {
-                        "item": "viz_bzkv8jov",
+                        "item": "viz_qDh9d26y",
                         "position": {
                             "h": 100,
                             "w": 130,
-                            "x": 1340,
+                            "x": 1040,
                             "y": 500
                         },
                         "type": "block"
@@ -5253,22 +5270,22 @@
                         "type": "block"
                     },
                     {
-                        "item": "viz_qDh9d26y",
+                        "item": "viz_bzkv8jov",
                         "position": {
                             "h": 100,
                             "w": 130,
-                            "x": 1040,
+                            "x": 1340,
                             "y": 500
                         },
                         "type": "block"
                     },
                     {
-                        "item": "viz_EnrNogV7",
+                        "item": "viz_e7FDvZe8",
                         "position": {
-                            "h": 440,
-                            "w": 1470,
-                            "x": 20,
-                            "y": 1040
+                            "h": 310,
+                            "w": 1450,
+                            "x": 30,
+                            "y": 690
                         },
                         "type": "block"
                     },
