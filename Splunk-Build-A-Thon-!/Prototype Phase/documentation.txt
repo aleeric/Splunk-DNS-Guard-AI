@@ -1,5 +1,6 @@
-\documentclass[4pt]{article}
-\usepackage[margin=1in]{geometry}
+\documentclass[9pt]{article} 
+
+\usepackage[vmargin=0.9in, hmargin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{booktabs}
@@ -9,17 +10,33 @@
 \usepackage{caption}
 \usepackage{float}
 \usepackage{wrapfig}
+\usepackage{titling}
+\usepackage{setspace}
+
+\setlength{\droptitle}{-7em} 
+
+\titlespacing*{\section}{0pt}{2ex plus 1ex minus .2ex}{1ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1.5ex plus 1ex minus .2ex}{0.5ex plus .2ex}
 
 \titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{}
+
+\setlist{noitemsep, topsep=0.5ex}
+
+\setlength{\textfloatsep}{10pt plus 1.0pt minus 2.0pt}
+\setlength{\intextsep}{10pt plus 1.0pt minus 2.0pt}
+
+\raggedbottom 
+
 \title{\textbf{DNS Guard AI}\\\large Behavioral DNS threat detection with Splunk MLTK}
 \author{Riccardo Alesci}
 \date{}
 
 \begin{document}
-\maketitle
 
-\vspace{-1em}
+\setstretch{0.95} 
+
+\maketitle
 
 \section{Problem Statement}
 The \textbf{Domain Name System (DNS)} is a fundamental pillar of modern network communication, responsible for resolving hostnames to IP addresses. Despite its critical role, \textbf{DNS} often remains \textbf{under-monitored} within enterprise security strategies, making it an attractive vector for threat actors. Advanced adversaries increasingly leverage DNS to establish \textbf{command-and-control (C2)} channels, exfiltrate \textbf{sensitive information}, and perform \textbf{stealth reconnaissance activities—all} while blending within legitimate traffic patterns.
@@ -39,20 +56,20 @@ The architecture illustrates how DNS Guard AI processes DNS events mapped to the
 
 \section{Machine Learning Approach}
 The detection engine of \textbf{DNS Guard} AI integrates multiple unsupervised learning algorithms to identify deviations from normal DNS behavior across diverse threat dimensions:
-\begin{itemize}[noitemsep]
+\begin{itemize}
     \item \textbf{Density Function Algorithm}
-    \begin{itemize}[noitemsep]
+    \begin{itemize}
         \item \textbf{Beaconing}:  Detects regular, periodic DNS queries at consistent intervals—a hallmark of malware communicating with command and control servers. Analyzes consistency of time gaps between queries to the same domain
     \end{itemize}
     \item \textbf{Anomaly Detection Algorithm}
-    \begin{itemize}[noitemsep]
+    \begin{itemize}
         \item \textbf{Record Type Anomalies}: Detects abnormal usage of specific DNS record types often associated with reconnaissance or data exfiltration. Identifies anomalies in the usage of TXT (data exfiltration), ANY (broad queries), HINFO (host info leakage), and AXFR (zone transfer attempts) records by host.
         \item \textbf{C2 Tunneling Detection}: Identifies hosts making an unusually high number of DNS queries, which could indicate command and control communication or data exfiltration through DNS tunneling. 
         \item \textbf{Query Length Anomalies}: Detects unusually long DNS queries that may represent data exfiltration channels where sensitive information is encoded in the query itself. Identifies anomalies in query string length by host.
         \item \textbf{Domain Shadowing}: Identifies patterns where many unique subdomains are requested for a legitimate domain, which may indicate an attacker using compromised DNS accounts to create malicious subdomains. Measures distinct subdomain count by parent domain and identifies anomalies.
     \end{itemize}
     \item \textbf{K Means Algorithm}
-    \begin{itemize}[noitemsep]
+    \begin{itemize}
         \item \textbf{Behavioral Clustering}: Groups hosts with similar abnormal DNS behavior, which can reveal coordinated attacks or infected host groups across the enterprise. Uses KMeans clustering on multiple DNS behavior features.
     \end{itemize}
 \end{itemize}
@@ -60,20 +77,20 @@ The detection engine of \textbf{DNS Guard} AI integrates multiple unsupervised l
 \section{Installation and Configuration}
 
 \subsection*{Prerequisites}
-\begin{itemize}[noitemsep]
+\begin{itemize}
     \item Splunk Enterprise/Cloud 8.0+
     \item Splunk machine with at least \textbf{16 GB of RAM} is required for the app to run well
 \end{itemize}
 
 Install the following apps from Splunkbase:
-\begin{itemize}[noitemsep]
+\begin{itemize}
     \item Splunk CIM App
     \item Splunk MLTK App
     \item Python for Scientific Computing
 \end{itemize}
 
 \subsection*{1. Install the App \& Generate Test Data}
-\begin{itemize}[noitemsep]
+\begin{itemize}
     \item Clone the repo:
     \begin{verbatim}
 git clone https://github.com/aleeric/Splunk-DNS-Guard-AI.git
@@ -89,18 +106,18 @@ git clone https://github.com/aleeric/Splunk-DNS-Guard-AI.git
 
 \subsection*{2. Import Synthetic Data into Splunk}
 \textbf{Via Splunk Web}:
-\begin{itemize}[noitemsep]
-    \item Go to \textbf{Settings → Data Inputs → File \& Directories → New Local File \& Directory → }Browse \& Select\textbf{ 'dns\_events.json' → }Select\textbf{ 'Index Once' → }Click\textbf{ Next}
-    \item Select \textbf{'synthetic-data'} from \textbf{Source type} list → \textbf{App Context: 'Search \& Reporting (search)'} → \textbf{Host field value: 'dns-guard-simulator'} → Create a new index →\textbf{ Index name: 'synthetic-data'} (Important!); leave the other fields as they are. → Click \textbf{Save} → Click \textbf{Review} → Click \textbf{Submit}
+\begin{itemize}
+    \item Go to \textbf{Settings} → \textbf{Add Data} → \textbf{Upload} files from my computer → \textbf{Select File} 'dns\_events.json' → Click \textbf{Next}
+    \item Select \textbf{'synthetic-data'} from \textbf{Source type} list → Click \textbf{Next} → \textbf{Host field value: 'dns-guard-simulator'} → Create a new index →\textbf{ Index name: 'synthetic-data'} (Important!); leave the other fields as they are. → Click \textbf{Save} → Click \textbf{Review} → Click \textbf{Submit}
 \end{itemize}
 
 \subsection*{3. Map to Network\_Resolution Model}
-\begin{itemize}[noitemsep]
+\begin{itemize}
     \item Go to \textbf{Apps → Manage Apps → }Search\textbf{ 'CIM' → }Click\textbf{ Set up → }Search\textbf{ "Network Resolution" → }Insert\textbf{ 'synthetic-data' }into\textbf{ 'Indexes allowlist' }field\textbf{ → }Click\textbf{ Save}
 \end{itemize}
 
 \subsection*{5. Verify Setup}
-\begin{itemize}[noitemsep]
+\begin{itemize}
     \item Open \textbf{DNS Guard AI} on Splunk Web Interface
     \item Go to \textbf{setup} → Follow Steps
 \end{itemize}
