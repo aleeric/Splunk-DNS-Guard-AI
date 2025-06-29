@@ -1595,7 +1595,7 @@
         "ds_0d278tIx_ds_wahErERv_ds_2YOW63hy": {
             "name": "setup_mltk_configuration_setup_querylength_detection",
             "options": {
-                "query": "| `dns_data` | eval query_length = len(query) | where isnotnull(query_length) AND query_length > 0 | fields _time src query query_length | anomalydetection \"query_length\" \"query\" action=annotate | eval isOutlier = if(probable_cause != \"\", \"1\", \"0\") | where isOutlier=1 | `extract_sub_domain` | eval last_update = now(), anomalous_type = \"Query Length\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
+                "query": "| `ad_dns_query_length_detection`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
                 "queryParameters": {
                     "earliest": "0",
                     "latest": ""
@@ -1617,7 +1617,7 @@
         "ds_1UDJ5Cdm_ds_wahErERv_ds_2YOW63hy": {
             "name": "setup_mltk_configuration_setup_recordtype_hinfo_detection",
             "options": {
-                "query": "| `dns_data` | `extract_sub_domain` | bin _time span=1h | stats count(eval(record_type=\"HINFO\")) as hinfo_queries by _time,src,domain | anomalydetection \"hinfo_queries\" \"domain\" action=annotate | eval isOutlier = if(probable_cause != \"\", \"1\", \"0\") | where isOutlier=1 | eval last_update = now(), anomalous_type = \"HINFO Record Anomalies\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
+                "query": "| `ad_dns_hinfo_record_detection`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
                 "queryParameters": {
                     "earliest": "0",
                     "latest": ""
@@ -1650,7 +1650,7 @@
         "ds_Ehp5TvbG_ds_vJXg1jfX_ds_2YOW63hy": {
             "name": "setup_mltk_configuration_setup_domainshadowing_detection",
             "options": {
-                "query": "| `dns_data` | `extract_sub_domain` | where isnotnull(domain) AND subdomain!=\"\" AND isnotnull(subdomain) | stats dc(subdomain) as unique_subdomain by src domain | anomalydetection \"src\" \"unique_subdomain\" action=annotate | eval isOutlier = if(probable_cause != \"\", \"1\", \"0\") | where isOutlier=1 | eval last_update = now(), anomalous_type = \"Domain Shadowing\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
+                "query": "| `ad_dns_domain_shadowing_detection`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
                 "queryParameters": {
                     "earliest": "0",
                     "latest": ""
@@ -1683,7 +1683,7 @@
         "ds_Wp8QIMTW_ds_wahErERv_ds_2YOW63hy": {
             "name": "setup_mltk_configuration_setup_recordtype_axfr_detection",
             "options": {
-                "query": "| `dns_data` | `extract_sub_domain` | bin _time span=1h | stats count(eval(record_type=\"AXFR\")) as axfr_queries by _time,src,domain | anomalydetection \"axfr_queries\" \"domain\" action=annotate | eval isOutlier = if(probable_cause != \"\", \"1\", \"0\") | where isOutlier=1 | eval last_update = now(), anomalous_type = \"AXFR Record Anomalies\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
+                "query": "| `ad_dns_axfr_record_detection`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
                 "queryParameters": {
                     "earliest": "0",
                     "latest": ""
@@ -1782,7 +1782,7 @@
         "ds_vJXg1jfX_ds_2YOW63hy": {
             "name": "setup_mltk_configuration_setup_c2tunneling_detection",
             "options": {
-                "query": "| `dns_data` | fields _time, src, query | `extract_sub_domain` | bin _time span=1m | stats count by _time src domain | anomalydetection \"src\" \"domain\" \"count\" action=annotate | eval isOutlier = if(probable_cause != \"\", \"1\", \"0\") | where isOutlier=1 | eval last_update = now(), anomalous_type = \"C2 Tunneling\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
+                "query": "| `ad_dns_c2_tunneling_detection`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
                 "queryParameters": {
                     "earliest": "0",
                     "latest": ""
@@ -1793,7 +1793,7 @@
         "ds_vMZxC4t4_ds_wahErERv_ds_2YOW63hy": {
             "name": "setup_mltk_configuration_setup_recordtype_any_detection",
             "options": {
-                "query": "| `dns_data` | `extract_sub_domain` | bin _time span=1h | stats count(eval(record_type=\"ANY\")) as any_queries by _time,src,domain | anomalydetection \"any_queries\" \"domain\" action=annotate | eval isOutlier = if(probable_cause != \"\", \"1\", \"0\") | where isOutlier=1 | eval last_update = now(), anomalous_type = \"ANY Record Anomalies\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
+                "query": "| `ad_dns_any_record_detection`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
                 "queryParameters": {
                     "earliest": "0",
                     "latest": ""
@@ -1804,7 +1804,7 @@
         "ds_wahErERv_ds_2YOW63hy": {
             "name": "setup_mltk_configuration_setup_recordtype_txt_detection",
             "options": {
-                "query": "| `dns_data` | `extract_sub_domain` | bin _time span=1h | stats count(eval(record_type=\"TXT\")) as txt_queries by _time,src,domain | anomalydetection \"txt_queries\" \"domain\" action=annotate | eval isOutlier = if(probable_cause != \"\", \"1\", \"0\") | where isOutlier=1 | eval last_update = now(), anomalous_type = \"TXT Record Anomalies\", _key = domain .\"#\". anomalous_type | table _key, last_update, domain, anomalous_type | `update_anomalous_dns`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
+                "query": "| `ad_dns_txt_record_detection`\n| search dummy=\"dummy\"\n| append \n    [| makeresults | eval result = \"Anomalies Saved\"]\n",
                 "queryParameters": {
                     "earliest": "0",
                     "latest": ""
@@ -2767,7 +2767,7 @@
                         "item": "viz_yfP6gT8m",
                         "position": {
                             "h": 40,
-                            "w": 300,
+                            "w": 330,
                             "x": 570,
                             "y": 680
                         },
