@@ -116,10 +116,14 @@ git clone https://github.com/aleeric/Splunk-DNS-Guard-AI.git
     \item Go to \textbf{Apps → Manage Apps → }Search\textbf{ 'CIM' → }Click\textbf{ Set up → }Search\textbf{ "Network Resolution" → }Insert\textbf{ 'synthetic-data' }into\textbf{ 'Indexes allowlist' }field\textbf{ → }Click\textbf{ Save}
 \end{itemize}
 
+\subsection*{4. Increase Values on MLTK Settings}
+\begin{itemize}
+    \item Go to \textbf{Apps → Splunk Machine Learning Toolkit → Settings → }Click\textbf{ DensityFunction → }Set \textbf{ 'max\_groups'} value from 5000 to 500000\textbf{ → }Set \textbf{ 'max\_inputs'} value from 100000 to 10000000 \textbf{ → }Click\textbf{ Save}
+\end{itemize}
+
 \subsection*{5. Verify Setup}
 \begin{itemize}
-    \item Open \textbf{DNS Guard AI} on Splunk Web Interface
-    \item Go to \textbf{setup} → Follow Steps
+    \item Open \textbf{DNS Guard AI} on Splunk Web Interface \textbf{→} Go to \textbf{setup} \textbf{→} Go to \textbf{'DNS Data Model'} page → Check \textbf{'Network Resolution Event Count'} value \textgreater 0 \textbf{→} Click \textbf{Next →} Wait to complete \textbf{Behavioral Clustering} training \textbf{→} Click \textbf{Run Query} on all searches in this order: \textbf{C2 Tunnel Detection, Query Length Anomalies, Domain Shadowing, Record Type Anomalies (TXT, ANY, HINFO, AXFR)}. It's important to wait for each search to finish before starting the next.
 \end{itemize}
 
 \section{Conclusion}
