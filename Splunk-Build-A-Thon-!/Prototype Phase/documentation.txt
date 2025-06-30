@@ -123,7 +123,7 @@ git clone https://github.com/aleeric/Splunk-DNS-Guard-AI.git
 
 \subsection*{5. Verify Setup}
 \begin{itemize}
-    \item Open \textbf{DNS Guard AI} on Splunk Web Interface \textbf{→} Go to \textbf{setup} \textbf{→} Go to \textbf{'DNS Data Model'} page → Check \textbf{'Network Resolution Event Count'} value \textgreater 0 \textbf{→} Click \textbf{Next →} Wait to complete \textbf{Behavioral Clustering} training \textbf{→} Click \textbf{Run Query} on all searches in this order: \textbf{C2 Tunnel Detection, Query Length Anomalies, Domain Shadowing, Record Type Anomalies (TXT, ANY, HINFO, AXFR)}. It's important to wait for each search to finish before starting the next.
+    \item Open \textbf{DNS Guard AI} on Splunk Web Interface \textbf{→} Go to \textbf{setup} \textbf{→} Go to \textbf{'DNS Data Model'} page → Check \textbf{'Network Resolution Event Count'} value \textgreater 0 \textbf{→} Click \textbf{Run Query} on all searches in this order: \textbf{C2 Tunnel Detection, Query Length Anomalies, Domain Shadowing, Record Type Anomalies (TXT, ANY, HINFO, AXFR). Behavioral Clustering, Beaconing (Upper), Beaconing (Lower)}. It's important to wait for each search to finish before starting the next.
 \end{itemize}
 
 \section{Conclusion}
