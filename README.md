@@ -1,8 +1,9 @@
 # Splunk DNS Guard AI
 A comprehensive DNS anomaly detection system using Splunk and machine learning to identify malicious DNS activity in enterprise networks.
 
-> 🏆 **Splunk Build-a-thon 2025 Entry**  
-> This project was developed as part of the [Splunk Build-a-thon 2025](https://www.hackerearth.com/challenges/hackathon/splunk-build-a-thon/#themes) competition, specifically for Track 4: AI/ML. The competition focuses on developing ML-based threat detections inside Splunk using MLTK, bringing data into Splunk and building real-time pipelines to capture threat actors.
+> 🏆 **Splunk Build-a-thon 2025 – 1st Prize Winner, Track 4: AI/ML**  
+> Out of all global submissions, this project earned First Place in Track 4: AI/ML at the [Splunk Build-a-thon 2025](https://www.hackerearth.com/challenges/hackathon/splunk-build-a-thon/#themes). The challenge: develop advanced ML-based threat detections in Splunk using MLTK, seamlessly ingest data, and build real-time pipelines to identify and stop threat actors.
+The result: an award-winning solution recognized for its innovation, technical depth, and real-world impact.
 
 ![](Images/banners/banner.gif)
 
